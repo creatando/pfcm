@@ -33,5 +33,6 @@ target 'PFCM' do
   pod 'SwiftKeychainWrapper'
   pod 'CircleMenu', '~> 2.0.1'
   pod 'PMAlertController'
+  pod 'Former'
 
 end
