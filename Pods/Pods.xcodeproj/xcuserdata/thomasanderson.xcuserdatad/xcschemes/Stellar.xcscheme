@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '49C70144869F9B728CD1934E8DC21EFA'
+               BlueprintIdentifier = '17B1C8C49EDACEC5F584C2670AB9B67F'
                BlueprintName = 'Stellar'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Stellar.framework'>

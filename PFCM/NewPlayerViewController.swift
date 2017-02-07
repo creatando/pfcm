@@ -7,41 +7,24 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseStorage
-import FirebaseAuth
-import Former
 
-class NewPlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class NewPlayerViewController: UIViewController {
     
-     let animals = ["Cat", "Dog", "Cow", "Mulval"]
     
-    @IBOutlet weak private var profilePicture: UIImageView!
-    
-    @IBOutlet weak private var playerInfo: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width/2
-        self.profilePicture.clipsToBounds = true
         
     }
     
+    @IBAction func createPlayer(_ sender: Any) {
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animals.count
-    }
-    
 
     /*
      // MARK: - Navigation

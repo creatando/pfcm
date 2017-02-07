@@ -6,7 +6,6 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - CircleMenu (2.0.1)
-  - Fabric (1.6.11)
   - FBSDKCoreKit (4.19.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.19.0):
@@ -43,42 +42,10 @@ PODS:
   - FirebaseStorage (1.0.5):
     - FirebaseAnalytics (~> 3.5)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseUI (2.0.3):
-    - FirebaseUI/All (= 2.0.3)
-  - FirebaseUI/All (2.0.3):
-    - FirebaseUI/Auth
-    - FirebaseUI/Database
-    - FirebaseUI/Facebook
-    - FirebaseUI/Google
-    - FirebaseUI/Storage
-    - FirebaseUI/Twitter
-  - FirebaseUI/Auth (2.0.3):
-    - Firebase/Auth
-  - FirebaseUI/Database (2.0.3):
-    - Firebase/Database
-  - FirebaseUI/Facebook (2.0.3):
-    - FBSDKLoginKit (~> 4.0)
-    - FirebaseUI/Auth
-  - FirebaseUI/Google (2.0.3):
-    - FirebaseUI/Auth
-    - GoogleSignIn (~> 4.0)
-  - FirebaseUI/Storage (2.0.3):
-    - Firebase/Storage
-    - SDWebImage (~> 4.0)
-  - FirebaseUI/Twitter (2.0.3):
-    - FirebaseUI/Auth
-    - TwitterKit (~> 2.4)
   - FontBlaster (3.0.0)
   - Former (1.5.1)
-  - GoogleAppUtilities (1.1.2):
-    - GoogleSymbolUtilities (~> 1.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
-  - GoogleSignIn (4.0.1):
-    - GoogleAppUtilities (~> 1.1)
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
-    - GTMOAuth2 (~> 1.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
@@ -90,27 +57,14 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMOAuth2 (1.1.4):
-    - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.8):
-    - GTMSessionFetcher/Full (= 1.1.8)
   - GTMSessionFetcher/Core (1.1.8)
-  - GTMSessionFetcher/Full (1.1.8):
-    - GTMSessionFetcher/Core (= 1.1.8)
   - Neon (0.4.0)
   - PMAlertController (2.1.0)
-  - SDWebImage (4.0.0):
-    - SDWebImage/Core (= 4.0.0)
-  - SDWebImage/Core (4.0.0)
   - Spring (1.0.3)
   - Stellar (0.61)
   - SwiftKeychainWrapper (3.0.1)
   - SwiftMessages (3.1.5)
   - Toucan (0.6.0)
-  - TwitterCore (2.8.0):
-    - Fabric
-  - TwitterKit (2.8.0):
-    - TwitterCore (= 2.8.0)
 
 DEPENDENCIES:
   - CircleMenu (~> 2.0.1)
@@ -119,7 +73,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - FirebaseUI (~> 2.0)
   - FontBlaster
   - Former
   - Neon
@@ -148,7 +101,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CircleMenu: a964e8b03aae58c84b40d5cf64630b62bef077eb
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c
   FBSDKLoginKit: 83ca4d8f12a2022570af9fd6aacf27f6b425b99f
   Firebase: 8e99eb1ff553ad5bcc6072cc3d925bb89c1244d6
@@ -158,27 +110,20 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 6de92187481ff0e8e124064f21742e95ee883b02
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 5738284835edb57f0e81d4ae5832bb17c1e4b5fa
-  FirebaseUI: 5178c00cc511e09b5b9d1eb03233d7f9a3834920
   FontBlaster: 0f4a3e2f965968e2dfc3f7f5cec7214c3f3b2f07
   Former: 0b48a812c0d93b092b908d1b0574d0fd95c6b6f9
-  GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
-  GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   PMAlertController: 2d2c19af12edb50753d636395f9456c8cde1e858
-  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   Stellar: d74c4e9b73b75dc7a76efc1de7e9dfc60a4b3da0
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
   Toucan: 47485bbc9cb4541ef6318d6886103e6eaf16e919
-  TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
-  TwitterKit: f7b0a1adcb800f6446ff0ef70164797376522ff3
 
-PODFILE CHECKSUM: d90a6dda18896b6539996d0598253cd61b5e27fe
+PODFILE CHECKSUM: a7f82854a006e8400168b9dc0f3a84b211615e8f
 
 COCOAPODS: 1.2.0
