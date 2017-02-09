@@ -10,6 +10,7 @@
 		5102BC1468DC659C59F02229 /* Pods_PFCM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */; };
 		52C608B2D4B7ED58BFD53755 /* Pods_PFCMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D970373BB667A47A40971963 /* Pods_PFCMUITests.framework */; };
 		931CE3E69DE77002613052E4 /* Pods_PFCMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */; };
+		B504686E1E4BCC5B0097E7B1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504686D1E4BCC5B0097E7B1 /* Player.swift */; };
 		B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6AE1E47AD7400F5522F /* AppDelegate.swift */; };
 		B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B51E47AD7400F5522F /* Assets.xcassets */; };
 		B521B6B91E47AD7400F5522F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */; };
@@ -22,8 +23,6 @@
 		B521B6E91E47AD9900F5522F /* PlayerCentreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */; };
 		B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */; };
 		B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E31E47AD9900F5522F /* SignUpViewController.swift */; };
-		B5519E321E491511004AD8AD /* CreatePlayerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5519E311E491510004AD8AD /* CreatePlayerTableViewController.swift */; };
-		B5519E341E491FB3004AD8AD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5519E331E491FB3004AD8AD /* Player.swift */; };
 		B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59A364B1E47C084008C42CE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +49,7 @@
 		42B0EC840D7EC77220B9DC04 /* Pods-PFCMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.release.xcconfig"; sourceTree = "<group>"; };
 		77480D7DB979D1CF9CFE2D1B /* Pods-PFCMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B310C4BD1C6963804BDAC698 /* Pods-PFCMUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMUITests/Pods-PFCMUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B504686D1E4BCC5B0097E7B1 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B521B6AB1E47AD7400F5522F /* PFCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B521B6AE1E47AD7400F5522F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B521B6B51E47AD7400F5522F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,8 +68,6 @@
 		B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCentreViewController.swift; sourceTree = "<group>"; };
 		B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B521B6E31E47AD9900F5522F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B5519E311E491510004AD8AD /* CreatePlayerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePlayerTableViewController.swift; sourceTree = "<group>"; };
-		B5519E331E491FB3004AD8AD /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B59A364B1E47C084008C42CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCMTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +183,7 @@
 		B521B6EC1E47AE7000F5522F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				B5519E331E491FB3004AD8AD /* Player.swift */,
+				B504686D1E4BCC5B0097E7B1 /* Player.swift */,
 			);
 			name = models;
 			path = ..;
@@ -203,7 +201,6 @@
 		B521B6EE1E47AE8900F5522F /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5519E311E491510004AD8AD /* CreatePlayerTableViewController.swift */,
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
 				B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */,
 				B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */,
@@ -497,14 +494,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5519E321E491511004AD8AD /* CreatePlayerTableViewController.swift in Sources */,
 				B521B6E61E47AD9900F5522F /* LoginViewController.swift in Sources */,
 				B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */,
 				B521B6E91E47AD9900F5522F /* PlayerCentreViewController.swift in Sources */,
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
 				B521B6E51E47AD9900F5522F /* HomeViewController.swift in Sources */,
-				B5519E341E491FB3004AD8AD /* Player.swift in Sources */,
+				B504686E1E4BCC5B0097E7B1 /* Player.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,8 +653,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = creatando.PFCM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Debug;
 		};
@@ -673,8 +669,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = creatando.PFCM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 			};
 			name = Release;
 		};
