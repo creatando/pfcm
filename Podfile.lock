@@ -6,6 +6,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
   - CircleMenu (2.0.1)
+  - CRNetworkButton (1.0.2)
   - FBSDKCoreKit (4.19.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.19.0):
@@ -57,6 +58,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - Honour (1.1.1)
   - IQKeyboardManagerSwift (4.0.8)
   - PMAlertController (2.1.0)
   - Realm (2.4.2):
@@ -66,21 +68,27 @@ PODS:
     - Realm (= 2.4.2)
   - Spring (1.0.3)
   - SwiftKeychainWrapper (3.0.1)
+  - SwiftVideoBackground (0.04)
+  - TextFieldEffects (1.3.0)
   - Toucan (0.6.0)
 
 DEPENDENCIES:
   - CircleMenu (~> 2.0.1)
+  - CRNetworkButton
   - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
   - FontBlaster
+  - Honour (~> 1.1.1)
   - IQKeyboardManagerSwift
   - PMAlertController
   - RealmSwift
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftKeychainWrapper
+  - SwiftVideoBackground
+  - TextFieldEffects
   - Toucan (~> 0.6)
 
 EXTERNAL SOURCES:
@@ -96,6 +104,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CircleMenu: a964e8b03aae58c84b40d5cf64630b62bef077eb
+  CRNetworkButton: 2bfe150c64a46506ade962745a3364f21bef3115
   FBSDKCoreKit: 894b2b6eda6a4c8c4204e92e59cc355709ef045c
   FBSDKLoginKit: 83ca4d8f12a2022570af9fd6aacf27f6b425b99f
   Firebase: 8e99eb1ff553ad5bcc6072cc3d925bb89c1244d6
@@ -110,14 +119,17 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  Honour: 9b180fb37f94a62ce5b980502af06b43bf376333
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   PMAlertController: 2d2c19af12edb50753d636395f9456c8cde1e858
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
   RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  SwiftVideoBackground: c0253281fcda5047c36067cbb852d8061513058b
+  TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
   Toucan: 47485bbc9cb4541ef6318d6886103e6eaf16e919
 
-PODFILE CHECKSUM: 2ef38672157ba04e86197716e0de1589bc61393e
+PODFILE CHECKSUM: 1ba3a88d192f98be785a732fecdf9f209be2abf5
 
 COCOAPODS: 1.2.0

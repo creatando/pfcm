@@ -31,5 +31,9 @@ target 'PFCM' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'RealmSwift'
+  pod 'TextFieldEffects'
+  pod 'SwiftVideoBackground'
+  pod 'Honour', '~> 1.1.1'
+  pod 'CRNetworkButton'
 
 end
