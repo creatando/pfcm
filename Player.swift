@@ -10,10 +10,10 @@ import Foundation
 import RealmSwift
 
 class Player: Object {
-    dynamic var pid = ""
+    dynamic var pid = NSUUID().uuidString
     dynamic var firstName = ""
     dynamic var lastName = ""
-    dynamic var dob = NSDate(timeIntervalSince1970: 1)
+    dynamic var dob = ""
     dynamic var address1 = ""
     dynamic var address2 = ""
     dynamic var city = ""
@@ -22,13 +22,18 @@ class Player: Object {
     dynamic var position2 = ""
     dynamic var position3 = ""
     dynamic var squadNo = ""
-    dynamic var appearances = 0
-    dynamic var goals = 0
-    dynamic var assists = 0
+    dynamic var appearances = ""
+    dynamic var goals = ""
+    dynamic var assists = ""
+    
+    override class func primaryKey () -> String? {
+        return "pid"
+    }
     
 // Specify properties to ignore (Realm won't persist these)
     
-//  override static func ignoredProperties() -> [String] {
-//    return []
-//  }
+override static func ignoredProperties() -> [String] {
+        //return ["appearances","goals","assists"]
+    return[]
+    }
 }

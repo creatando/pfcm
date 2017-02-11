@@ -23,6 +23,7 @@
 		B521B6E91E47AD9900F5522F /* PlayerCentreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */; };
 		B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */; };
 		B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E31E47AD9900F5522F /* SignUpViewController.swift */; };
+		B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58672631E4F1960003BB615 /* ViewPlayerController.swift */; };
 		B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59A364B1E47C084008C42CE /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCentreViewController.swift; sourceTree = "<group>"; };
 		B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B521B6E31E47AD9900F5522F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B58672631E4F1960003BB615 /* ViewPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPlayerController.swift; sourceTree = "<group>"; };
 		B59A364B1E47C084008C42CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCMTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
+				B58672631E4F1960003BB615 /* ViewPlayerController.swift */,
 				B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */,
 				B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */,
 				B521B6E31E47AD9900F5522F /* SignUpViewController.swift */,
@@ -500,6 +503,7 @@
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
 				B521B6E51E47AD9900F5522F /* HomeViewController.swift in Sources */,
+				B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */,
 				B504686E1E4BCC5B0097E7B1 /* Player.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 			);

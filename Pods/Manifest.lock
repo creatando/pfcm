@@ -43,7 +43,6 @@ PODS:
     - FirebaseAnalytics (~> 3.5)
     - GTMSessionFetcher/Core (~> 1.1)
   - FontBlaster (3.0.0)
-  - Former (1.5.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
@@ -58,7 +57,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
-  - Neon (0.4.0)
+  - IQKeyboardManagerSwift (4.0.8)
   - PMAlertController (2.1.0)
   - Realm (2.4.2):
     - Realm/Headers (= 2.4.2)
@@ -66,9 +65,7 @@ PODS:
   - RealmSwift (2.4.2):
     - Realm (= 2.4.2)
   - Spring (1.0.3)
-  - Stellar (0.61)
   - SwiftKeychainWrapper (3.0.1)
-  - SwiftMessages (3.1.5)
   - Toucan (0.6.0)
 
 DEPENDENCIES:
@@ -79,30 +76,22 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FontBlaster
-  - Former
-  - Neon
+  - IQKeyboardManagerSwift
   - PMAlertController
   - RealmSwift
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
-  - Stellar (from `https://github.com/AugustRush/Stellar.git`)
   - SwiftKeychainWrapper
-  - SwiftMessages
   - Toucan (~> 0.6)
 
 EXTERNAL SOURCES:
   Spring:
     :branch: swift3
     :git: https://github.com/MengTo/Spring.git
-  Stellar:
-    :git: https://github.com/AugustRush/Stellar.git
 
 CHECKOUT OPTIONS:
   Spring:
     :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
     :git: https://github.com/MengTo/Spring.git
-  Stellar:
-    :commit: 022c5693820ae7907011240379fc145fdce00912
-    :git: https://github.com/AugustRush/Stellar.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -117,21 +106,18 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 5738284835edb57f0e81d4ae5832bb17c1e4b5fa
   FontBlaster: 0f4a3e2f965968e2dfc3f7f5cec7214c3f3b2f07
-  Former: 0b48a812c0d93b092b908d1b0574d0fd95c6b6f9
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
-  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   PMAlertController: 2d2c19af12edb50753d636395f9456c8cde1e858
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
   RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
-  Stellar: d74c4e9b73b75dc7a76efc1de7e9dfc60a4b3da0
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
-  SwiftMessages: bb85d7c30e85256f9367214b0907e1f409e1870a
   Toucan: 47485bbc9cb4541ef6318d6886103e6eaf16e919
 
-PODFILE CHECKSUM: 211afca73a3c07b7da293d7f186223820dd46d3a
+PODFILE CHECKSUM: 2ef38672157ba04e86197716e0de1589bc61393e
 
 COCOAPODS: 1.2.0

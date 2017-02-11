@@ -19,16 +19,13 @@ target 'PFCM' do
 
   # Pods installed
   pod 'Toucan', '~> 0.6'
-  pod 'Neon'
-  pod 'Stellar', :git => 'https://github.com/AugustRush/Stellar.git'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
   pod 'FontBlaster'
-  pod 'SwiftMessages'
   pod 'FBSDKLoginKit'
+  pod 'IQKeyboardManagerSwift'
   pod 'SwiftKeychainWrapper'
   pod 'CircleMenu', '~> 2.0.1'
   pod 'PMAlertController'
-  pod 'Former'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
