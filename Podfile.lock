@@ -43,6 +43,7 @@ PODS:
   - FirebaseStorage (1.0.5):
     - FirebaseAnalytics (~> 3.5)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FoldingCell (2.0.3)
   - FontBlaster (3.0.0)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
@@ -80,6 +81,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - FoldingCell (~> 2.0.3)
   - FontBlaster
   - Honour (~> 1.1.1)
   - IQKeyboardManagerSwift
@@ -114,6 +116,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 6de92187481ff0e8e124064f21742e95ee883b02
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 5738284835edb57f0e81d4ae5832bb17c1e4b5fa
+  FoldingCell: 2f3113051609167776743415fc00ed877ac6d62c
   FontBlaster: 0f4a3e2f965968e2dfc3f7f5cec7214c3f3b2f07
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
@@ -130,6 +133,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: ef594746f17997c813e07633f8ae5acaf9b04f27
   Toucan: 47485bbc9cb4541ef6318d6886103e6eaf16e919
 
-PODFILE CHECKSUM: 1ba3a88d192f98be785a732fecdf9f209be2abf5
+PODFILE CHECKSUM: 428a74fc2710fefd91e4427b6714c288b830f460
 
 COCOAPODS: 1.2.0

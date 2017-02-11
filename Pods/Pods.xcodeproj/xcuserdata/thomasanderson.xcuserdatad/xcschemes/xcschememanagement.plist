@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FoldingCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FontBlaster.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -122,22 +127,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1A9D5153A604DA5D937707E05C295607</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1AA045F5DDFBA98C5E8D77D87BBDC039</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2225F6DB233C94157C36C28163CDF5EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2B02F50B28F044FA88BEED71903A8517</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +137,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45ADEBFC1858BCA31E0197A277AE4EF5</key>
+		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
+		<key>5EF7CAE7C810F43F89484089F46D6331</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>64D1FE6163C1E462097185DA700CFAA3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6578379EB45D8F32522A85C87F7B116C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>69787AFBA8DDFB0B3919D4E2C89C0374</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,12 +172,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CFE43EAA75616F373DFC3D88C984D26</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7D95BD7BFF84C3D52DF8F0693C36550D</key>
+		<key>85D111A5E84D5A13754411D1701BF9E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -183,6 +183,11 @@
 			<true/>
 		</dict>
 		<key>A4C1FA091F24FCF5F92D1E2ED7774651</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B626E472969D6F87698AF0041EAAFC38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,12 +207,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54FDD5C741942E89778C6F1AD56A429</key>
+		<key>C5F8D1936481AE7063FE9744C72EB2B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE2D1EADCA21E6D7484CDA3274CFA847</key>
+		<key>D54FDD5C741942E89778C6F1AD56A429</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,7 +222,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E8CD3D8441EE108A18FB00502FB9A6B8</key>
+		<key>F825060353E4848FB60527CC72484BFE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBEFEC57BE53A3416E07A49481592814</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -10,7 +10,6 @@
 		5102BC1468DC659C59F02229 /* Pods_PFCM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */; };
 		52C608B2D4B7ED58BFD53755 /* Pods_PFCMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D970373BB667A47A40971963 /* Pods_PFCMUITests.framework */; };
 		931CE3E69DE77002613052E4 /* Pods_PFCMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */; };
-		B504686E1E4BCC5B0097E7B1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504686D1E4BCC5B0097E7B1 /* Player.swift */; };
 		B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6AE1E47AD7400F5522F /* AppDelegate.swift */; };
 		B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B51E47AD7400F5522F /* Assets.xcassets */; };
 		B521B6B91E47AD7400F5522F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */; };
@@ -25,6 +24,7 @@
 		B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E31E47AD9900F5522F /* SignUpViewController.swift */; };
 		B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58672631E4F1960003BB615 /* ViewPlayerController.swift */; };
 		B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59A364B1E47C084008C42CE /* GoogleService-Info.plist */; };
+		B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA8D031E4F78CC0045A5A6 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 		42B0EC840D7EC77220B9DC04 /* Pods-PFCMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.release.xcconfig"; sourceTree = "<group>"; };
 		77480D7DB979D1CF9CFE2D1B /* Pods-PFCMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B310C4BD1C6963804BDAC698 /* Pods-PFCMUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMUITests/Pods-PFCMUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B504686D1E4BCC5B0097E7B1 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B521B6AB1E47AD7400F5522F /* PFCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B521B6AE1E47AD7400F5522F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B521B6B51E47AD7400F5522F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		B521B6E31E47AD9900F5522F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B58672631E4F1960003BB615 /* ViewPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPlayerController.swift; sourceTree = "<group>"; };
 		B59A364B1E47C084008C42CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5BA8D031E4F78CC0045A5A6 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = PFCM/Player.swift; sourceTree = "<group>"; };
 		BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCMTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D970373BB667A47A40971963 /* Pods_PFCMUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCMUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +185,7 @@
 		B521B6EC1E47AE7000F5522F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				B504686D1E4BCC5B0097E7B1 /* Player.swift */,
+				B5BA8D031E4F78CC0045A5A6 /* Player.swift */,
 			);
 			name = models;
 			path = ..;
@@ -497,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */,
 				B521B6E61E47AD9900F5522F /* LoginViewController.swift in Sources */,
 				B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */,
 				B521B6E91E47AD9900F5522F /* PlayerCentreViewController.swift in Sources */,
@@ -504,7 +505,6 @@
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
 				B521B6E51E47AD9900F5522F /* HomeViewController.swift in Sources */,
 				B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */,
-				B504686E1E4BCC5B0097E7B1 /* Player.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
