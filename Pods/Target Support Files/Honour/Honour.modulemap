@@ -1,6 +1,0 @@
-framework module Honour {
-  umbrella header "Honour-umbrella.h"
-
-  export *
-  module * { export * }
-}

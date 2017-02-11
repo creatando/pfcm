@@ -33,7 +33,6 @@ target 'PFCM' do
   pod 'RealmSwift'
   pod 'TextFieldEffects'
   pod 'SwiftVideoBackground'
-  pod 'Honour', '~> 1.1.1'
   pod 'CRNetworkButton'
   pod 'FoldingCell', '~> 2.0.3'
 

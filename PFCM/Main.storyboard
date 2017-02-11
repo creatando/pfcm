@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1Sh-ni-Tjq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GqM-Jo-n3E">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -392,6 +392,7 @@
                                                     <rect key="frame" x="8" y="8" width="359" height="28"/>
                                                     <accessibility key="accessibilityConfiguration" label="First Name"/>
                                                     <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="wDF-L4-9Or" id="oFD-Wp-hRk"/>
@@ -699,7 +700,9 @@
                             <outlet property="delegate" destination="wDF-L4-9Or" id="Cdg-r6-X9E"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="C1X-Mi-D4e"/>
+                    <navigationItem key="navigationItem" title="Create Player" id="C1X-Mi-D4e">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="JZd-n5-cwO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="address1" destination="VKN-iY-irH" id="6Vk-E2-Rj1"/>
                         <outlet property="address2" destination="VID-YQ-aNg" id="gNh-r2-jW6"/>
@@ -728,6 +731,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="rTM-jt-40v">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="wDF-L4-9Or" kind="relationship" relationship="rootViewController" id="FzY-jY-qTc"/>
                     </connections>
