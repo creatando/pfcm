@@ -25,6 +25,7 @@
 		B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58672631E4F1960003BB615 /* ViewPlayerController.swift */; };
 		B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59A364B1E47C084008C42CE /* GoogleService-Info.plist */; };
 		B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA8D031E4F78CC0045A5A6 /* Player.swift */; };
+		B5BE28B31E4FE52B00EED017 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = B5BE28B21E4FE52B00EED017 /* Resources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		B58672631E4F1960003BB615 /* ViewPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPlayerController.swift; sourceTree = "<group>"; };
 		B59A364B1E47C084008C42CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5BA8D031E4F78CC0045A5A6 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = PFCM/Player.swift; sourceTree = "<group>"; };
+		B5BE28B21E4FE52B00EED017 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCMTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D970373BB667A47A40971963 /* Pods_PFCMUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PFCMUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 				B521B6ED1E47AE7E00F5522F /* views */,
 				B521B6EE1E47AE8900F5522F /* controllers */,
 				B521B6B51E47AD7400F5522F /* Assets.xcassets */,
+				B5BE28B21E4FE52B00EED017 /* Resources */,
 				B521B6AE1E47AD7400F5522F /* AppDelegate.swift */,
 				B521B6BA1E47AD7400F5522F /* Info.plist */,
 				B59A364B1E47C084008C42CE /* GoogleService-Info.plist */,
@@ -335,6 +338,7 @@
 				B521B6E71E47AD9900F5522F /* Main.storyboard in Resources */,
 				B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */,
 				B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */,
+				B5BE28B31E4FE52B00EED017 /* Resources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

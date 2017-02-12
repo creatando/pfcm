@@ -63,7 +63,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.        
         picker.delegate = self
         picker.dataSource = self
         picker2.delegate = self
