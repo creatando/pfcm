@@ -14,6 +14,8 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var dob: UITextField!
+    @IBOutlet weak var phoneNo: UITextField!
+    @IBOutlet weak var emailAdd: UITextField!
     @IBOutlet weak var address1: UITextField!
     @IBOutlet weak var address2: UITextField!
     @IBOutlet weak var city: UITextField!
@@ -29,6 +31,8 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         player.firstName = firstName.text!
         player.lastName = lastName.text!
         player.dob = dob.text!
+        player.phoneNo = phoneNo.text!
+        player.emailAdd = emailAdd.text!
         player.address1 = address1.text!
         player.address2 = address2.text!
         player.city = city.text!
@@ -82,6 +86,8 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         firstName.delegate = self
         lastName.delegate = self
         dob.delegate = self
+        phoneNo.delegate = self
+        emailAdd.delegate = self
         address1.delegate = self
         address2.delegate = self
         city.delegate = self
@@ -97,6 +103,8 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         firstName.text = ""
         lastName.text! = ""
         dob.text! = ""
+        phoneNo.text! = ""
+        emailAdd.text! = ""
         address1.text! = ""
         address2.text! = ""
         city.text! = ""
@@ -119,9 +127,12 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             dob.becomeFirstResponder()
             break
         case dob:
-            address1.becomeFirstResponder()
+            phoneNo.becomeFirstResponder()
             break
-        case address1:
+        case phoneNo:
+            emailAdd.becomeFirstResponder()
+            break
+        case emailAdd:
             address2.becomeFirstResponder()
             break
         case address2:

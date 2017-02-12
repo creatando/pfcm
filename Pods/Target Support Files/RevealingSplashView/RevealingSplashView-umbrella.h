@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "RevealingSplashView.h"
 
-FOUNDATION_EXPORT double ToucanVersionNumber;
-FOUNDATION_EXPORT const unsigned char ToucanVersionString[];
+FOUNDATION_EXPORT double RevealingSplashViewVersionNumber;
+FOUNDATION_EXPORT const unsigned char RevealingSplashViewVersionString[];
 

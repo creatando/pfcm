@@ -8,170 +8,126 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>CRNetworkButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>CircleMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>FBSDKLoginKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>FoldingCell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>FontBlaster.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>PMAlertController-PMAlertController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
-		</dict>
-		<key>PMAlertController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>Pods-PFCM.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>12</integer>
 		</dict>
 		<key>Pods-PFCMTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>Pods-PFCMUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
+		</dict>
+		<key>RevealingSplashView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Spring.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
 		</dict>
 		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
 		</dict>
 		<key>SwiftVideoBackground.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>19</integer>
 		</dict>
 		<key>TextFieldEffects.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
-		</dict>
-		<key>Toucan.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>21</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0B208EF8B5672A8CB9968B60A246B0AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0E18A2EFE2224169A737E73024F5FEFA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>18E762669224493EAF3AC711ACAE7140</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>203647E7E83BC1EAF2056F0C74F969D7</key>
+		<key>1686DB04EF88D27F7E50AFDC8E3B0F54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -181,12 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44CAD6CE523055ED339E87154473A254</key>
+		<key>3DC7563D8C95A5462F66B2355BB70656</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C666129065A5B6DF14D232024EBD90D</key>
+		<key>44CAD6CE523055ED339E87154473A254</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -196,32 +152,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>689BC7035FFE4AA9A863AB6AA48C0E8D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6CB85864AB2811D4BCCC89C970DE9A46</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6E0C9C3F8A264BFCDA49678B07EAA7D8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>76D47857D0061DC503806B4FE7A2545D</key>
+		<key>518CD9AAEAA2C6516618DECAF8242806</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>7B1B518A661461E9FBABD3100BDF1C90</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>99183593E3C04F0C7720EF0DA4A0159B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -241,6 +177,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BCB62E69E04AA6144E02D8D6F7DAF922</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BEF7E6E85DB5CDE5D7A18F4F2EB8494B</key>
 		<dict>
 			<key>primary</key>
@@ -251,7 +192,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54FDD5C741942E89778C6F1AD56A429</key>
+		<key>C1BF8F990F0548BFA9D59283B7933213</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD75DD7D116E1336D641E47707BB1834</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -261,7 +207,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E785787C434D0C5F8DFB0063D8C784B8</key>
+		<key>F1EF03A31BB78D64BE0620FF35F49365</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -18,14 +18,13 @@ target 'PFCM' do
   end
 
   # Pods installed
-  pod 'Toucan', '~> 0.6'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
   pod 'FontBlaster'
   pod 'FBSDKLoginKit'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftKeychainWrapper'
   pod 'CircleMenu', '~> 2.0.1'
-  pod 'PMAlertController'
+  pod 'SCLAlertView'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
@@ -35,5 +34,6 @@ target 'PFCM' do
   pod 'SwiftVideoBackground'
   pod 'CRNetworkButton'
   pod 'FoldingCell', '~> 2.0.3'
+  pod 'RevealingSplashView'
 
 end

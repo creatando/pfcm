@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double PMAlertControllerVersionNumber;
-FOUNDATION_EXPORT const unsigned char PMAlertControllerVersionString[];
+FOUNDATION_EXPORT double SCLAlertViewVersionNumber;
+FOUNDATION_EXPORT const unsigned char SCLAlertViewVersionString[];
 

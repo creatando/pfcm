@@ -14,6 +14,8 @@ class Player: Object {
     dynamic var firstName = ""
     dynamic var lastName = ""
     dynamic var dob = ""
+    dynamic var phoneNo = ""
+    dynamic var emailAdd = ""
     dynamic var address1 = ""
     dynamic var address2 = ""
     dynamic var city = ""
@@ -32,8 +34,8 @@ class Player: Object {
     
 // Specify properties to ignore (Realm won't persist these)
     
-override static func ignoredProperties() -> [String] {
-        //return ["appearances","goals","assists"]
-    return[]
-    }
+//override static func ignoredProperties() -> [String] {
+//        //return ["appearances","goals","assists"]
+//    return[]
+//    }
 }
