@@ -724,7 +724,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zE8-9C-4XE">
             <objects>
-                <navigationController id="1Sh-ni-Tjq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Sh-ni-Tjq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" backIndicatorImage="arrowLeft.png" backIndicatorTransitionMaskImage="arrowLeft.png" id="P8J-m2-m3s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

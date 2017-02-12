@@ -18,8 +18,8 @@ class ViewPlayerController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let realm = try! Realm()
-        players = realm.objects(Player)
+        //let realm = try! Realm()
+        //players = realm.objects(Player)
     }
 
     override func didReceiveMemoryWarning() {
