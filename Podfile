@@ -35,5 +35,6 @@ target 'PFCM' do
   pod 'CRNetworkButton'
   pod 'FoldingCell', '~> 2.0.3'
   pod 'RevealingSplashView'
+  pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
 
 end

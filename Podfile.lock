@@ -69,6 +69,7 @@ PODS:
   - SCLAlertView (0.7.0)
   - Spring (1.0.3)
   - SwiftKeychainWrapper (3.0.1)
+  - SwiftValidator (4.0.0)
   - SwiftVideoBackground (0.04)
   - TextFieldEffects (1.3.1)
 
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - SCLAlertView
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftKeychainWrapper
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftVideoBackground
   - TextFieldEffects
 
@@ -95,11 +97,17 @@ EXTERNAL SOURCES:
   Spring:
     :branch: swift3
     :git: https://github.com/MengTo/Spring.git
+  SwiftValidator:
+    :branch: master
+    :git: https://github.com/jpotts18/SwiftValidator.git
 
 CHECKOUT OPTIONS:
   Spring:
     :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
     :git: https://github.com/MengTo/Spring.git
+  SwiftValidator:
+    :commit: 2a6c23ad9efd76127f6109445515cb9780e5ad92
+    :git: https://github.com/jpotts18/SwiftValidator.git
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -127,9 +135,10 @@ SPEC CHECKSUMS:
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftVideoBackground: c0253281fcda5047c36067cbb852d8061513058b
   TextFieldEffects: faa47d428ee8eafb781a8413ac4345420d2328c4
 
-PODFILE CHECKSUM: 12cf272591b4e6c55000b12f5e406d44dc093183
+PODFILE CHECKSUM: 3e7fea129c2b741c9d2a46aa521e86c83a07292e
 
 COCOAPODS: 1.2.0

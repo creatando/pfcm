@@ -8,9 +8,11 @@
 
 import UIKit
 import RealmSwift
+import SCLAlertView
+import SwiftValidator
 
-class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
-
+class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ValidationDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var dob: UITextField!
@@ -24,10 +26,72 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var position2: UITextField!
     @IBOutlet weak var position3: UITextField!
     @IBOutlet weak var squadNo: UITextField!
-    //@IBOutlet weak var profilePicture: UIImageView!
+    
+    @IBOutlet weak var profilePic: UIImageView!
+    
+    @IBAction func dateEditField(_ sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(NewPlayerViewController.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+    }
+    
+    @IBAction func backNav(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        
+        let confirmAlertView = SCLAlertView(appearance: appearance)
+        
+        if self.playerClicked == false {
+            confirmAlertView.addButton("Yes") {
+                self.dismiss(animated: true, completion: nil)
+                self.playerClicked = false
+            }
+            
+            confirmAlertView.addButton("No") {
+                self.playerClicked = false
+            }
+            self.view.endEditing(true)
+            confirmAlertView.showInfo("Leave", subTitle: "Are you sure you want to leave before adding a player?")
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func addPhoto(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePic.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    let imagePicker = UIImagePickerController()
+    let realm = try! Realm()
+    let addSuccessAlertView = SCLAlertView()
+    let player = Player()
+    var playerClicked = false
+    let validator = Validator()
+    
+    
     @IBAction func createPlayer(_ sender: Any) {
-        let realm = try! Realm()
-        let player = Player()
+        
         player.firstName = firstName.text!
         player.lastName = lastName.text!
         player.dob = dob.text!
@@ -45,15 +109,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         player.goals = "0"
         player.assists = "0"
         
-        do {
-            try realm.write() {
-                realm.add(player)
-                print ("Player created!")
-                resetTextFields()
-            }
-        } catch let error as NSError {
-            print("Realm write error: \(error.localizedDescription)")
-        }
+        validator.validate(self)
     }
     
     var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF" ]
@@ -67,7 +123,10 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.        
+        // Do any additional setup after loading the view. 
+        
+        circlePicture()
+        
         picker.delegate = self
         picker.dataSource = self
         picker2.delegate = self
@@ -76,7 +135,6 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         picker3.dataSource = self
         sNoPicker.delegate = self
         sNoPicker.dataSource = self
-        
         
         self.position.inputView = picker
         self.position2.inputView = picker2
@@ -96,8 +154,60 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         position2.delegate = self
         position3.delegate = self
         squadNo.delegate = self
+        
+        imagePicker.delegate = self
+        
+        // Validation Rules
+        validator.registerField(firstName, rules: [RequiredRule()])
+        validator.registerField(lastName, rules: [RequiredRule()])
+        validator.registerField(dob, rules: [RequiredRule()])
+        validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 10), MaxLengthRule(length: 10)])
+        validator.registerField(emailAdd, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
+        validator.registerField(address1, rules: [RequiredRule()])
+        validator.registerField(address2, rules: [RequiredRule()])
+        validator.registerField(city, rules: [RequiredRule()])
+        validator.registerField(postCode, rules: [RequiredRule()])
+        validator.registerField(position, rules: [RequiredRule()])
+        validator.registerField(squadNo, rules: [RequiredRule()])
+
     }
     
+    func validationSuccessful() {
+        do {
+            try realm.write() {
+                realm.add(player)
+                addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
+                resetTextFields()
+                self.playerClicked = true
+                
+            }
+        } catch let error as NSError {
+            print("Realm write error: \(error.localizedDescription)")
+        }
+
+    }
+    
+    func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+        
+         let errorValAlertView = SCLAlertView()
+         errorValAlertView.showWarning("Validation Error", subTitle: "You have missed some fields.")
+        
+        // turn the fields to red
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            }
+    }
+    func circlePicture () {
+        profilePic.layer.borderWidth = 1
+        profilePic.layer.masksToBounds = false
+        profilePic.layer.borderColor = UIColor.black.cgColor
+        profilePic.layer.cornerRadius = profilePic.frame.height/2
+        profilePic.clipsToBounds = true
+    }
     func resetTextFields () {
         
         firstName.text = ""
@@ -113,6 +223,18 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         position2.text! = ""
         position3.text! = ""
         squadNo.text! = ""
+        
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        dob.text = dateFormatter.string(from: sender.date)
         
     }
     
@@ -160,18 +282,6 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         }
         return true
     }
-    
-    
-    func donePicker (sender:UIBarButtonItem)
-    {
-        position.resignFirstResponder()
-        position2.resignFirstResponder()
-        position3.resignFirstResponder()
-        sNoPicker.resignFirstResponder()
-    }
-    
-    // Actions
-    
     
     // returns the number of 'columns' to display.
     @available(iOS 2.0, *)
@@ -229,6 +339,12 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         }
         
         
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        view.tintColor = UIColor.red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
     }
     
     
