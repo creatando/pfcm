@@ -11,6 +11,28 @@ import RealmSwift
 import SCLAlertView
 import SwiftValidator
 
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+    
+    /// Returns the data for the specified image in PNG format
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the PNG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    var png: Data? { return UIImagePNGRepresentation(self) }
+    
+    /// Returns the data for the specified image in JPEG format.
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    func jpeg(_ quality: JPEGQuality) -> Data? {
+        return UIImageJPEGRepresentation(self, quality.rawValue)
+    }
+}
+
 class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ValidationDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var firstName: UITextField!
@@ -40,20 +62,17 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     }
     
     @IBAction func backNav(_ sender: Any) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-        
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let confirmAlertView = SCLAlertView(appearance: appearance)
         
-        if self.playerClicked == false {
+        if self.createButtonClicked == false {
             confirmAlertView.addButton("Yes") {
                 self.dismiss(animated: true, completion: nil)
-                self.playerClicked = false
+                self.createButtonClicked = false
             }
             
             confirmAlertView.addButton("No") {
-                self.playerClicked = false
+                self.createButtonClicked = false
             }
             self.view.endEditing(true)
             confirmAlertView.showInfo("Leave", subTitle: "Are you sure you want to leave before adding a player?")
@@ -62,36 +81,15 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         }
     }
     
-    @IBAction func addPhoto(_ sender: Any) {
+    @IBAction func addPhoto(_ sender: UIBarButtonItem) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-        
+        imagePicker.modalPresentationStyle = .popover
         present(imagePicker, animated: true, completion: nil)
+        imagePicker.popoverPresentationController?.barButtonItem = sender
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            profilePic.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    let imagePicker = UIImagePickerController()
-    let realm = try! Realm()
-    let addSuccessAlertView = SCLAlertView()
-    let player = Player()
-    var playerClicked = false
-    let validator = Validator()
-    
     
     @IBAction func createPlayer(_ sender: Any) {
-        
         player.firstName = firstName.text!
         player.lastName = lastName.text!
         player.dob = dob.text!
@@ -108,9 +106,19 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         player.appearances = "0"
         player.goals = "0"
         player.assists = "0"
+        saveImage()
         
         validator.validate(self)
+        
+        createButtonClicked = false
     }
+    
+    let imagePicker = UIImagePickerController()
+    let realm = try! Realm()
+    let addSuccessAlertView = SCLAlertView()
+    let player = Player()
+    var createButtonClicked = false
+    let validator = Validator()
     
     var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF" ]
     var squadNoData = ["","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"]
@@ -161,7 +169,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.registerField(firstName, rules: [RequiredRule()])
         validator.registerField(lastName, rules: [RequiredRule()])
         validator.registerField(dob, rules: [RequiredRule()])
-        validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 10), MaxLengthRule(length: 10)])
+        validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 11), MaxLengthRule(length: 11)])
         validator.registerField(emailAdd, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
         validator.registerField(address1, rules: [RequiredRule()])
         validator.registerField(address2, rules: [RequiredRule()])
@@ -171,14 +179,47 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.registerField(squadNo, rules: [RequiredRule()])
 
     }
+    func saveImage () {
+        
+        let puid = UUID().uuidString
+        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        // create a name for your image
+        let fileURL = documentsDirectoryURL.appendingPathComponent("\(firstName.text ?? "")\(lastName.text ?? "")\(puid)pic.jpeg")
+        
+        print (fileURL)
+        player.picFilePath = fileURL.absoluteString
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try UIImageJPEGRepresentation(profilePic.image!, 0.4)!.write(to: fileURL)
+                print("Image Added Successfully")
+            } catch {
+                print(error)
+            }
+        } else {
+            print("Image Not Added")
+        }
+            }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePic.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
     
     func validationSuccessful() {
         do {
             try realm.write() {
                 realm.add(player)
                 addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
-                resetTextFields()
-                self.playerClicked = true
+                resetProfile()
+                self.createButtonClicked = true
                 
             }
         } catch let error as NSError {
@@ -190,7 +231,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
         
          let errorValAlertView = SCLAlertView()
-         errorValAlertView.showWarning("Validation Error", subTitle: "You have missed some fields.")
+         errorValAlertView.showWarning("Validation error", subTitle: "You have missed out some fields or have entered them incorrectly.")
         
         // turn the fields to red
         for (field, error) in errors {
@@ -201,15 +242,42 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             error.errorLabel?.text = error.errorMessage // works if you added labels
             }
     }
+    
     func circlePicture () {
-        profilePic.layer.borderWidth = 1
-        profilePic.layer.masksToBounds = false
-        profilePic.layer.borderColor = UIColor.black.cgColor
-        profilePic.layer.cornerRadius = profilePic.frame.height/2
-        profilePic.clipsToBounds = true
+        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2
+        self.profilePic.layer.borderColor = UIColor.green.cgColor
+        self.profilePic.layer.borderWidth = 2
+        self.profilePic.layer.shouldRasterize = true
     }
-    func resetTextFields () {
+    
+    func resetValidation () {
         
+        firstName.layer.borderWidth = 0
+        lastName.layer.borderWidth = 0
+        dob.layer.borderWidth = 0
+        phoneNo.layer.borderWidth = 0
+        emailAdd.layer.borderWidth = 0
+        address1.layer.borderWidth = 0
+        address2.layer.borderWidth = 0
+        city.layer.borderWidth = 0
+        postCode.layer.borderWidth = 0
+        position.layer.borderWidth = 0
+        squadNo.layer.borderWidth = 0
+        
+        validator.unregisterField(firstName)
+        validator.unregisterField(lastName)
+        validator.unregisterField(dob)
+        validator.unregisterField(phoneNo)
+        validator.unregisterField(emailAdd)
+        validator.unregisterField(address1)
+        validator.unregisterField(address2)
+        validator.unregisterField(city)
+        validator.unregisterField(postCode)
+        validator.unregisterField(position)
+        validator.unregisterField(squadNo)
+    }
+    
+   func resetProfile () {
         firstName.text = ""
         lastName.text! = ""
         dob.text! = ""
@@ -223,7 +291,9 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         position2.text! = ""
         position3.text! = ""
         squadNo.text! = ""
-        
+        profilePic.image = UIImage(named: "profile.jpg")
+        resetValidation()
+        _ = createButtonClicked == false
     }
     
     func datePickerValueChanged(sender:UIDatePicker) {
@@ -244,41 +314,54 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         {
         case firstName:
             lastName.becomeFirstResponder()
+            createButtonClicked = false
             break
         case lastName:
             dob.becomeFirstResponder()
+            createButtonClicked = false
             break
         case dob:
             phoneNo.becomeFirstResponder()
+            createButtonClicked = false
             break
         case phoneNo:
             emailAdd.becomeFirstResponder()
+            createButtonClicked = false
             break
         case emailAdd:
             address2.becomeFirstResponder()
+            createButtonClicked = false
             break
         case address2:
             city.becomeFirstResponder()
+            createButtonClicked = false
             break
         case city:
             postCode.becomeFirstResponder()
+            createButtonClicked = false
             break
         case postCode:
             position.becomeFirstResponder()
+            createButtonClicked = false
             break
         case position:
             position2.becomeFirstResponder()
+            createButtonClicked = false
             break
         case position2:
             position3.becomeFirstResponder()
+            createButtonClicked = false
             break
         case position3:
             squadNo.becomeFirstResponder()
+            createButtonClicked = false
             break
         case squadNo:
             squadNo.resignFirstResponder()
+            createButtonClicked = false
         default:
             textField.resignFirstResponder()
+            
         }
         return true
     }

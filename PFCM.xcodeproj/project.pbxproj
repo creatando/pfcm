@@ -22,7 +22,7 @@
 		B521B6E91E47AD9900F5522F /* PlayerCentreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */; };
 		B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */; };
 		B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6E31E47AD9900F5522F /* SignUpViewController.swift */; };
-		B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58672631E4F1960003BB615 /* ViewPlayerController.swift */; };
+		B5741B8E1E526C18001C4465 /* profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5741B8D1E526C18001C4465 /* profile.jpg */; };
 		B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59A364B1E47C084008C42CE /* GoogleService-Info.plist */; };
 		B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA8D031E4F78CC0045A5A6 /* Player.swift */; };
 		B5EE19871E4FF70400B94B82 /* arrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE19831E4FF70400B94B82 /* arrowLeft@2x.png */; };
@@ -72,7 +72,7 @@
 		B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCentreViewController.swift; sourceTree = "<group>"; };
 		B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		B521B6E31E47AD9900F5522F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B58672631E4F1960003BB615 /* ViewPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPlayerController.swift; sourceTree = "<group>"; };
+		B5741B8D1E526C18001C4465 /* profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile.jpg; sourceTree = "<group>"; };
 		B59A364B1E47C084008C42CE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5BA8D031E4F78CC0045A5A6 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = PFCM/Player.swift; sourceTree = "<group>"; };
 		B5EE19831E4FF70400B94B82 /* arrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowLeft@2x.png"; sourceTree = "<group>"; };
@@ -213,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
-				B58672631E4F1960003BB615 /* ViewPlayerController.swift */,
 				B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */,
 				B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */,
 				B521B6E31E47AD9900F5522F /* SignUpViewController.swift */,
@@ -234,6 +233,7 @@
 		B5EE19821E4FF70400B94B82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B5741B8D1E526C18001C4465 /* profile.jpg */,
 				B5EE19831E4FF70400B94B82 /* arrowLeft@2x.png */,
 				B5EE19841E4FF70400B94B82 /* arrowLeft@3x.png */,
 				B5EE19851E4FF70400B94B82 /* arrowRight@2x.png */,
@@ -360,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EE198A1E4FF70400B94B82 /* arrowRight@3x.png in Resources */,
+				B5741B8E1E526C18001C4465 /* profile.jpg in Resources */,
 				B521B6B91E47AD7400F5522F /* LaunchScreen.storyboard in Resources */,
 				B5EE19871E4FF70400B94B82 /* arrowLeft@2x.png in Resources */,
 				B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */,
@@ -536,7 +537,6 @@
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
 				B521B6E51E47AD9900F5522F /* HomeViewController.swift in Sources */,
-				B58672641E4F1960003BB615 /* ViewPlayerController.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,7 +629,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -684,12 +684,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6PBRF2PXTB;
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = PFCM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = creatando.PFCM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -700,7 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6PBRF2PXTB;
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = PFCM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = creatando.PFCM;

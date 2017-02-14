@@ -19,10 +19,7 @@ target 'PFCM' do
 
   # Pods installed
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
-  pod 'FontBlaster'
-  pod 'FBSDKLoginKit'
   pod 'IQKeyboardManagerSwift'
-  pod 'SwiftKeychainWrapper'
   pod 'CircleMenu', '~> 2.0.1'
   pod 'SCLAlertView'
   pod 'Firebase/Core'
@@ -33,8 +30,9 @@ target 'PFCM' do
   pod 'TextFieldEffects'
   pod 'SwiftVideoBackground'
   pod 'CRNetworkButton'
-  pod 'FoldingCell', '~> 2.0.3'
   pod 'RevealingSplashView'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
+  pod 'UIView+draggable'
+  pod 'SwiftFetchedResultsController'
 
 end

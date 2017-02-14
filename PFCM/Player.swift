@@ -27,6 +27,7 @@ class Player: Object {
     dynamic var appearances = ""
     dynamic var goals = ""
     dynamic var assists = ""
+    dynamic var picFilePath = ""
     
     override class func primaryKey () -> String? {
         return "pid"
