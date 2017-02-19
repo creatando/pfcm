@@ -22,20 +22,33 @@ class Cell: UITableViewCell {
 class ViewPlayerController: UITableViewController {
     
     let realm = try! Realm()
-    let players = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName")
-    
+    let results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName")
+    var notificationToken: NotificationToken?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.reloadData()
+        setupUI()
+        
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func setupUI() {
+        tableView.register(Cell.self, forCellReuseIdentifier: "cell")
+        
+        self.title = "TableView"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "BG Add", style: .plain,
+                                                                target: self, action: #selector(backgroundAdd))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                 target: self, action: #selector(add))
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,19 +65,17 @@ class ViewPlayerController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        
-       return players.count
+        return results.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     
-     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
-     
-     let player = players[indexPath.row]
-     cell.textLabel?.text = "\(player.firstName) \(player.lastName) - \(player.dob)"
-     
-     return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
+        
+        let object = results[indexPath.row]
+        cell.textLabel?.text = object.lastName
+        cell.detailTextLabel?.text = objet.dob
+        return cell
     }
     
 
