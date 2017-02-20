@@ -18,21 +18,18 @@ target 'PFCM' do
   end
 
   # Pods installed
-  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
   pod 'IQKeyboardManagerSwift'
   pod 'CircleMenu', '~> 2.0.1'
   pod 'SCLAlertView'
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'RealmSwift'
   pod 'TextFieldEffects'
   pod 'SwiftVideoBackground'
-  pod 'CRNetworkButton'
   pod 'RevealingSplashView'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'UIView+draggable'
-  pod 'SwiftFetchedResultsController'
+  pod 'FontAwesome.swift'
 
 end

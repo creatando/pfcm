@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Player: Object {
-    dynamic var pid = NSUUID().uuidString
+    dynamic var pid = ""
     dynamic var firstName = ""
     dynamic var lastName = ""
     dynamic var dob = ""

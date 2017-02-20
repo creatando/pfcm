@@ -10,6 +10,9 @@
 		5102BC1468DC659C59F02229 /* Pods_PFCM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D68F7FA2C11E2576426D2856 /* Pods_PFCM.framework */; };
 		52C608B2D4B7ED58BFD53755 /* Pods_PFCMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D970373BB667A47A40971963 /* Pods_PFCMUITests.framework */; };
 		931CE3E69DE77002613052E4 /* Pods_PFCMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */; };
+		AA10ED601E597D4D00D3C8E5 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */; };
+		AA10ED621E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */; };
+		AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */; };
 		B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6AE1E47AD7400F5522F /* AppDelegate.swift */; };
 		B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B51E47AD7400F5522F /* Assets.xcassets */; };
 		B521B6B91E47AD7400F5522F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */; };
@@ -54,6 +57,9 @@
 		3CFF0A2E3EBEF4B3C5A09101 /* Pods-PFCM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFCM/Pods-PFCM.debug.xcconfig"; sourceTree = "<group>"; };
 		42B0EC840D7EC77220B9DC04 /* Pods-PFCMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.release.xcconfig"; sourceTree = "<group>"; };
 		77480D7DB979D1CF9CFE2D1B /* Pods-PFCMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clouds.jpg; sourceTree = "<group>"; };
+		AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacticalScreenViewController.swift; sourceTree = "<group>"; };
+		AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		B310C4BD1C6963804BDAC698 /* Pods-PFCMUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMUITests/Pods-PFCMUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B521B6AB1E47AD7400F5522F /* PFCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B521B6AE1E47AD7400F5522F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 		B521B6ED1E47AE7E00F5522F /* views */ = {
 			isa = PBXGroup;
 			children = (
+				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
 				B521B6DF1E47AD9900F5522F /* Main.storyboard */,
 				B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */,
 			);
@@ -216,6 +223,7 @@
 			children = (
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
 				B59A07621E533FE300623225 /* ViewPlayersController.swift */,
+				AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */,
 				B521B6E11E47AD9900F5522F /* PlayerCentreViewController.swift */,
 				B521B6E21E47AD9900F5522F /* ResetPasswordViewController.swift */,
 				B521B6E31E47AD9900F5522F /* SignUpViewController.swift */,
@@ -237,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				B5741B8D1E526C18001C4465 /* profile.jpg */,
+				AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */,
 				B5EE19831E4FF70400B94B82 /* arrowLeft@2x.png */,
 				B5EE19841E4FF70400B94B82 /* arrowLeft@3x.png */,
 				B5EE19851E4FF70400B94B82 /* arrowRight@2x.png */,
@@ -365,6 +374,7 @@
 				B5EE198A1E4FF70400B94B82 /* arrowRight@3x.png in Resources */,
 				B5741B8E1E526C18001C4465 /* profile.jpg in Resources */,
 				B521B6B91E47AD7400F5522F /* LaunchScreen.storyboard in Resources */,
+				AA10ED601E597D4D00D3C8E5 /* clouds.jpg in Resources */,
 				B5EE19871E4FF70400B94B82 /* arrowLeft@2x.png in Resources */,
 				B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */,
 				B5EE19891E4FF70400B94B82 /* arrowRight@2x.png in Resources */,
@@ -540,8 +550,10 @@
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
 				B59A07631E533FE300623225 /* ViewPlayersController.swift in Sources */,
+				AA10ED621E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift in Sources */,
 				B521B6E51E47AD9900F5522F /* HomeViewController.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
+				AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

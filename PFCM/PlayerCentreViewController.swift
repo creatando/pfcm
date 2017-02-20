@@ -10,6 +10,9 @@ import UIKit
 
 class PlayerCentreViewController: UIViewController {
 
+    @IBAction func backNav(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

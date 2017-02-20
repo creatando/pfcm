@@ -75,7 +75,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
                 self.createButtonClicked = false
             }
             self.view.endEditing(true)
-            confirmAlertView.showInfo("Leave", subTitle: "Are you sure you want to leave before adding a player?")
+            confirmAlertView.showInfo("Leave", subTitle: "Are you sure you want to exit before adding another player?")
         } else {
             self.dismiss(animated: true, completion: nil)
         }
@@ -89,37 +89,16 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         imagePicker.popoverPresentationController?.barButtonItem = sender
     }
     
+    
     @IBAction func createPlayer(_ sender: Any) {
-        player.firstName = firstName.text!
-        player.lastName = lastName.text!
-        player.dob = dob.text!
-        player.phoneNo = phoneNo.text!
-        player.emailAdd = emailAdd.text!
-        player.address1 = address1.text!
-        player.address2 = address2.text!
-        player.city = city.text!
-        player.postCode =  postCode.text!
-        player.position = position.text!
-        player.position2 = position2.text!
-        player.position3 = position3.text!
-        player.squadNo = squadNo.text!
-        player.appearances = "0"
-        player.goals = "0"
-        player.assists = "0"
-        saveImage()
-        
+        print (player.pid)
         validator.validate(self)
-        
-        createButtonClicked = false
     }
     
     let imagePicker = UIImagePickerController()
-    let realm = try! Realm()
-    let addSuccessAlertView = SCLAlertView()
     let player = Player()
     var createButtonClicked = false
     let validator = Validator()
-    
     var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF" ]
     var squadNoData = ["","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"]
     
@@ -135,6 +114,59 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         
         circlePicture()
         
+        formDelegation()
+        //formValidation()
+
+    }
+    
+    // Save Image
+    func saveImage () {
+        
+        let puid = "\(firstName.text ?? "")\(lastName.text ?? "")\(UUID().uuidString)pic.jpeg"
+        
+        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        // create a name for your image
+        let fileURL = documentsDirectoryURL.appendingPathComponent("\(puid)")
+        
+        print (fileURL.standardizedFileURL.path)
+        player.picFilePath = puid
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try UIImageJPEGRepresentation(profilePic.image!, 0.5)!.write(to: fileURL)
+                print("Image Added Successfully")
+            } catch {
+                print(error)
+            }
+        } else {
+            print("Image Not Added")
+        }
+            }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePic.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func formValidation() {
+        // Validation Rules
+        validator.registerField(firstName, rules: [RequiredRule()])
+        validator.registerField(lastName, rules: [RequiredRule()])
+        validator.registerField(dob, rules: [RequiredRule()])
+        validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 11), MaxLengthRule(length: 11)])
+        validator.registerField(emailAdd, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
+        validator.registerField(address1, rules: [RequiredRule()])
+        validator.registerField(address2, rules: [RequiredRule()])
+        validator.registerField(city, rules: [RequiredRule()])
+        validator.registerField(postCode, rules: [RequiredRule()])
+        validator.registerField(position, rules: [RequiredRule()])
+        validator.registerField(squadNo, rules: [RequiredRule()])
+    }
+    
+    
+    func formDelegation () {
         picker.delegate = self
         picker.dataSource = self
         picker2.delegate = self
@@ -164,74 +196,63 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         squadNo.delegate = self
         
         imagePicker.delegate = self
-        
-        // Validation Rules
-        validator.registerField(firstName, rules: [RequiredRule()])
-        validator.registerField(lastName, rules: [RequiredRule()])
-        validator.registerField(dob, rules: [RequiredRule()])
-        validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 11), MaxLengthRule(length: 11)])
-        validator.registerField(emailAdd, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
-        validator.registerField(address1, rules: [RequiredRule()])
-        validator.registerField(address2, rules: [RequiredRule()])
-        validator.registerField(city, rules: [RequiredRule()])
-        validator.registerField(postCode, rules: [RequiredRule()])
-        validator.registerField(position, rules: [RequiredRule()])
-        validator.registerField(squadNo, rules: [RequiredRule()])
 
     }
-    func saveImage () {
-        
-        let puid = UUID().uuidString
-        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        // create a name for your image
-        let fileURL = documentsDirectoryURL.appendingPathComponent("\(firstName.text ?? "")\(lastName.text ?? "")\(puid)pic.jpeg")
-        
-        print (fileURL)
-        player.picFilePath = fileURL.absoluteString
-        if !FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
-                try UIImageJPEGRepresentation(profilePic.image!, 0.4)!.write(to: fileURL)
-                print("Image Added Successfully")
-            } catch {
-                print(error)
-            }
-        } else {
-            print("Image Not Added")
-        }
-            }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            profilePic.image = pickedImage
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+         createButtonClicked = false
+    }
+    
+    // Validation Delegates
+    
     func validationSuccessful() {
-        do {
-            try realm.write() {
-                realm.add(player)
-                addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
-                resetProfile()
-                self.createButtonClicked = true
-                
-            }
-        } catch let error as NSError {
-            print("Realm write error: \(error.localizedDescription)")
-        }
+        
+        player.pid = "\(firstName.text ?? "")\(lastName.text ?? "")\(NSUUID().uuidString)"
+        player.firstName = firstName.text!
+        player.lastName = lastName.text!
+        player.dob = dob.text!
+        player.phoneNo = phoneNo.text!
+        player.emailAdd = emailAdd.text!
+        player.address1 = address1.text!
+        player.address2 = address2.text!
+        player.city = city.text!
+        player.postCode =  postCode.text!
+        player.position = position.text!
+        player.position2 = position2.text!
+        player.position3 = position3.text!
+        player.squadNo = squadNo.text!
+        player.appearances = "0"
+        player.goals = "0"
+        player.assists = "0"
+        saveImage()
+        
+            let realm = try! Realm()
 
+        
+        try! realm.write() {
+            realm.create(Player.self, value: player)
+            player.pid = ""
+        }
+            resetValidation()
+            resetProfile()
+        
+        
+            self.createButtonClicked = true
+        
+            let addSuccessAlertView = SCLAlertView()
+            addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
+        
+        
     }
     
     func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
         
          let errorValAlertView = SCLAlertView()
-         errorValAlertView.showWarning("Validation error", subTitle: "You have missed out some fields or have entered them incorrectly.")
+         errorValAlertView.showWarning("Validation error", subTitle: "You have missed out/have entered some fields incorrectly.")
         
         // turn the fields to red
         for (field, error) in errors {
@@ -241,6 +262,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             }
             error.errorLabel?.text = error.errorMessage // works if you added labels
             }
+        
     }
     
     func circlePicture () {
@@ -248,6 +270,34 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         self.profilePic.layer.borderColor = UIColor.green.cgColor
         self.profilePic.layer.borderWidth = 2
         self.profilePic.layer.shouldRasterize = true
+    }
+    
+   func resetProfile () {
+        
+        firstName.text = ""
+        lastName.text! = ""
+        dob.text! = ""
+        phoneNo.text! = ""
+        emailAdd.text! = ""
+        address1.text! = ""
+        address2.text! = ""
+        city.text! = ""
+        postCode.text! = ""
+        position.text! = ""
+        position2.text! = ""
+        position3.text! = ""
+        squadNo.text! = ""
+        profilePic.image = UIImage(named: "profile.jpg")
+        picker.reloadAllComponents()
+        picker2.reloadAllComponents()
+        picker3.reloadAllComponents()
+        sNoPicker.reloadAllComponents()
+    _ = createButtonClicked == false
+        self.position.inputView = picker
+        self.position2.inputView = picker2
+        self.position3.inputView = picker3
+        self.squadNo.inputView = sNoPicker
+        self.tableView.reloadData()
     }
     
     func resetValidation () {
@@ -275,25 +325,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.unregisterField(postCode)
         validator.unregisterField(position)
         validator.unregisterField(squadNo)
-    }
     
-   func resetProfile () {
-        firstName.text = ""
-        lastName.text! = ""
-        dob.text! = ""
-        phoneNo.text! = ""
-        emailAdd.text! = ""
-        address1.text! = ""
-        address2.text! = ""
-        city.text! = ""
-        postCode.text! = ""
-        position.text! = ""
-        position2.text! = ""
-        position3.text! = ""
-        squadNo.text! = ""
-        profilePic.image = UIImage(named: "profile.jpg")
-        resetValidation()
-        _ = createButtonClicked == false
     }
     
     func datePickerValueChanged(sender:UIDatePicker) {
@@ -310,58 +342,46 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
+        
         switch textField
         {
         case firstName:
             lastName.becomeFirstResponder()
-            createButtonClicked = false
             break
         case lastName:
             dob.becomeFirstResponder()
-            createButtonClicked = false
             break
         case dob:
             phoneNo.becomeFirstResponder()
-            createButtonClicked = false
             break
         case phoneNo:
             emailAdd.becomeFirstResponder()
-            createButtonClicked = false
             break
         case emailAdd:
             address2.becomeFirstResponder()
-            createButtonClicked = false
             break
         case address2:
             city.becomeFirstResponder()
-            createButtonClicked = false
             break
         case city:
             postCode.becomeFirstResponder()
-            createButtonClicked = false
             break
         case postCode:
             position.becomeFirstResponder()
-            createButtonClicked = false
             break
         case position:
             position2.becomeFirstResponder()
-            createButtonClicked = false
             break
         case position2:
             position3.becomeFirstResponder()
-            createButtonClicked = false
             break
         case position3:
             squadNo.becomeFirstResponder()
-            createButtonClicked = false
             break
         case squadNo:
             squadNo.resignFirstResponder()
-            createButtonClicked = false
         default:
             textField.resignFirstResponder()
-            
         }
         return true
     }
