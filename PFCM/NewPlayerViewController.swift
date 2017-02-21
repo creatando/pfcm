@@ -230,9 +230,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         player.assists = "0"
         saveImage()
         
-            let realm = try! Realm()
-
-        
+        let realm = try! Realm()
         try! realm.write() {
             realm.create(Player.self, value: player)
             player.pid = ""

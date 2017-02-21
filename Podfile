@@ -31,5 +31,5 @@ target 'PFCM' do
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'UIView+draggable'
   pod 'FontAwesome.swift'
-
+  pod 'FaceAware'
 end

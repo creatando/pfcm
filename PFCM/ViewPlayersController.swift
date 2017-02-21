@@ -9,26 +9,26 @@
 import UIKit
 import RealmSwift
 import SCLAlertView
+import UIView_draggable
+import FaceAware
 
-class ViewPlayersController: UITableViewController, UIPopoverPresentationControllerDelegate {
+class ViewPlayersController: UITableViewController {
     
     
  
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }
-   
+    
     let realm = try! Realm()
     let results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName")
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.reloadData()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.tableView.reloadData()
         }
-        
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,17 +60,15 @@ class ViewPlayersController: UITableViewController, UIPopoverPresentationControl
             let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("\(object.picFilePath)")
             let image    = UIImage(contentsOfFile: imageURL.path)
             // Do whatever you want with the image
+            
             cell.profilePic?.image = image
+            cell.profilePic.focusOnFaces = true
+            
         }
         cell.circlePicture()
         
         return cell
     }
     
-
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        // return UIModalPresentationStyle.FullScreen
-        return UIModalPresentationStyle.none
-    }
 
 }

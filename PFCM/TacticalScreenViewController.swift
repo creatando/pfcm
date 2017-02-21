@@ -9,7 +9,23 @@
 import UIKit
 import UIView_draggable
 
-class TacticalCentreViewController: UIViewController {
+extension UIView {
+    func setCorners() {
+        self.layer.cornerRadius = 9.5
+        self.layer.borderColor = UIColor.white
+            .cgColor
+        self.layer.borderWidth = 0.7
+        self.clipsToBounds = true
+    }
+    func addDropShadowToView(){
+        self.layer.masksToBounds =  false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width:2.0, height: 1.5)
+        self.layer.shadowOpacity = 0.2
+    }
+}
+
+class TacticalCentreViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var pB1: UIView!
     @IBOutlet weak var pB2: UIView!
@@ -26,16 +42,27 @@ class TacticalCentreViewController: UIViewController {
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func addPlayerButton(_ sender: Any) {
+
+
+    @IBAction func addClick(_ sender: UIButton) {
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "popoverID")
+        
+        vc.modalPresentationStyle = .popover
+        let popover = vc.popoverPresentationController!
+        popover.delegate = self
+        popover.permittedArrowDirections = .up
+        popover.sourceView = sender
+        popover.sourceRect = CGRect(x: 0, y: 0, width: sender.frame.size.width, height: sender.frame.size.height)
+        present(vc, animated: true, completion:nil)
     }
-    
-    
+  
     var cage = CGRect.zero
     
     override func viewDidLoad() {
         super.viewDidLoad()
         enableDrag()
+        setViewsCorners()
         // Do any additional setup after loading the view.
     }
     
@@ -44,10 +71,44 @@ class TacticalCentreViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // UIPopoverPresentationControllerDelegate method
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        // return UIModalPresentationStyle.FullScreen
+        return UIModalPresentationStyle.none
+    }
+    
+    
+    
+    func setViewsCorners(){
+        pB1.setCorners()
+        pB2.setCorners()
+        pB3.setCorners()
+        pB4.setCorners()
+        pB5.setCorners()
+        pB6.setCorners()
+        pB7.setCorners()
+        pB8.setCorners()
+        pB9.setCorners()
+        pB10.setCorners()
+        pB11.setCorners()
+        
+        pB1.addDropShadowToView()
+        pB2.addDropShadowToView()
+        pB3.addDropShadowToView()
+        pB4.addDropShadowToView()
+        pB5.addDropShadowToView()
+        pB6.addDropShadowToView()
+        pB7.addDropShadowToView()
+        pB8.addDropShadowToView()
+        pB9.addDropShadowToView()
+        pB10.addDropShadowToView()
+        pB11.addDropShadowToView()
+    }
+    
     func enableDrag() {
         cage = self.backPanel.frame
         
-        pB1.enableDragging()
+        //pB1.enableDragging()
         pB1.cagingArea = cage
         
         pB2.enableDragging()
@@ -81,14 +142,18 @@ class TacticalCentreViewController: UIViewController {
         pB11.cagingArea = cage
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+        
     }
-    */
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool
+    {
+        return true
+    }
 
 }

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FaceAware.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FontAwesome.swift-FontAwesome.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,7 +97,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01167237A531C61D801B016B7C57DC4A</key>
+		<key>0501B09E7E1CB083DE51F432DDB9ADB3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>652AB0FC94BA1C94B362FD2F52C6C4CE</key>
+		<key>54BC7EEC8C1922049672DA6791F11117</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6798AFF2DC8F0EA5BFA84345024BDF5A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,17 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7BE470CC5EB48276613B4601823B9554</key>
+		<key>9C0D4D60FC8558D0199CE0C958E22855</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7DD5225FD8ED53117D6014ADAF2B67F7</key>
+		<key>9CED8830FE0F71A18CF795B955C71610</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CA481BAE2FAD76D4F93488E81222431</key>
+		<key>9E31FB5128EF806F86B98AB5572C98A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9D3C6A60C9FCC3C1B564BC89A783746</key>
+		<key>A7B6D0C65D93BF64709B36D43F2CCE53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,22 +162,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C596823A25A02D2C6E01023187CA9DF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C74D47B051BF84CA30E0723F127F42AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB3FA39DB6CB30E40B8222071DF495F2</key>
+		<key>C9B30BBC55620848292310CD5A1BD221</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0F8ED0286B90BA707D40EC1717B1A30</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F1DF7EE9E016D0EE3C1B733D3086F120</key>
+		<key>ED5B13DF3280E298DACBDF65032759CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

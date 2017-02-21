@@ -1,5 +1,6 @@
 PODS:
   - CircleMenu (2.0.1)
+  - FaceAware (1.2.0)
   - Firebase/Auth (3.13.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -50,6 +51,7 @@ PODS:
 
 DEPENDENCIES:
   - CircleMenu (~> 2.0.1)
+  - FaceAware
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Storage
@@ -75,6 +77,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   CircleMenu: a964e8b03aae58c84b40d5cf64630b62bef077eb
+  FaceAware: 421436f9d16aacdb26ffcf8e5a39a1dd68630395
   Firebase: 5bc34d7b5ff5792e3386c8b28dc6265deeab0da4
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -94,6 +97,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: faa47d428ee8eafb781a8413ac4345420d2328c4
   UIView+draggable: ddfbeb6bdfdeba63d9ccf32dc9be2b66cc589717
 
-PODFILE CHECKSUM: d304d9e37f3b66f71fd962f65fc2ade22dd4fc6d
+PODFILE CHECKSUM: 1976637620c36b5900e2bfa3be2939e474243de9
 
 COCOAPODS: 1.2.0

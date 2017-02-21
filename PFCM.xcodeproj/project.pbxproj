@@ -12,6 +12,10 @@
 		931CE3E69DE77002613052E4 /* Pods_PFCMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */; };
 		AA10ED601E597D4D00D3C8E5 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */; };
 		AA10ED621E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */; };
+		AAC888581E5AC4B5008806BC /* pitch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC888571E5AC4B5008806BC /* pitch.png */; };
+		AAC8885A1E5AC69C008806BC /* profile-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC888591E5AC69C008806BC /* profile-blank.png */; };
+		AAC8885E1E5ADC73008806BC /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC8885D1E5ADC73008806BC /* save.png */; };
+		AAD6012A1E5BBE71008F6452 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */; };
 		AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */; };
 		B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6AE1E47AD7400F5522F /* AppDelegate.swift */; };
 		B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B521B6B51E47AD7400F5522F /* Assets.xcassets */; };
@@ -59,7 +63,12 @@
 		77480D7DB979D1CF9CFE2D1B /* Pods-PFCMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clouds.jpg; sourceTree = "<group>"; };
 		AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacticalScreenViewController.swift; sourceTree = "<group>"; };
-		AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPlayerTableViewCell.swift; sourceTree = "<group>"; };
+		AAC888571E5AC4B5008806BC /* pitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pitch.png; sourceTree = "<group>"; };
+		AAC888591E5AC69C008806BC /* profile-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-blank.png"; sourceTree = "<group>"; };
+		AAC8885D1E5ADC73008806BC /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		AAD6012E1E5BCA6C008F6452 /* premierbgv.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = premierbgv.mp4; path = Images/premierbgv.mp4; sourceTree = "<group>"; };
+		AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPlayerTableViewCell.swift; path = PFCM/CustomPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		B310C4BD1C6963804BDAC698 /* Pods-PFCMUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMUITests/Pods-PFCMUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B521B6AB1E47AD7400F5522F /* PFCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B521B6AE1E47AD7400F5522F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +183,7 @@
 				B521B6EE1E47AE8900F5522F /* controllers */,
 				B521B6B51E47AD7400F5522F /* Assets.xcassets */,
 				B521B6AE1E47AD7400F5522F /* AppDelegate.swift */,
+				AAD6012E1E5BCA6C008F6452 /* premierbgv.mp4 */,
 				B5EE19811E4FF6F000B94B82 /* Resources */,
 				B521B6BA1E47AD7400F5522F /* Info.plist */,
 				B59A364B1E47C084008C42CE /* GoogleService-Info.plist */,
@@ -202,6 +212,7 @@
 		B521B6EC1E47AE7000F5522F /* models */ = {
 			isa = PBXGroup;
 			children = (
+				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
 				B5BA8D031E4F78CC0045A5A6 /* Player.swift */,
 			);
 			name = models;
@@ -211,7 +222,6 @@
 		B521B6ED1E47AE7E00F5522F /* views */ = {
 			isa = PBXGroup;
 			children = (
-				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
 				B521B6DF1E47AD9900F5522F /* Main.storyboard */,
 				B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */,
 			);
@@ -221,6 +231,7 @@
 		B521B6EE1E47AE8900F5522F /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */,
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
 				B59A07621E533FE300623225 /* ViewPlayersController.swift */,
 				AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */,
@@ -244,8 +255,11 @@
 		B5EE19821E4FF70400B94B82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AAC888571E5AC4B5008806BC /* pitch.png */,
+				AAC888591E5AC69C008806BC /* profile-blank.png */,
 				B5741B8D1E526C18001C4465 /* profile.jpg */,
 				AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */,
+				AAC8885D1E5ADC73008806BC /* save.png */,
 				B5EE19831E4FF70400B94B82 /* arrowLeft@2x.png */,
 				B5EE19841E4FF70400B94B82 /* arrowLeft@3x.png */,
 				B5EE19851E4FF70400B94B82 /* arrowRight@2x.png */,
@@ -379,7 +393,10 @@
 				B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */,
 				B5EE19891E4FF70400B94B82 /* arrowRight@2x.png in Resources */,
 				B521B6E71E47AD9900F5522F /* Main.storyboard in Resources */,
+				AAC888581E5AC4B5008806BC /* pitch.png in Resources */,
+				AAC8885E1E5ADC73008806BC /* save.png in Resources */,
 				B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */,
+				AAC8885A1E5AC69C008806BC /* profile-blank.png in Resources */,
 				B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +569,7 @@
 				B59A07631E533FE300623225 /* ViewPlayersController.swift in Sources */,
 				AA10ED621E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift in Sources */,
 				B521B6E51E47AD9900F5522F /* HomeViewController.swift in Sources */,
+				AAD6012A1E5BBE71008F6452 /* WelcomeViewController.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 				AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */,
 			);
@@ -699,13 +717,10 @@
 			baseConfigurationReference = 3CFF0A2E3EBEF4B3C5A09101 /* Pods-PFCM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6PBRF2PXTB;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = PFCM/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = creatando.PFCM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -715,13 +730,10 @@
 			baseConfigurationReference = 09BFA32E26448D802EFF0A94 /* Pods-PFCM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6PBRF2PXTB;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = PFCM/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = creatando.PFCM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
