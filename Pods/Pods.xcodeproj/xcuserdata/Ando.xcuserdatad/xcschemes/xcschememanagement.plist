@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ChameleonFramework.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>CircleMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,7 +112,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07E12134D4937B20388D8B6233D0B6F0</key>
+		<key>0168FDB22B967D297B33058D9F2F0E58</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>02E261C1A5AD29A6335B6ED36CCE11D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2DD7E6E77F3A7112D37135E38E7905AC</key>
+		<key>2716C953B9970B73CD7A0DFF1CF5EB9E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B9757590D55028B02FF39AC5A0F6A30</key>
+		<key>2FF69416F24D1020065DC152189623F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>37FB0F0E2C77BA67260670A387C402D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62554B84AC7BEE4CA338CF6D662B7DFC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
+		<key>62D8E25BB423FE5DE71F4AA1C38E0641</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,16 +187,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AAE2CE49EEBD8E73A05EA8DFC38AC67F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B4502A5C0E8945F03F5A0996C580F685</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B960754DBE82305C117DC81AAE4DBEE8</key>
 		<dict>
 			<key>primary</key>
@@ -212,12 +202,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D996D01D2B111C3DB6C8B2D4AA2205FC</key>
+		<key>CACD6D25A052112F2D4F9B0AD627B7EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEC84DB96095DD3D01C86861A49E9CFA</key>
+		<key>EE6D1FECA86D30D4E5E10CC14948CA7D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

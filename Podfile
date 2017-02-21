@@ -31,7 +31,6 @@ target 'PFCM' do
   pod 'FontAwesome.swift'
   pod 'FaceAware'
   pod 'SwiftVideoBackground'
-  pod 'ChameleonFramework/Swift'
   pod 'ESTabBarController-swift'
   pod 'AZTransitions'
   pod 'AMScrollingNavbar'

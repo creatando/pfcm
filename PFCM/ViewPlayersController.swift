@@ -12,17 +12,39 @@ import SCLAlertView
 import UIView_draggable
 import FaceAware
 
+
+// MARK: - UISearchResultsUpdating
+extension ViewPlayersController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchBar: UISearchController) {
+        let searchString = searchBar.searchBar.text!
+        filterResultsWithSearchString(searchString: searchString)
+        
+        let searchResultsController = searchBar.searchResultsController as! UITableViewController
+        searchResultsController.tableView.reloadData()
+    }
+    
+}
+
+// MARK: - UISearchBarDelegate
+extension ViewPlayersController:  UISearchBarDelegate {
+    
+}
+
 class ViewPlayersController: UITableViewController {
     
     
     
-    @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchController!
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }
     
     let realm = try! Realm()
-    let results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName")
+    var results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
+    var searchResults = try! Realm().objects(Player.self)
     
     
     override func viewDidLoad() {
@@ -49,7 +71,7 @@ class ViewPlayersController: UITableViewController {
         let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! CustomPlayerTableViewCell
         
-        let object = results[indexPath.row]
+        let object = searchBar.isActive ? searchResults[indexPath.row] : results[indexPath.row]
         
         cell.name?.text = "\(object.firstName) \(object.lastName)"
         cell.dob?.text = object.dob
@@ -69,6 +91,36 @@ class ViewPlayersController: UITableViewController {
         cell.circlePicture()
         
         return cell
+    }
+    
+    func filterResultsWithSearchString(searchString: String) {
+        let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", searchString)
+        let scopeIndex = searchBar.searchBar.selectedScopeButtonIndex
+        let realm = try! Realm()
+        
+        switch scopeIndex {
+        case 0:
+            searchResults = realm.objects(Player.self).filter(predicate).sorted(byKeyPath: "lastNames", ascending: true)
+        case 1:
+            searchResults = realm.objects(Player.self).filter(predicate).sorted(byKeyPath: "dob", ascending: true)
+        default:
+            searchResults = realm.objects(Player.self).filter(predicate)
+        }
+    }
+
+    @IBAction func scopeChanged(_ sender: Any) {
+        let scopeBar = sender as! UISegmentedControl
+        let realm = try! Realm()
+        
+        switch scopeBar.selectedSegmentIndex {
+        case 0:
+            results = realm.objects(Player.self).sorted(byKeyPath: "name", ascending: true)
+        case 1:
+            results = realm.objects(Player.self).sorted(byKeyPath: "created", ascending: true)
+        default:
+            results = realm.objects(Player.self).sorted(byKeyPath: "name", ascending: true)
+        }
+        tableView.reloadData()
     }
     
 
