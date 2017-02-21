@@ -12,11 +12,11 @@ import SwiftVideoBackground
 class WelcomeViewController: UIViewController {
 
     @IBOutlet var backgroundVideo: BackgroundVideo!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       backgroundVideo.createBackgroundVideo (name: "premierbgv", type: "mp4")
+        backgroundVideo.createBackgroundVideo(name: "PremierBackground", type: "mp4", alpha: 0.7)
     }
 
     override func didReceiveMemoryWarning() {

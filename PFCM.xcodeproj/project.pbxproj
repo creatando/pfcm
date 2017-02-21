@@ -12,6 +12,11 @@
 		931CE3E69DE77002613052E4 /* Pods_PFCMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */; };
 		AA10ED601E597D4D00D3C8E5 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */; };
 		AA10ED621E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */; };
+		AA1A66221E5BD59E0074547D /* PremierBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AAD6012E1E5BCA6C008F6452 /* PremierBackground.mp4 */; };
+		AAB2E3A11E5C048300556489 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E3A01E5C048300556489 /* LaunchScreenViewController.swift */; };
+		AAB2E3A51E5C078300556489 /* Premier-Logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E3A21E5C078300556489 /* Premier-Logo-icon.png */; };
+		AAB2E3A61E5C078300556489 /* Premier-Logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E3A31E5C078300556489 /* Premier-Logo-white.png */; };
+		AAB2E3A71E5C078300556489 /* Premier-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E3A41E5C078300556489 /* Premier-Logo.png */; };
 		AAC888581E5AC4B5008806BC /* pitch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC888571E5AC4B5008806BC /* pitch.png */; };
 		AAC8885A1E5AC69C008806BC /* profile-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC888591E5AC69C008806BC /* profile-blank.png */; };
 		AAC8885E1E5ADC73008806BC /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC8885D1E5ADC73008806BC /* save.png */; };
@@ -63,11 +68,15 @@
 		77480D7DB979D1CF9CFE2D1B /* Pods-PFCMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMTests/Pods-PFCMTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA10ED5F1E597D4D00D3C8E5 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = clouds.jpg; sourceTree = "<group>"; };
 		AA10ED611E5A5FBF00D3C8E5 /* TacticalScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacticalScreenViewController.swift; sourceTree = "<group>"; };
+		AAB2E3A01E5C048300556489 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		AAB2E3A21E5C078300556489 /* Premier-Logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Premier-Logo-icon.png"; sourceTree = "<group>"; };
+		AAB2E3A31E5C078300556489 /* Premier-Logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Premier-Logo-white.png"; sourceTree = "<group>"; };
+		AAB2E3A41E5C078300556489 /* Premier-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Premier-Logo.png"; sourceTree = "<group>"; };
 		AAC888571E5AC4B5008806BC /* pitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pitch.png; sourceTree = "<group>"; };
 		AAC888591E5AC69C008806BC /* profile-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-blank.png"; sourceTree = "<group>"; };
 		AAC8885D1E5ADC73008806BC /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		AAD6012E1E5BCA6C008F6452 /* premierbgv.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = premierbgv.mp4; path = Images/premierbgv.mp4; sourceTree = "<group>"; };
+		AAD6012E1E5BCA6C008F6452 /* PremierBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PremierBackground.mp4; sourceTree = "<group>"; };
 		AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomPlayerTableViewCell.swift; path = PFCM/CustomPlayerTableViewCell.swift; sourceTree = "<group>"; };
 		B310C4BD1C6963804BDAC698 /* Pods-PFCMUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PFCMUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PFCMUITests/Pods-PFCMUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B521B6AB1E47AD7400F5522F /* PFCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +192,6 @@
 				B521B6EE1E47AE8900F5522F /* controllers */,
 				B521B6B51E47AD7400F5522F /* Assets.xcassets */,
 				B521B6AE1E47AD7400F5522F /* AppDelegate.swift */,
-				AAD6012E1E5BCA6C008F6452 /* premierbgv.mp4 */,
 				B5EE19811E4FF6F000B94B82 /* Resources */,
 				B521B6BA1E47AD7400F5522F /* Info.plist */,
 				B59A364B1E47C084008C42CE /* GoogleService-Info.plist */,
@@ -231,6 +239,7 @@
 		B521B6EE1E47AE8900F5522F /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2E3A01E5C048300556489 /* LaunchScreenViewController.swift */,
 				AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */,
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
 				B59A07621E533FE300623225 /* ViewPlayersController.swift */,
@@ -255,6 +264,10 @@
 		B5EE19821E4FF70400B94B82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2E3A21E5C078300556489 /* Premier-Logo-icon.png */,
+				AAB2E3A31E5C078300556489 /* Premier-Logo-white.png */,
+				AAB2E3A41E5C078300556489 /* Premier-Logo.png */,
+				AAD6012E1E5BCA6C008F6452 /* PremierBackground.mp4 */,
 				AAC888571E5AC4B5008806BC /* pitch.png */,
 				AAC888591E5AC69C008806BC /* profile-blank.png */,
 				B5741B8D1E526C18001C4465 /* profile.jpg */,
@@ -392,9 +405,13 @@
 				B5EE19871E4FF70400B94B82 /* arrowLeft@2x.png in Resources */,
 				B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */,
 				B5EE19891E4FF70400B94B82 /* arrowRight@2x.png in Resources */,
+				AAB2E3A71E5C078300556489 /* Premier-Logo.png in Resources */,
 				B521B6E71E47AD9900F5522F /* Main.storyboard in Resources */,
+				AA1A66221E5BD59E0074547D /* PremierBackground.mp4 in Resources */,
+				AAB2E3A61E5C078300556489 /* Premier-Logo-white.png in Resources */,
 				AAC888581E5AC4B5008806BC /* pitch.png in Resources */,
 				AAC8885E1E5ADC73008806BC /* save.png in Resources */,
+				AAB2E3A51E5C078300556489 /* Premier-Logo-icon.png in Resources */,
 				B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */,
 				AAC8885A1E5AC69C008806BC /* profile-blank.png in Resources */,
 				B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */,
@@ -561,6 +578,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */,
+				AAB2E3A11E5C048300556489 /* LaunchScreenViewController.swift in Sources */,
 				B521B6E61E47AD9900F5522F /* LoginViewController.swift in Sources */,
 				B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */,
 				B521B6E91E47AD9900F5522F /* PlayerCentreViewController.swift in Sources */,
