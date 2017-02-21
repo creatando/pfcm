@@ -16,7 +16,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundVideo.createBackgroundVideo(name: "PremierBackground", type: "mp4", alpha: 0.7)
+        backgroundVideo.createBackgroundVideo(name: "PremierBackground", type: "mp4", alpha: 0.3)
     }
 
     override func didReceiveMemoryWarning() {

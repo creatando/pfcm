@@ -15,7 +15,8 @@ import FaceAware
 class ViewPlayersController: UITableViewController {
     
     
- 
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }

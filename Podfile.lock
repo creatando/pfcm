@@ -1,5 +1,11 @@
 PODS:
+  - AMScrollingNavbar (3.2.0)
+  - AZTransitions (0.22)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - CircleMenu (2.0.1)
+  - ESTabBarController-swift (2.1)
   - FaceAware (1.2.0)
   - Firebase/Auth (3.13.0):
     - Firebase/Core
@@ -36,13 +42,13 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - GuillotineMenu (3.0)
   - IQKeyboardManagerSwift (4.0.8)
   - Realm (2.4.2):
     - Realm/Headers (= 2.4.2)
   - Realm/Headers (2.4.2)
   - RealmSwift (2.4.2):
     - Realm (= 2.4.2)
-  - RevealingSplashView (0.1.0)
   - SCLAlertView (0.7.0)
   - SwiftValidator (4.0.0)
   - SwiftVideoBackground (0.04)
@@ -50,15 +56,19 @@ PODS:
   - UIView+draggable (1.1.0)
 
 DEPENDENCIES:
+  - AMScrollingNavbar
+  - AZTransitions
+  - ChameleonFramework/Swift
   - CircleMenu (~> 2.0.1)
+  - ESTabBarController-swift
   - FaceAware
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Storage
   - FontAwesome.swift
+  - GuillotineMenu (~> 3.0)
   - IQKeyboardManagerSwift
   - RealmSwift
-  - RevealingSplashView
   - SCLAlertView
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftVideoBackground
@@ -76,7 +86,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/jpotts18/SwiftValidator.git
 
 SPEC CHECKSUMS:
+  AMScrollingNavbar: cf603d4d5f11061d466a0878b9ada136248927b2
+  AZTransitions: 84fb95a278aedcba3c162443491544a5b9c485eb
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CircleMenu: a964e8b03aae58c84b40d5cf64630b62bef077eb
+  ESTabBarController-swift: 8b54372903c29d7d43a20d3c3c65a5c80f307c7c
   FaceAware: 421436f9d16aacdb26ffcf8e5a39a1dd68630395
   Firebase: 5bc34d7b5ff5792e3386c8b28dc6265deeab0da4
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
@@ -87,16 +101,16 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 2d32a3d62195343c2004b7c9043294ed2948553a
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  GuillotineMenu: 611ccb58ae092f2d929535377570ef25a7b5bc63
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
   RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
-  RevealingSplashView: 501dd03d975ba2c4165dd463ea1c7c407fb9d13e
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftVideoBackground: c0253281fcda5047c36067cbb852d8061513058b
   TextFieldEffects: faa47d428ee8eafb781a8413ac4345420d2328c4
   UIView+draggable: ddfbeb6bdfdeba63d9ccf32dc9be2b66cc589717
 
-PODFILE CHECKSUM: b6970b6fe8fc30823abe749b21910499aaa04f51
+PODFILE CHECKSUM: 60e5f3f35781c24004bf73a2c6446acbdd397a07
 
 COCOAPODS: 1.2.0

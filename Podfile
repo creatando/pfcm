@@ -26,10 +26,15 @@ target 'PFCM' do
   pod 'Firebase/Storage'
   pod 'RealmSwift'
   pod 'TextFieldEffects'
-  pod 'RevealingSplashView'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'UIView+draggable'
   pod 'FontAwesome.swift'
   pod 'FaceAware'
   pod 'SwiftVideoBackground'
+  pod 'ChameleonFramework/Swift'
+  pod 'ESTabBarController-swift'
+  pod 'AZTransitions'
+  pod 'AMScrollingNavbar'
+  pod 'GuillotineMenu', '~> 3.0'
+  
 end

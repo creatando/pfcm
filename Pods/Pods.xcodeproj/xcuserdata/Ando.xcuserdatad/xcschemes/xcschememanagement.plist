@@ -4,7 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AMScrollingNavbar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AZTransitions.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CircleMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ESTabBarController-swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -30,6 +50,11 @@
 			<false/>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GuillotineMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -64,11 +89,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>RevealingSplashView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -97,7 +117,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0501B09E7E1CB083DE51F432DDB9ADB3</key>
+		<key>07E12134D4937B20388D8B6233D0B6F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,17 +127,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2DD7E6E77F3A7112D37135E38E7905AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B9757590D55028B02FF39AC5A0F6A30</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>54BC7EEC8C1922049672DA6791F11117</key>
+		<key>5E707FF8CB3D090CCB960ECC250DC20F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6798AFF2DC8F0EA5BFA84345024BDF5A</key>
+		<key>62554B84AC7BEE4CA338CF6D662B7DFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,17 +167,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7BDE4A0097B901ED452A26CD14A2C344</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B7BEF22A2D2E5C2E4174836475BC47B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9C0D4D60FC8558D0199CE0C958E22855</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9CED8830FE0F71A18CF795B955C71610</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E31FB5128EF806F86B98AB5572C98A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +187,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7B6D0C65D93BF64709B36D43F2CCE53</key>
+		<key>AAE2CE49EEBD8E73A05EA8DFC38AC67F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4502A5C0E8945F03F5A0996C580F685</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B960754DBE82305C117DC81AAE4DBEE8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,22 +207,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C596823A25A02D2C6E01023187CA9DF7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C74D47B051BF84CA30E0723F127F42AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C9B30BBC55620848292310CD5A1BD221</key>
+		<key>D996D01D2B111C3DB6C8B2D4AA2205FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED5B13DF3280E298DACBDF65032759CD</key>
+		<key>DEC84DB96095DD3D01C86861A49E9CFA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
