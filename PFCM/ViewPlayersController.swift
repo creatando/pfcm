@@ -9,49 +9,66 @@
 import UIKit
 import RealmSwift
 import SCLAlertView
-import UIView_draggable
-import FaceAware
-
-
-// MARK: - UISearchResultsUpdating
-extension ViewPlayersController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchBar: UISearchController) {
-        let searchString = searchBar.searchBar.text!
-        filterResultsWithSearchString(searchString: searchString)
-        
-        let searchResultsController = searchBar.searchResultsController as! UITableViewController
-        searchResultsController.tableView.reloadData()
-    }
-    
-}
-
-// MARK: - UISearchBarDelegate
-extension ViewPlayersController:  UISearchBarDelegate {
-    
-}
+import Hue
 
 class ViewPlayersController: UITableViewController {
     
     
     
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var searchBar: UISearchController!
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }
-    
     let realm = try! Realm()
     var results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
-    var searchResults = try! Realm().objects(Player.self)
+    var searchResults = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
+    var searchController: UISearchController!
+    var playerID: String?
+    var savedIndexPath: IndexPath?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupSearch()
+        searchController.loadViewIfNeeded()
         self.tableView.reloadData()
         }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func selectButton(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        
+        alertView.addButton("View") {
+            self.performSegue(withIdentifier: "EPS", sender: self)
+        }
+        
+        alertView.addButton("Edit") {
+            print("Edit button tapped")
+            self.performSegue(withIdentifier: "EPS", sender: self)
+        }
+        if self.playerID != nil{
+        alertView.showNotice("View/Edit", subTitle: "Select whether you would like to view or edit the player.")
+        }
+    }
+    
+    func setupSearch() {
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.tintColor = UIColor.black
+        searchController.searchBar.delegate = self
+        searchController.searchBar.barTintColor = UIColor.white
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView?.addSubview(searchController.searchBar)
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,69 +76,101 @@ class ViewPlayersController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return searchController.isActive ? searchResults.count : results.count
     }
+    
+     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        savedIndexPath = indexPath
+        let selectedCell : Player = results[indexPath.row]
+        playerID = selectedCell.pid
+        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let fileURL = documentsDirectoryURL.appendingPathComponent("\(selectedCell.picFilePath)")
+        print(fileURL)
+        print("Selected person: \(selectedCell.firstName) & ID: \(playerID)")
+        print(selectedCell.picFilePath)
+    }
+
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
         let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! CustomPlayerTableViewCell
+        let object = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.item]
         
-        let object = searchBar.isActive ? searchResults[indexPath.row] : results[indexPath.row]
         
-        cell.name?.text = "\(object.firstName) \(object.lastName)"
-        cell.dob?.text = object.dob
-        print (paths)
-        print (object.picFilePath)
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.orange
+        cell.selectedBackgroundView = backgroundView
+        cell.name.text = "\(object.firstName) \(object.lastName)"
+        cell.dob.text = object.dob
+        cell.stats.text = "G: \(object.goals), A: \(object.assists), Apps: \(object.appearances)"
+        cell.squadNumber.text = "#\(object.squadNo)"
         
         if let dirPath          = paths.first
         {
             let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("\(object.picFilePath)")
             let image    = UIImage(contentsOfFile: imageURL.path)
-            // Do whatever you want with the image
-            
-            cell.profilePic?.image = image
-            cell.profilePic.focusOnFaces = true
-            
+            cell.profilePic.image = image
         }
         cell.circlePicture()
+        tableView.deselectRow(at: indexPath, animated: false)
         
         return cell
     }
     
     func filterResultsWithSearchString(searchString: String) {
-        let predicate = NSPredicate(format: "name BEGINSWITH [c]%@", searchString)
-        let scopeIndex = searchBar.searchBar.selectedScopeButtonIndex
-        let realm = try! Realm()
+        let predicateFN = NSPredicate(format: "firstName BEGINSWITH [c]%@", searchString)
+        let predicateLN = NSPredicate(format: "lastName BEGINSWITH [c]%@", searchString)
         
-        switch scopeIndex {
-        case 0:
-            searchResults = realm.objects(Player.self).filter(predicate).sorted(byKeyPath: "lastNames", ascending: true)
-        case 1:
-            searchResults = realm.objects(Player.self).filter(predicate).sorted(byKeyPath: "dob", ascending: true)
-        default:
-            searchResults = realm.objects(Player.self).filter(predicate)
-        }
-    }
-
-    @IBAction func scopeChanged(_ sender: Any) {
-        let scopeBar = sender as! UISegmentedControl
-        let realm = try! Realm()
+        let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicateFN, predicateLN])
         
-        switch scopeBar.selectedSegmentIndex {
-        case 0:
-            results = realm.objects(Player.self).sorted(byKeyPath: "name", ascending: true)
-        case 1:
-            results = realm.objects(Player.self).sorted(byKeyPath: "created", ascending: true)
-        default:
-            results = realm.objects(Player.self).sorted(byKeyPath: "name", ascending: true)
-        }
-        tableView.reloadData()
+        let realm = try! Realm()
+        searchResults = realm.objects(Player.self).filter(predicateCompound).sorted(byKeyPath: "lastName", ascending: true)
+        
     }
     
+    override func tableView(_ tableView: UITableView,
+                            shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+       return false
+    }
+
+
+    // This function is called before the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Prepared is called!")
+            let nextScene = segue.destination as? EditPlayerViewController
+            nextScene?.selectedPlayer = playerID
+            print("Right player ID is sent! \(nextScene?.selectedPlayer as Any)")
+    }
 
 }
+
+
+
+
+
+
+
+// MARK: - UISearchResultsUpdating
+extension ViewPlayersController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        let searchString = searchController.searchBar.text!
+        filterResultsWithSearchString(searchString: searchString)
+        self.tableView.reloadData()
+    }
+    
+}
+
+// MARK: - UISearchBarDelegate
+extension ViewPlayersController:  UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.tableView.reloadData()
+    }
+}
+

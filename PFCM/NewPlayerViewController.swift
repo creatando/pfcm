@@ -115,7 +115,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         circlePicture()
         
         formDelegation()
-        //formValidation()
+        formValidation()
 
     }
     
@@ -228,7 +228,11 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         player.appearances = "0"
         player.goals = "0"
         player.assists = "0"
-        saveImage()
+        if profilePic.image != nil {
+            saveImage()
+        } else {
+            
+        }
         
         let realm = try! Realm()
         try! realm.write() {

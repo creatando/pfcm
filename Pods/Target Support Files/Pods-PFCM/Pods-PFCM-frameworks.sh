@@ -89,7 +89,6 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AMScrollingNavbar/AMScrollingNavbar.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AZTransitions/AZTransitions.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircleMenu/CircleMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ESTabBarController-swift/ESTabBarController_swift.framework"
@@ -98,7 +97,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GuillotineMenu/GuillotineMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Hue/Hue.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Motion/Motion.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView/SCLAlertView.framework"
@@ -108,7 +109,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UIView+draggable/UIView_draggable.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AMScrollingNavbar/AMScrollingNavbar.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AZTransitions/AZTransitions.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircleMenu/CircleMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ESTabBarController-swift/ESTabBarController_swift.framework"
@@ -117,7 +117,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GuillotineMenu/GuillotineMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Hue/Hue.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Motion/Motion.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SCLAlertView/SCLAlertView.framework"

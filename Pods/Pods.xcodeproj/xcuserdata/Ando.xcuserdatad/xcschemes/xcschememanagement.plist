@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AMScrollingNavbar.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>AZTransitions.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,7 +49,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Hue.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Motion.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -112,32 +117,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0168FDB22B967D297B33058D9F2F0E58</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>02E261C1A5AD29A6335B6ED36CCE11D8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2716C953B9970B73CD7A0DFF1CF5EB9E</key>
+		<key>2497D286AF0948CE60362A84F176DB1D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2FF69416F24D1020065DC152189623F2</key>
+		<key>44D5F80F9B4968F15BB1841C646D36C7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>37FB0F0E2C77BA67260670A387C402D9</key>
+		<key>4C8243515AAC4442B1CC0901BB8AAA17</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,12 +142,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>56AB84932FC12BF0CBAEC9952262CB84</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5E707FF8CB3D090CCB960ECC250DC20F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62D8E25BB423FE5DE71F4AA1C38E0641</key>
+		<key>6E894DF1DFD12E2208FC1A7265D8E4E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75773E2F3392E5B627DEAD907B1563B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,7 +177,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B7BEF22A2D2E5C2E4174836475BC47B</key>
+		<key>892E8DF472B48BD13E51E2858A036D1C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -183,6 +188,16 @@
 			<true/>
 		</dict>
 		<key>A4C1FA091F24FCF5F92D1E2ED7774651</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2542602E50EDF091ADB18B4688DF34F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3E43AD5EDBE7A0B94D0910E141FC0EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,12 +217,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CACD6D25A052112F2D4F9B0AD627B7EC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EE6D1FECA86D30D4E5E10CC14948CA7D</key>
+		<key>E87A4173B6FB2B39317E9D042051F0F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

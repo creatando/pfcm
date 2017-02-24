@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double AMScrollingNavbarVersionNumber;
-FOUNDATION_EXPORT const unsigned char AMScrollingNavbarVersionString[];
+FOUNDATION_EXPORT double HueVersionNumber;
+FOUNDATION_EXPORT const unsigned char HueVersionString[];
 

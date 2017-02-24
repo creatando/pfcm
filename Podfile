@@ -33,7 +33,8 @@ target 'PFCM' do
   pod 'SwiftVideoBackground'
   pod 'ESTabBarController-swift'
   pod 'AZTransitions'
-  pod 'AMScrollingNavbar'
   pod 'GuillotineMenu', '~> 3.0'
+  pod 'Motion', '~> 1.0'
+  pod 'Hue'
   
 end
