@@ -8,6 +8,7 @@
 
 import UIKit
 import UIView_draggable
+import RealmSwift
 
 extension UIView {
     func setCorners() {
@@ -27,6 +28,7 @@ extension UIView {
 
 class TacticalCentreViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
+    @IBOutlet weak var backPanel: UIView!
     @IBOutlet weak var pB1: UIView!
     @IBOutlet weak var pB2: UIView!
     @IBOutlet weak var pB3: UIView!
@@ -38,31 +40,69 @@ class TacticalCentreViewController: UIViewController, UIPopoverPresentationContr
     @IBOutlet weak var pB9: UIView!
     @IBOutlet weak var pB10: UIView!
     @IBOutlet weak var pB11: UIView!
-    @IBOutlet weak var backPanel: UIImageView!
+
+ 
+    @IBOutlet var pics: [UIImageView]!
+    
+    
+    
+    
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }
 
 
-    @IBAction func addClick(_ sender: UIButton) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "popoverID")
-        
-        vc.modalPresentationStyle = .popover
-        let popover = vc.popoverPresentationController!
-        popover.delegate = self
-        popover.permittedArrowDirections = .up
-        popover.sourceView = sender
-        popover.sourceRect = CGRect(x: 0, y: 0, width: sender.frame.size.width, height: sender.frame.size.height)
-        present(vc, animated: true, completion:nil)
+    
+    @IBAction func shareButton(_ sender: Any) {
     }
-  
+    
+    @IBAction func toolsButton (_ sender: Any) {
+    }
+    
+    @IBAction func tacticsButton(_ sender: Any) {
+    }
+    
+    @IBOutlet var names: [UILabel]!
+    
+    @IBOutlet var numbers: [UILabel]!
+    
+    @IBOutlet var images: [UIImageView]!
+    
+    
     var cage = CGRect.zero
+    var playerName: String?
+    var playerNo: String?
+    var picPath: String?
+    var selectedPosition: UIView?
+    var selectedPlayer: String?
+    
+    
+    @IBAction func selectAPlayer(_ sender: UITapGestureRecognizer) {
+        print("tapped")
+        let viewController = "addPlayerPopover"
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: viewController) as? TacticsPlayerAddViewController
+        vc?.selectedPosition = sender.view
+        let nav = UINavigationController(rootViewController: vc!)
+
+        nav.modalPresentationStyle = .popover
+        let popover = nav.popoverPresentationController
+        popover?.delegate = self
+        popover?.permittedArrowDirections = [.up, .down]
+        popover?.sourceRect = sender.view!.bounds
+        popover?.sourceView = sender.view
+        present(nav, animated: true, completion:nil)
+        
+        self.selectedPosition = sender.view
+        print (selectedPosition!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         enableDrag()
         setViewsCorners()
+        print("The amount of subviews are: \(view.subviews.count)")
+        setImageCircles ()
         // Do any additional setup after loading the view.
     }
     
@@ -77,8 +117,60 @@ class TacticalCentreViewController: UIViewController, UIPopoverPresentationContr
         return UIModalPresentationStyle.none
     }
     
+    func setPlayer () {
+        print(selectedPosition!)
+        print("The amount of subviews are: \((selectedPosition?.subviews.count)!)")
+        if selectedPosition != nil {
+            
+            if let nameLabel: UILabel = selectedPosition?.viewWithTag(2) as? UILabel {
+                nameLabel.text = playerName
+            }
+            if let noLabel: UILabel = selectedPosition?.viewWithTag(3) as? UILabel {
+                noLabel.text = playerNo
+            }
+            if let profileImage: UIImageView = selectedPosition?.viewWithTag(1) as? UIImageView {
+                loadImageFromRealm(picturePath: picPath!, imageView: profileImage)
+            }
+
+        }
+    }
     
+    func setImageCircles () {
+        for pic in self.pics {
+            circlePicture(imageView: pic)
+        }
+    }
     
+    func circlePicture (imageView: UIImageView) {
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.layer.borderColor = UIColor.green.cgColor
+        imageView.layer.borderWidth = 0.7
+        imageView.layer.shouldRasterize = true
+    }
+    
+    func loadImageFromRealm (picturePath: String, imageView: UIImageView) {
+        
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
+        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        if let dirPath          = paths.first
+            {   print("directory accessed")
+                let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(picturePath)
+                let image   = UIImage(contentsOfFile: imageURL.path)
+                
+                print("Directory image: \(image!)")
+            
+            if image != nil
+            { imageView.image = image
+                
+            } else {
+                imageView.image = UIImage (named: "profile.jpg")
+            }
+            
+                print("Directory image: \(imageView.image!)")
+            }
+    }
+
     func setViewsCorners(){
         pB1.setCorners()
         pB2.setCorners()
@@ -107,6 +199,7 @@ class TacticalCentreViewController: UIViewController, UIPopoverPresentationContr
     
     func enableDrag() {
         cage = self.backPanel.frame
+        
         
         //pB1.enableDragging()
         pB1.cagingArea = cage
@@ -141,6 +234,8 @@ class TacticalCentreViewController: UIViewController, UIPopoverPresentationContr
         pB11.enableDragging()
         pB11.cagingArea = cage
     }
+    
+    
 
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
         

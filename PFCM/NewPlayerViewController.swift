@@ -12,24 +12,26 @@ import SCLAlertView
 import SwiftValidator
 
 extension UIImage {
-    enum JPEGQuality: CGFloat {
-        case lowest  = 0
-        case low     = 0.25
-        case medium  = 0.5
-        case high    = 0.75
-        case highest = 1
+    func generateJPEGRepresentation() -> Data {
+        
+        let newImage = self.copyOriginalImage()
+        let newData = UIImageJPEGRepresentation(newImage, 0.75)
+        
+        return newData!
     }
     
-    /// Returns the data for the specified image in PNG format
-    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
-    /// - returns: A data object containing the PNG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
-    var png: Data? { return UIImagePNGRepresentation(self) }
+    /**
+     Copies Original Image which fixes the crash for extracting Data from UIImage
+     @return UIImage
+     */
     
-    /// Returns the data for the specified image in JPEG format.
-    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
-    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
-    func jpeg(_ quality: JPEGQuality) -> Data? {
-        return UIImageJPEGRepresentation(self, quality.rawValue)
+    private func copyOriginalImage() -> UIImage {
+        UIGraphicsBeginImageContext(self.size);
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        
+        return newImage!
     }
 }
 
@@ -228,11 +230,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         player.appearances = "0"
         player.goals = "0"
         player.assists = "0"
-        if profilePic.image != nil {
-            saveImage()
-        } else {
-            
-        }
+        saveImage()
         
         let realm = try! Realm()
         try! realm.write() {

@@ -11,6 +11,9 @@ import RealmSwift
 import SCLAlertView
 import SwiftValidator
 
+
+
+
 class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ValidationDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
         
         @IBOutlet weak var firstName: UITextField!
@@ -31,12 +34,18 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         @IBOutlet weak var appsText: UITextField!
     
         @IBAction func appsPlus(_ sender: Any) {
+            let result: Int = Int(appsText.text!)! + 1
+            appsText.text = String(result)
         }
     
         @IBAction func assistsPlus(_ sender: Any) {
+            let result: Int = Int(assistsText.text!)! + 1
+            assistsText.text = String(result)
         }
     
         @IBAction func goalsPlus(_ sender: Any) {
+            let result: Int = Int(goalsText.text!)! + 1
+            goalsText.text = String(result)
         }
     
     
@@ -83,7 +92,8 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         
     @IBAction func updatePlayer(_ sender: Any) {
         validator.validate(self)
-        _ = self.navigationController?.popViewController(animated: true)
+        let  vc =  self.navigationController?.viewControllers.filter({$0 is ViewPlayersController}).first
+        _ = navigationController?.popToViewController(vc!, animated: true)
     }
         
         let imagePicker = UIImagePickerController()
@@ -112,7 +122,8 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         circlePicture()
         formDelegation()
         //formValidation()
-        //checkSelected ()
+        checkSelected ()
+        checkImageExists()
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,7 +132,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
     
     func checkSelected () {
         if selectedPlayer == nil {
-            print("Right player ID is not sent! \(selectedPlayer as Any)")
+            print("Right player ID is not sent! \(selectedPlayer!)")
         } else {
             print("Retrieved")
             retrievePlayer()
@@ -149,13 +160,14 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         assistsText.text = singlePlayer?.assists
         appsText.text = singlePlayer?.appearances
         selectedPicPath = singlePlayer?.picFilePath
+        
         print("\(singlePlayer?.picFilePath) is SINGLEPLAYER selected pic path.")
         print("\(selectedPicPath) is selected pic path.")
     
         
         if selectedPicPath != nil {
-            print ("Player's pic path = \(selectedPicPath as Any)")
-             loadImageFromRealm(picName: (selectedPicPath)!)
+            print ("Player's pic path = \(selectedPicPath!)")
+             loadImageFromRealm(picName: (selectedPicPath!))
         } else {
            print ("Pic not loaded")
         }
@@ -174,8 +186,15 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         {   print("directory accessed")
             let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(picName)
             let image   = UIImage(contentsOfFile: imageURL.path)
-            profilePic.image = image
-            print("Directory image: \(profilePic.image as Any)")
+        
+        if image != nil
+            { profilePic.image = image
+    
+        } else {
+            profilePic.image = UIImage (named: "profile.jpg")
+            }
+            
+        print("Directory image: \(profilePic.image!)")
         }
         
     }
@@ -218,7 +237,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         self.squadNo.inputView = sNoPicker
         self.goalsText.inputView = goalsPicker
         self.assistsText.inputView = assistsPicker
-        self.appsText.inputView = appsText
+        self.appsText.inputView = appsPicker
         
         firstName.delegate = self
         lastName.delegate = self
@@ -263,16 +282,18 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         player.assists = assistsText.text!
         player.appearances = appsText.text!
         updateImage()
+        player.picFilePath = selectedPicPath!
+        
         
         let realm = try! Realm()
         try! realm.write() {
-            realm.add(player, update: true)
+            realm.add(player)
         }
 
         self.saveButtonClicked = true
         
         let addSuccessAlertView = SCLAlertView()
-        addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
+        addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been updated.")
     }
     
     func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
@@ -290,6 +311,17 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         }
         
     }
+    func checkImageExists () {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        let filePath = url.appendingPathComponent("\(selectedPicPath!)")?.path
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: filePath!) {
+            print("FILE AVAILABLE")
+        } else {
+            print("FILE NOT AVAILABLE")
+        }
+    }
     
     func  updateImage() {
         
@@ -298,12 +330,17 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let fileURL = documentsDirectoryURL.appendingPathComponent("\(selectedPicPath!)")
         print ("file url is: \(fileURL)")
-        if !FileManager.default.fileExists(atPath: fileURL.path) {
+        checkImageExists()
+        if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 print(profilePic.image as Any)
                 if profilePic.image != nil {
-                try UIImageJPEGRepresentation(profilePic.image!, 0.5)!.write(to: fileURL)
-                print (profilePic.image as Any)
+                print ("first file \(fileURL)")
+                //removeImage(url: selectedPicPath!)
+                let image = profilePic.image!.generateJPEGRepresentation()
+                    print(profilePic.image!)
+                    print (image)
+                    try! image.write(to: fileURL, options: .atomicWrite)
                 print("Image Added Successfully")
                 }
             } catch {
@@ -311,6 +348,25 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             }
         } else {
             print("Image Not Added")
+            
+        }
+        print(profilePic.image!)
+    }
+    
+    
+    func removeImage(url:String) {
+        let fileManager = FileManager.default
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        guard let dirPath = paths.first else {
+            return
+        }
+        let filePath = "\(dirPath)/\(url)"
+        do {
+            try fileManager.removeItem(atPath: filePath)
+        } catch let error as NSError {
+            print(error.debugDescription)
         }
     }
     
@@ -320,6 +376,30 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         self.profilePic.layer.borderWidth = 2
         self.profilePic.layer.shouldRasterize = true
     }
+    
+    @IBAction func deletePlayer(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let confirmAlertView = SCLAlertView(appearance: appearance)
+            confirmAlertView.addButton("Yes") {
+                _ = self.navigationController?.popViewController(animated: true)
+                self.saveButtonClicked = false
+                
+                let singlePlayer = try! Realm().object(ofType: Player.self, forPrimaryKey: self.selectedPlayer)
+                let realm = try! Realm()
+                try! realm.write() {
+                    realm.delete(singlePlayer!)
+                }
+            }
+        
+            confirmAlertView.addButton("No") {
+                self.saveButtonClicked = false
+            }
+            
+            self.view.endEditing(true)
+            confirmAlertView.showWarning("Delete", subTitle: "Are you sure you want to delete this player?")
+        
+    }
+    
     
     func datePickerValueChanged(sender:UIDatePicker) {
         
@@ -411,6 +491,8 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             return noData.count
         } else if pickerView == assistsPicker {
             return noData.count
+        } else if pickerView == appsPicker {
+            return noData.count
         } else {
             return noData.count
         }
@@ -427,11 +509,11 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         } else if pickerView == sNoPicker {
             squadNo.text = noData[row]
         } else if pickerView == goalsPicker {
-            squadNo.text = noData[row]
+            goalsText.text = noData[row]
         } else if pickerView == assistsPicker {
-            squadNo.text = noData[row]
-        } else {
-            squadNo.text = noData[row]
+            assistsText.text = noData[row]
+        } else if pickerView == appsPicker {
+            appsText.text = noData[row]
         }
     }
     
@@ -449,6 +531,8 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             return noData[row]
         } else if pickerView == assistsPicker {
             return noData[row]
+        } else if pickerView == appsPicker {
+            return noData[row]
         } else {
             return noData[row]
         }
@@ -461,9 +545,10 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             profilePic.image = pickedImage
-            
+            print(profilePic.image!)
         } else if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             profilePic.image = pickedImage
+            print(profilePic.image!)
         } else{
             print("Something went wrong")
         }
@@ -480,3 +565,4 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
     
 
 }
+

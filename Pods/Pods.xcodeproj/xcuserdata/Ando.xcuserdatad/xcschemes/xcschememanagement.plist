@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ESTabBarController-swift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FaceAware.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -79,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RAMAnimatedTabBarController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,22 +117,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>01139B9C9A2028AB9AFCE91DCF418EBA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0884AD3E9AD4C72F1ED0B0DFEA1840B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2497D286AF0948CE60362A84F176DB1D</key>
+		<key>351D4042BACFDED7A72A35D2379F6728</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44D5F80F9B4968F15BB1841C646D36C7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4C8243515AAC4442B1CC0901BB8AAA17</key>
+		<key>3EF667B3E646344D49EA66A43A00FAB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,22 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56AB84932FC12BF0CBAEC9952262CB84</key>
+		<key>5BCCB24BC6051CC8100A168DCB47053A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E707FF8CB3D090CCB960ECC250DC20F</key>
+		<key>6DD6E37701A2DC7A5DEB9F99E03518F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>6E894DF1DFD12E2208FC1A7265D8E4E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>75773E2F3392E5B627DEAD907B1563B3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,7 +177,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>892E8DF472B48BD13E51E2858A036D1C</key>
+		<key>886FDAEE44F7407B40E60F369A17B32B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9177CDCEE71575CF638CB94BBB549DCE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -197,12 +202,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3E43AD5EDBE7A0B94D0910E141FC0EB</key>
+		<key>B960754DBE82305C117DC81AAE4DBEE8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B960754DBE82305C117DC81AAE4DBEE8</key>
+		<key>BEBF81088BB5C00717F23FB89F45E4F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -213,11 +218,6 @@
 			<true/>
 		</dict>
 		<key>C74D47B051BF84CA30E0723F127F42AD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E87A4173B6FB2B39317E9D042051F0F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -31,10 +31,11 @@ target 'PFCM' do
   pod 'FontAwesome.swift'
   pod 'FaceAware'
   pod 'SwiftVideoBackground'
-  pod 'ESTabBarController-swift'
+  pod 'RAMAnimatedTabBarController', '~> 2.0.13'
   pod 'AZTransitions'
   pod 'GuillotineMenu', '~> 3.0'
   pod 'Motion', '~> 1.0'
   pod 'Hue'
+  pod 'NXDrawKit'
   
 end

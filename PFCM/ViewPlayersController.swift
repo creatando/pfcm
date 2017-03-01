@@ -25,6 +25,7 @@ class ViewPlayersController: UITableViewController {
     var searchController: UISearchController!
     var playerID: String?
     var savedIndexPath: IndexPath?
+    var playerName: String?
     
     
     override func viewDidLoad() {
@@ -34,25 +35,20 @@ class ViewPlayersController: UITableViewController {
         self.tableView.reloadData()
         }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
     
     @IBAction func selectButton(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         
-        alertView.addButton("View") {
+        alertView.addButton("Yes") {
             self.performSegue(withIdentifier: "EPS", sender: self)
         }
         
-        alertView.addButton("Edit") {
-            print("Edit button tapped")
-            self.performSegue(withIdentifier: "EPS", sender: self)
+        alertView.addButton("No") {
+
         }
         if self.playerID != nil{
-        alertView.showNotice("View/Edit", subTitle: "Select whether you would like to view or edit the player.")
+        alertView.showWait("View/Edit", subTitle: "Select \(playerName!)?")
         }
     }
     
@@ -65,6 +61,7 @@ class ViewPlayersController: UITableViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.barTintColor = UIColor.white
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView?.addSubview(searchController.searchBar)
 
@@ -86,7 +83,7 @@ class ViewPlayersController: UITableViewController {
         let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let fileURL = documentsDirectoryURL.appendingPathComponent("\(selectedCell.picFilePath)")
         print(fileURL)
-        print("Selected person: \(selectedCell.firstName) & ID: \(playerID)")
+        print("Selected person: \(selectedCell.firstName) & ID: \(playerID!)")
         print(selectedCell.picFilePath)
     }
 
@@ -100,14 +97,16 @@ class ViewPlayersController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! CustomPlayerTableViewCell
         let object = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.item]
         
-        
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.orange
         cell.selectedBackgroundView = backgroundView
-        cell.name.text = "\(object.firstName) \(object.lastName)"
+        
+        playerName = "\(object.firstName) \(object.lastName)"
+        cell.name.text = playerName
         cell.dob.text = object.dob
         cell.stats.text = "G: \(object.goals), A: \(object.assists), Apps: \(object.appearances)"
         cell.squadNumber.text = "#\(object.squadNo)"
+        
         
         if let dirPath          = paths.first
         {
@@ -124,7 +123,6 @@ class ViewPlayersController: UITableViewController {
     func filterResultsWithSearchString(searchString: String) {
         let predicateFN = NSPredicate(format: "firstName BEGINSWITH [c]%@", searchString)
         let predicateLN = NSPredicate(format: "lastName BEGINSWITH [c]%@", searchString)
-        
         let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicateFN, predicateLN])
         
         let realm = try! Realm()
@@ -143,25 +141,21 @@ class ViewPlayersController: UITableViewController {
         print("Prepared is called!")
             let nextScene = segue.destination as? EditPlayerViewController
             nextScene?.selectedPlayer = playerID
-            print("Right player ID is sent! \(nextScene?.selectedPlayer as Any)")
+            print("Right player ID is sent! \(nextScene?.selectedPlayer!)")
     }
+    
+    
 
 }
-
-
-
-
-
 
 
 // MARK: - UISearchResultsUpdating
 extension ViewPlayersController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        
         let searchString = searchController.searchBar.text!
         filterResultsWithSearchString(searchString: searchString)
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
 }
@@ -170,7 +164,7 @@ extension ViewPlayersController: UISearchResultsUpdating {
 extension ViewPlayersController:  UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
     }
 }
 

@@ -1,7 +1,6 @@
 PODS:
   - AZTransitions (0.22)
   - CircleMenu (2.0.1)
-  - ESTabBarController-swift (2.1)
   - FaceAware (1.2.0)
   - Firebase/Auth (3.13.0):
     - Firebase/Core
@@ -44,6 +43,7 @@ PODS:
   - Motion (1.0.3):
     - Motion/Core (= 1.0.3)
   - Motion/Core (1.0.3)
+  - RAMAnimatedTabBarController (2.0.13)
   - Realm (2.4.2):
     - Realm/Headers (= 2.4.2)
   - Realm/Headers (2.4.2)
@@ -58,7 +58,6 @@ PODS:
 DEPENDENCIES:
   - AZTransitions
   - CircleMenu (~> 2.0.1)
-  - ESTabBarController-swift
   - FaceAware
   - Firebase/Auth
   - Firebase/Core
@@ -68,6 +67,7 @@ DEPENDENCIES:
   - Hue
   - IQKeyboardManagerSwift
   - Motion (~> 1.0)
+  - RAMAnimatedTabBarController (~> 2.0.13)
   - RealmSwift
   - SCLAlertView
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
@@ -88,7 +88,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AZTransitions: 84fb95a278aedcba3c162443491544a5b9c485eb
   CircleMenu: a964e8b03aae58c84b40d5cf64630b62bef077eb
-  ESTabBarController-swift: 8b54372903c29d7d43a20d3c3c65a5c80f307c7c
   FaceAware: 421436f9d16aacdb26ffcf8e5a39a1dd68630395
   Firebase: 5bc34d7b5ff5792e3386c8b28dc6265deeab0da4
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
@@ -103,6 +102,7 @@ SPEC CHECKSUMS:
   Hue: 354caec055fdc9d38b5ef33ca2e7224721843baf
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Motion: 6665469c8268bc424c1c3d8e8f7bc99e28178666
+  RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
   Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
   RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
@@ -111,6 +111,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: faa47d428ee8eafb781a8413ac4345420d2328c4
   UIView+draggable: ddfbeb6bdfdeba63d9ccf32dc9be2b66cc589717
 
-PODFILE CHECKSUM: 5c220b6a6ba02b6dfb989690cabd113204f9d447
+PODFILE CHECKSUM: 8637a3cf0e913da0756e495d336efd800fdd24a7
 
 COCOAPODS: 1.2.0
