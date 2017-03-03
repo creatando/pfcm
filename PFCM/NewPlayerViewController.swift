@@ -241,10 +241,12 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             resetProfile()
         
         
+        
             self.createButtonClicked = true
         
             let addSuccessAlertView = SCLAlertView()
             addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
+            tableView.setContentOffset(CGPoint.zero, animated: true)
         
         
     }

@@ -78,8 +78,9 @@ class ViewPlayersController: UITableViewController {
     
      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         savedIndexPath = indexPath
-        let selectedCell : Player = results[indexPath.row]
+        let selectedCell : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
         playerID = selectedCell.pid
+        playerName = "\(selectedCell.firstName) \(selectedCell.lastName)"
         let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let fileURL = documentsDirectoryURL.appendingPathComponent("\(selectedCell.picFilePath)")
         print(fileURL)
@@ -121,11 +122,10 @@ class ViewPlayersController: UITableViewController {
     }
     
     func filterResultsWithSearchString(searchString: String) {
+        let realm = try! Realm()
         let predicateFN = NSPredicate(format: "firstName BEGINSWITH [c]%@", searchString)
         let predicateLN = NSPredicate(format: "lastName BEGINSWITH [c]%@", searchString)
         let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicateFN, predicateLN])
-        
-        let realm = try! Realm()
         searchResults = realm.objects(Player.self).filter(predicateCompound).sorted(byKeyPath: "lastName", ascending: true)
         
     }
@@ -153,6 +153,7 @@ class ViewPlayersController: UITableViewController {
 extension ViewPlayersController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
+        
         let searchString = searchController.searchBar.text!
         filterResultsWithSearchString(searchString: searchString)
         tableView.reloadData()

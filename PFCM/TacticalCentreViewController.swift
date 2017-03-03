@@ -26,6 +26,7 @@ extension UIView {
     }
 }
 
+
 class TacticalCentreViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var backPanel: UIView!
@@ -88,8 +89,9 @@ class TacticalCentreViewController: UIViewController, UIPopoverPresentationContr
         nav.modalPresentationStyle = .popover
         let popover = nav.popoverPresentationController
         popover?.delegate = self
-        popover?.permittedArrowDirections = [.up, .down]
-        popover?.sourceRect = sender.view!.bounds
+        nav.preferredContentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        popover?.permittedArrowDirections = [.down, .up]
+        popover?.sourceRect = CGRect(x: sender.view!.bounds.origin.x, y: sender.view!.bounds.origin.y, width: sender.view!.bounds.width, height: 0)
         popover?.sourceView = sender.view
         present(nav, animated: true, completion:nil)
         
@@ -104,7 +106,9 @@ class TacticalCentreViewController: UIViewController, UIPopoverPresentationContr
         print("The amount of subviews are: \(view.subviews.count)")
         setImageCircles ()
         // Do any additional setup after loading the view.
+        backPanel.isUserInteractionEnabled = false
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

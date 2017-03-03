@@ -287,7 +287,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         
         let realm = try! Realm()
         try! realm.write() {
-            realm.add(player)
+            realm.add(player, update: true)
         }
 
         self.saveButtonClicked = true
@@ -342,6 +342,8 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
                     print (image)
                     try! image.write(to: fileURL, options: .atomicWrite)
                 print("Image Added Successfully")
+                } else {
+                    print("Image not added")
                 }
             } catch {
                 print(error)

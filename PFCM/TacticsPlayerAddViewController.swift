@@ -28,8 +28,20 @@ class TacticsPlayerAddViewController: UITableViewController {
         let confirmAlertView = SCLAlertView(appearance: appearance)
    
             confirmAlertView.addButton("Yes") {
+                let viewController = "TacticCentre"
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: viewController) as? TacticalCentreViewController
+                print ("Player name is: \(self.playerName!)")
+                print ("Player no is: \(self.playerNo!)")
+                print ("Player pic is: \(self.picPath!)")
+                vc?.picPath = self.picPath
+                vc?.playerNo = self.playerNo
+                vc?.playerName = self.playerName
+                vc?.selectedPosition = self.selectedPosition
+                vc?.selectedPlayer = self.playerID
+                vc?.setPlayer()
+                
                 self.dismiss(animated: true, completion: nil)
-                self.performSegue(withIdentifier: "TPA", sender: nil)
             }
             
             confirmAlertView.addButton("No") {
@@ -43,7 +55,7 @@ class TacticsPlayerAddViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearch()
-        searchController.loadViewIfNeeded()
+        //searchController.loadViewIfNeeded()
         self.tableView.reloadData()
     }
 
@@ -62,6 +74,8 @@ class TacticsPlayerAddViewController: UITableViewController {
         searchController.searchBar.barTintColor = UIColor.white
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.showsCancelButton = false
+        searchController.searchBar.placeholder = ""
+        searchController.preferredContentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
         searchController.hidesNavigationBarDuringPresentation = false
 
         //definesPresentationContext = true
@@ -79,6 +93,11 @@ class TacticsPlayerAddViewController: UITableViewController {
         let realm = try! Realm()
         searchResults = realm.objects(Player.self).filter(predicateCompound).sorted(byKeyPath: "lastName", ascending: true)
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
     }
 
     // MARK: - Table view data source
@@ -117,7 +136,7 @@ class TacticsPlayerAddViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell : Player = results[indexPath.row]
+        let selectedCell : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
         playerName = selectedCell.lastName
         playerNo = selectedCell.squadNo
         picPath = selectedCell.picFilePath
@@ -164,19 +183,11 @@ class TacticsPlayerAddViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextScene = segue.destination as? TacticalCentreViewController
-        print ("Player name is: \(playerName!)")
-        print ("Player no is: \(playerNo!)")
-        print ("Player pic is: \(picPath!)")
-        nextScene?.picPath = picPath
-        nextScene?.playerNo = playerNo
-        nextScene?.playerName = playerName
-        nextScene?.selectedPosition = selectedPosition
-        nextScene?.selectedPlayer = playerID
-        nextScene?.setPlayer()
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       // let nextScene = segue.destination as? TacticalCentreViewController
         
-    }
+        
+    }*/
  
 
 }
@@ -196,7 +207,6 @@ extension TacticsPlayerAddViewController: UISearchResultsUpdating {
 extension TacticsPlayerAddViewController:  UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.tableView.reloadData()
     }
 }
 

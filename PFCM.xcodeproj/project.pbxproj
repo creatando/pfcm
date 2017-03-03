@@ -24,8 +24,17 @@
 		AA1B23981E5D0CF0000528B7 /* checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1B23971E5D0CF0000528B7 /* checkmark@3x.png */; };
 		AA1B239C1E5D0D8C000528B7 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1B239A1E5D0D8C000528B7 /* checkmark@2x.png */; };
 		AA1B9B4E1E66B442000BD783 /* TacticalBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B9B4D1E66B442000BD783 /* TacticalBackgroundViewController.swift */; };
+		AA1B9B521E66C2C4000BD783 /* plusc.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1B9B511E66C2C4000BD783 /* plusc.png */; };
 		AA7D71F81E62684800FEF40C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D71F71E62684800FEF40C /* plus.png */; };
 		AA7D71FA1E6347F300FEF40C /* TacticsPlayerAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D71F91E6347F300FEF40C /* TacticsPlayerAddViewController.swift */; };
+		AAA4D6171E692F5600B9725E /* ParallaxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA4D6161E692F5600B9725E /* ParallaxTableViewCell.swift */; };
+		AAA4D61B1E693EB100B9725E /* HomeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA4D61A1E693EB100B9725E /* HomeMenuViewController.swift */; };
+		AAA4D6281E694D3400B9725E /* menu6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6221E694D3400B9725E /* menu6.jpg */; };
+		AAA4D6291E694D3400B9725E /* menu5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6231E694D3400B9725E /* menu5.jpg */; };
+		AAA4D62A1E694D3400B9725E /* menu4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6241E694D3400B9725E /* menu4.jpg */; };
+		AAA4D62B1E694D3400B9725E /* menu3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6251E694D3400B9725E /* menu3.jpeg */; };
+		AAA4D62C1E694D3400B9725E /* menu2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6261E694D3400B9725E /* menu2.jpeg */; };
+		AAA4D62D1E694D3400B9725E /* menu1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6271E694D3400B9725E /* menu1.jpg */; };
 		AAB0E6A01E612F1C0059EEAA /* eye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB0E69E1E612F1A0059EEAA /* eye@2x.png */; };
 		AAB0E6A11E612F1D0059EEAA /* eye@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB0E69F1E612F1A0059EEAA /* eye@3x.png */; };
 		AAB2E3A51E5C078300556489 /* Premier-Logo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E3A21E5C078300556489 /* Premier-Logo-icon.png */; };
@@ -91,8 +100,17 @@
 		AA1B23971E5D0CF0000528B7 /* checkmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@3x.png"; sourceTree = "<group>"; };
 		AA1B239A1E5D0D8C000528B7 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
 		AA1B9B4D1E66B442000BD783 /* TacticalBackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacticalBackgroundViewController.swift; sourceTree = "<group>"; };
+		AA1B9B511E66C2C4000BD783 /* plusc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusc.png; sourceTree = "<group>"; };
 		AA7D71F71E62684800FEF40C /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		AA7D71F91E6347F300FEF40C /* TacticsPlayerAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacticsPlayerAddViewController.swift; sourceTree = "<group>"; };
+		AAA4D6161E692F5600B9725E /* ParallaxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxTableViewCell.swift; sourceTree = "<group>"; };
+		AAA4D61A1E693EB100B9725E /* HomeMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuViewController.swift; sourceTree = "<group>"; };
+		AAA4D6221E694D3400B9725E /* menu6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu6.jpg; sourceTree = "<group>"; };
+		AAA4D6231E694D3400B9725E /* menu5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu5.jpg; sourceTree = "<group>"; };
+		AAA4D6241E694D3400B9725E /* menu4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu4.jpg; sourceTree = "<group>"; };
+		AAA4D6251E694D3400B9725E /* menu3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu3.jpeg; sourceTree = "<group>"; };
+		AAA4D6261E694D3400B9725E /* menu2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu2.jpeg; sourceTree = "<group>"; };
+		AAA4D6271E694D3400B9725E /* menu1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu1.jpg; sourceTree = "<group>"; };
 		AAB0E69E1E612F1A0059EEAA /* eye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye@2x.png"; sourceTree = "<group>"; };
 		AAB0E69F1E612F1A0059EEAA /* eye@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eye@3x.png"; sourceTree = "<group>"; };
 		AAB2E3A21E5C078300556489 /* Premier-Logo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Premier-Logo-icon.png"; sourceTree = "<group>"; };
@@ -244,6 +262,7 @@
 		B521B6EC1E47AE7000F5522F /* models */ = {
 			isa = PBXGroup;
 			children = (
+				AAA4D6161E692F5600B9725E /* ParallaxTableViewCell.swift */,
 				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
 				B5BA8D031E4F78CC0045A5A6 /* Player.swift */,
 			);
@@ -263,6 +282,7 @@
 		B521B6EE1E47AE8900F5522F /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAA4D61A1E693EB100B9725E /* HomeMenuViewController.swift */,
 				AA10ED611E5A5FBF00D3C8E5 /* TacticalCentreViewController.swift */,
 				AA1B9B4D1E66B442000BD783 /* TacticalBackgroundViewController.swift */,
 				AA7D71F91E6347F300FEF40C /* TacticsPlayerAddViewController.swift */,
@@ -289,7 +309,14 @@
 		B5EE19821E4FF70400B94B82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AAA4D6221E694D3400B9725E /* menu6.jpg */,
+				AAA4D6231E694D3400B9725E /* menu5.jpg */,
+				AAA4D6241E694D3400B9725E /* menu4.jpg */,
+				AAA4D6251E694D3400B9725E /* menu3.jpeg */,
+				AAA4D6261E694D3400B9725E /* menu2.jpeg */,
+				AAA4D6271E694D3400B9725E /* menu1.jpg */,
 				AA7D71F71E62684800FEF40C /* plus.png */,
+				AA1B9B511E66C2C4000BD783 /* plusc.png */,
 				AAB0E69E1E612F1A0059EEAA /* eye@2x.png */,
 				AAB0E69F1E612F1A0059EEAA /* eye@3x.png */,
 				AAB2E3A21E5C078300556489 /* Premier-Logo-icon.png */,
@@ -435,9 +462,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5EE198A1E4FF70400B94B82 /* arrowRight@3x.png in Resources */,
+				AAA4D62A1E694D3400B9725E /* menu4.jpg in Resources */,
+				AAA4D62B1E694D3400B9725E /* menu3.jpeg in Resources */,
 				AA1B239C1E5D0D8C000528B7 /* checkmark@2x.png in Resources */,
 				B5741B8E1E526C18001C4465 /* profile.jpg in Resources */,
 				AA1B23871E5D0873000528B7 /* drawingbtn@2x.png in Resources */,
+				AAA4D62D1E694D3400B9725E /* menu1.jpg in Resources */,
 				B521B6B91E47AD7400F5522F /* LaunchScreen.storyboard in Resources */,
 				B5EE19871E4FF70400B94B82 /* arrowLeft@2x.png in Resources */,
 				AA1B23821E5D0813000528B7 /* menubutton@3x.png in Resources */,
@@ -445,7 +475,9 @@
 				AAB0E6A01E612F1C0059EEAA /* eye@2x.png in Resources */,
 				B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */,
 				B5EE19891E4FF70400B94B82 /* arrowRight@2x.png in Resources */,
+				AAA4D62C1E694D3400B9725E /* menu2.jpeg in Resources */,
 				AA1B238E1E5D08A9000528B7 /* closebtn@3x.png in Resources */,
+				AA1B9B521E66C2C4000BD783 /* plusc.png in Resources */,
 				AAB2E3A71E5C078300556489 /* Premier-Logo.png in Resources */,
 				B521B6E71E47AD9900F5522F /* Main.storyboard in Resources */,
 				AA1B238D1E5D08A9000528B7 /* closebtn@2x.png in Resources */,
@@ -454,6 +486,7 @@
 				AAC888581E5AC4B5008806BC /* pitch.png in Resources */,
 				AA1B23981E5D0CF0000528B7 /* checkmark@3x.png in Resources */,
 				AA7D71F81E62684800FEF40C /* plus.png in Resources */,
+				AAA4D6281E694D3400B9725E /* menu6.jpg in Resources */,
 				AA1B23811E5D0813000528B7 /* menubutton@2x.png in Resources */,
 				AA1B23801E5D0813000528B7 /* menubutton.png in Resources */,
 				AAB2E3A51E5C078300556489 /* Premier-Logo-icon.png in Resources */,
@@ -461,6 +494,7 @@
 				B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */,
 				AA1B238C1E5D08A9000528B7 /* closebtn.png in Resources */,
 				AAC8885A1E5AC69C008806BC /* profile-blank.png in Resources */,
+				AAA4D6291E694D3400B9725E /* menu5.jpg in Resources */,
 				B521B6B61E47AD7400F5522F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +662,7 @@
 				B521B6E61E47AD9900F5522F /* LoginViewController.swift in Sources */,
 				B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */,
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,
+				AAA4D61B1E693EB100B9725E /* HomeMenuViewController.swift in Sources */,
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
 				B59A07631E533FE300623225 /* ViewPlayersController.swift in Sources */,
 				AA10ED621E5A5FBF00D3C8E5 /* TacticalCentreViewController.swift in Sources */,
@@ -637,6 +672,7 @@
 				AA7D71FA1E6347F300FEF40C /* TacticsPlayerAddViewController.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 				AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */,
+				AAA4D6171E692F5600B9725E /* ParallaxTableViewCell.swift in Sources */,
 				AA1B23661E5CFE75000528B7 /* EditPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

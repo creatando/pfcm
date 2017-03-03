@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hxY-Ju-URQ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fl5-4g-BdA">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -348,7 +348,7 @@
         <!--Home View Controller-->
         <scene sceneID="51j-fk-Jwd">
             <objects>
-                <viewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hxY-Ju-URQ" customClass="HomeViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OldHome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hxY-Ju-URQ" customClass="HomeViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WMD-hg-ojZ"/>
                         <viewControllerLayoutGuide type="bottom" id="hFW-hz-7s3"/>
@@ -427,6 +427,283 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGB-OU-MCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1840.5797101449277" y="309.78260869565219"/>
+        </scene>
+        <!--Home Menu View Controller-->
+        <scene sceneID="QsX-1N-3jq">
+            <objects>
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="Fl5-4g-BdA" customClass="HomeMenuViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" id="Owo-ro-DRU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="xYP-rB-pGb" userLabel="Tactical Centre">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="parallaxCell" editingAccessoryType="disclosureIndicator" id="Gmm-rx-Md0" customClass="ParallaxTableViewCell" customModule="PFCM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gmm-rx-Md0" id="wyM-Tx-vwf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu2.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-ab-VMt">
+                                                    <rect key="frame" x="0.0" y="-71" width="414" height="301"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="301" id="4wC-fu-LVs"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Centre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvD-Ms-rSz">
+                                                    <rect key="frame" x="115" y="85" width="185" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="TRn-nB-qWH"/>
+                                                        <constraint firstAttribute="width" constant="185" id="ueF-UR-JHd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="OvD-Ms-rSz" firstAttribute="leading" secondItem="wyM-Tx-vwf" secondAttribute="leadingMargin" constant="107" id="77Z-Z9-NSE"/>
+                                                <constraint firstItem="OvD-Ms-rSz" firstAttribute="top" secondItem="wyM-Tx-vwf" secondAttribute="topMargin" constant="77" id="KfE-Fb-dDn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OvD-Ms-rSz" secondAttribute="trailing" constant="106" id="Kqn-5W-n3X"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SbN-ab-VMt" secondAttribute="trailing" constant="-8" id="cWU-db-mgt"/>
+                                                <constraint firstItem="SbN-ab-VMt" firstAttribute="top" secondItem="wyM-Tx-vwf" secondAttribute="topMargin" constant="-79" id="exy-D7-dwY"/>
+                                                <constraint firstItem="SbN-ab-VMt" firstAttribute="leading" secondItem="wyM-Tx-vwf" secondAttribute="leadingMargin" constant="-8" id="vhH-O1-DLg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parallaxHeightConstraint" destination="4wC-fu-LVs" id="r4I-Tg-ATs"/>
+                                            <outlet property="parallaxImageView" destination="SbN-ab-VMt" id="3mX-84-BHf"/>
+                                            <outlet property="parallaxTopConstraint" destination="exy-D7-dwY" id="hvD-TF-d5A"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="LqV-Yq-L7U" userLabel="Tactical Centre">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="parallaxCell" id="oD5-kD-79I" customClass="ParallaxTableViewCell" customModule="PFCM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="200" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oD5-kD-79I" id="sbH-WJ-7UB">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu5.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1Y7-v8-yzx">
+                                                    <rect key="frame" x="0.0" y="-30" width="414" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="260" id="wid-co-wGj"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tactcal Centre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvU-Pq-V5R">
+                                                    <rect key="frame" x="115" y="85" width="185" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="185" id="MOv-xJ-vI9"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Y9c-AT-WLh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Y7-v8-yzx" firstAttribute="leading" secondItem="sbH-WJ-7UB" secondAttribute="leadingMargin" constant="-8" id="0NV-zz-BgJ"/>
+                                                <constraint firstItem="RvU-Pq-V5R" firstAttribute="leading" secondItem="sbH-WJ-7UB" secondAttribute="leadingMargin" constant="107" id="BK2-xU-bQc"/>
+                                                <constraint firstItem="RvU-Pq-V5R" firstAttribute="top" secondItem="sbH-WJ-7UB" secondAttribute="topMargin" constant="77" id="IhW-Zl-HiG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="1Y7-v8-yzx" secondAttribute="trailing" constant="-8" id="KEl-aa-ikH"/>
+                                                <constraint firstItem="1Y7-v8-yzx" firstAttribute="top" secondItem="sbH-WJ-7UB" secondAttribute="topMargin" constant="-38" id="Ovc-4R-NFL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RvU-Pq-V5R" secondAttribute="trailing" constant="106" id="eD5-wj-gVf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parallaxHeightConstraint" destination="wid-co-wGj" id="ruT-Yk-6Q2"/>
+                                            <outlet property="parallaxImageView" destination="1Y7-v8-yzx" id="IIV-jY-l3G"/>
+                                            <outlet property="parallaxTopConstraint" destination="Ovc-4R-NFL" id="I3Q-xu-78q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="1iH-1m-dkl" userLabel="Social Centre">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="parallaxCell" id="OOQ-pt-8d9" customClass="ParallaxTableViewCell" customModule="PFCM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="400" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OOQ-pt-8d9" id="Gd0-b9-Qyo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu6.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4n6-RU-3Ri">
+                                                    <rect key="frame" x="0.0" y="-30" width="414" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="260" id="4Tb-yi-dYb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Social Centre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-2Z-q6g">
+                                                    <rect key="frame" x="121" y="85" width="172" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="172" id="6no-7U-ejP"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Rjh-NR-ZLv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4n6-RU-3Ri" firstAttribute="leading" secondItem="Gd0-b9-Qyo" secondAttribute="leadingMargin" constant="-8" id="0MS-rd-01P"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4n6-RU-3Ri" secondAttribute="trailing" constant="-8" id="EVI-XR-hGl"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zsk-2Z-q6g" secondAttribute="trailing" constant="113" id="LtD-n1-tDI"/>
+                                                <constraint firstItem="4n6-RU-3Ri" firstAttribute="top" secondItem="Gd0-b9-Qyo" secondAttribute="topMargin" constant="-38" id="jXb-50-3XW"/>
+                                                <constraint firstItem="zsk-2Z-q6g" firstAttribute="top" secondItem="Gd0-b9-Qyo" secondAttribute="topMargin" constant="77" id="qmI-CB-Ae8"/>
+                                                <constraint firstItem="zsk-2Z-q6g" firstAttribute="leading" secondItem="Gd0-b9-Qyo" secondAttribute="leadingMargin" constant="113" id="rph-Eu-H0x"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parallaxHeightConstraint" destination="4Tb-yi-dYb" id="JV3-MH-1zj"/>
+                                            <outlet property="parallaxImageView" destination="4n6-RU-3Ri" id="xsq-3r-mxX"/>
+                                            <outlet property="parallaxTopConstraint" destination="jXb-50-3XW" id="Ppu-Gf-u1w"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="39c-yc-ZVQ" userLabel="FR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="parallaxCell" id="RvV-RW-aDo" customClass="ParallaxTableViewCell" customModule="PFCM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="600" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RvV-RW-aDo" id="i6L-bd-Q8N">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu4.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7su-xi-l4Y">
+                                                    <rect key="frame" x="0.0" y="-30" width="414" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="260" id="EYV-La-Xru"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixtures &amp; Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2F-Gh-dii">
+                                                    <rect key="frame" x="92" y="85" width="230" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="230" id="nh8-rU-S5S"/>
+                                                        <constraint firstAttribute="height" constant="30" id="rBF-88-GL5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7su-xi-l4Y" firstAttribute="leading" secondItem="i6L-bd-Q8N" secondAttribute="leadingMargin" constant="-8" id="WFW-bY-Qnl"/>
+                                                <constraint firstItem="N2F-Gh-dii" firstAttribute="top" secondItem="i6L-bd-Q8N" secondAttribute="topMargin" constant="77" id="ehl-Jt-kky"/>
+                                                <constraint firstItem="7su-xi-l4Y" firstAttribute="top" secondItem="i6L-bd-Q8N" secondAttribute="topMargin" constant="-38" id="i5f-rb-xrv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="N2F-Gh-dii" secondAttribute="trailing" constant="84" id="khZ-JQ-uc2"/>
+                                                <constraint firstItem="N2F-Gh-dii" firstAttribute="leading" secondItem="i6L-bd-Q8N" secondAttribute="leadingMargin" constant="84" id="opU-B7-our"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7su-xi-l4Y" secondAttribute="trailing" constant="-8" id="y9n-HR-eXy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parallaxHeightConstraint" destination="EYV-La-Xru" id="3sR-8K-68M"/>
+                                            <outlet property="parallaxImageView" destination="7su-xi-l4Y" id="1ti-Nb-Mnh"/>
+                                            <outlet property="parallaxTopConstraint" destination="i5f-rb-xrv" id="xWu-av-QMj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="Tvu-4n-3eK" userLabel="Comms Centre">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="parallaxCell" id="bOs-ws-DSv" customClass="ParallaxTableViewCell" customModule="PFCM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="800" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bOs-ws-DSv" id="Xk6-ip-GI5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gxN-Yx-0iB">
+                                                    <rect key="frame" x="0.0" y="-30" width="414" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="260" id="RFt-sk-AFJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Management Centre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJh-OZ-SrE">
+                                                    <rect key="frame" x="78" y="85" width="258" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="NOe-fe-1fR"/>
+                                                        <constraint firstAttribute="width" constant="258" id="fLr-eB-zXk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gxN-Yx-0iB" firstAttribute="leading" secondItem="Xk6-ip-GI5" secondAttribute="leadingMargin" constant="-8" id="0lM-Vn-6IH"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gxN-Yx-0iB" secondAttribute="trailing" constant="-8" id="6cb-YJ-zNT"/>
+                                                <constraint firstItem="oJh-OZ-SrE" firstAttribute="top" secondItem="Xk6-ip-GI5" secondAttribute="topMargin" constant="77" id="A7x-WY-bXN"/>
+                                                <constraint firstItem="oJh-OZ-SrE" firstAttribute="leading" secondItem="Xk6-ip-GI5" secondAttribute="leadingMargin" constant="70" id="gQ2-ql-eKy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oJh-OZ-SrE" secondAttribute="trailing" constant="70" id="mcP-FY-W6I"/>
+                                                <constraint firstItem="gxN-Yx-0iB" firstAttribute="top" secondItem="Xk6-ip-GI5" secondAttribute="topMargin" constant="-38" id="oCj-us-0fu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parallaxHeightConstraint" destination="RFt-sk-AFJ" id="bFE-vY-Rgr"/>
+                                            <outlet property="parallaxImageView" destination="gxN-Yx-0iB" id="MsE-8R-XHJ"/>
+                                            <outlet property="parallaxTopConstraint" destination="oCj-us-0fu" id="TD7-bf-mNM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="oIV-lB-UKj" userLabel="Settings">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="parallaxCell" id="xhM-AM-cKx" customClass="ParallaxTableViewCell" customModule="PFCM" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1000" width="414" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xhM-AM-cKx" id="92q-pB-7S4">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu3.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="r40-Kh-0If">
+                                                    <rect key="frame" x="0.0" y="-30" width="414" height="260"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="260" id="acj-Io-34k"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALA-VN-qUt">
+                                                    <rect key="frame" x="156" y="85" width="103" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="103" id="d5h-cW-vO7"/>
+                                                        <constraint firstAttribute="height" constant="30" id="t18-wH-u3m"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="r40-Kh-0If" secondAttribute="trailing" constant="-8" id="00o-sl-fux"/>
+                                                <constraint firstItem="ALA-VN-qUt" firstAttribute="leading" secondItem="92q-pB-7S4" secondAttribute="leadingMargin" constant="148" id="1YP-Ij-CEN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ALA-VN-qUt" secondAttribute="trailing" constant="147" id="4Oy-xG-izJ"/>
+                                                <constraint firstItem="r40-Kh-0If" firstAttribute="leading" secondItem="92q-pB-7S4" secondAttribute="leadingMargin" constant="-8" id="AoN-kc-v2s"/>
+                                                <constraint firstItem="r40-Kh-0If" firstAttribute="top" secondItem="92q-pB-7S4" secondAttribute="topMargin" constant="-38" id="aQq-eO-rUu"/>
+                                                <constraint firstItem="ALA-VN-qUt" firstAttribute="top" secondItem="92q-pB-7S4" secondAttribute="topMargin" constant="77" id="mHw-n2-1u8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="parallaxHeightConstraint" destination="acj-Io-34k" id="EBa-bj-gtx"/>
+                                            <outlet property="parallaxImageView" destination="r40-Kh-0If" id="kom-IY-ogN"/>
+                                            <outlet property="parallaxTopConstraint" destination="aQq-eO-rUu" id="ayB-ol-1Zo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Fl5-4g-BdA" id="nNZ-VI-hYb"/>
+                            <outlet property="delegate" destination="Fl5-4g-BdA" id="sKZ-7f-jrs"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gJN-jt-bvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811.594202898551" y="981.52173913043487"/>
         </scene>
         <!--New Player View Controller-->
         <scene sceneID="oJi-xQ-AEb">
@@ -869,7 +1146,7 @@
         <!--Tactical Centre View Controller-->
         <scene sceneID="JGn-Cf-cxC">
             <objects>
-                <viewController id="Odl-uK-4EA" customClass="TacticalCentreViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TacticCentre" id="Odl-uK-4EA" customClass="TacticalCentreViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sbi-kY-wEE"/>
                         <viewControllerLayoutGuide type="bottom" id="LTb-uB-w2T"/>
@@ -1525,7 +1802,7 @@
         <scene sceneID="zE8-9C-4XE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Sh-ni-Tjq" userLabel="New Player Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add Player" image="plus.png" id="qJn-xT-rs9" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Add Player" image="plusc.png" id="qJn-xT-rs9" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1586,12 +1863,12 @@
         <!--Tactics: Player Add View Controller-->
         <scene sceneID="UGG-cX-43w">
             <objects>
-                <tableViewController storyboardIdentifier="addPlayerPopover" id="RKY-jO-v8p" userLabel="Tactics: Player Add View Controller" customClass="TacticsPlayerAddViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addPlayerPopover" autoresizesArchivedViewToFullSize="NO" id="RKY-jO-v8p" userLabel="Tactics: Player Add View Controller" customClass="TacticsPlayerAddViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="wUx-et-HhP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dbx-NL-uhq">
+                        <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" id="Dbx-NL-uhq">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2309,12 +2586,16 @@
         <scene sceneID="2f3-ha-ATh">
             <objects>
                 <viewController id="8Cn-5K-Y41" customClass="TacticalBackgroundViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kqd-YW-yS9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ed1-T5-773"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="emU-dm-HpQ" customClass="TacticalBackgroundView" customModule="PFCM" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pitch.png" translatesAutoresizingMaskIntoConstraints="NO" id="iDA-Ze-sIx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="-4" width="414" height="700"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
@@ -2339,17 +2620,23 @@
         <image name="eye.png" width="40" height="40"/>
         <image name="icon_close" width="120" height="120"/>
         <image name="icon_menu" width="120" height="120"/>
+        <image name="menu1.jpg" width="5184" height="3456"/>
+        <image name="menu2.jpeg" width="1922" height="1080"/>
+        <image name="menu3.jpeg" width="3264" height="2448"/>
+        <image name="menu4.jpg" width="5184" height="3456"/>
+        <image name="menu5.jpg" width="500" height="341"/>
+        <image name="menu6.jpg" width="640" height="426"/>
         <image name="menubutton.png" width="20" height="18"/>
         <image name="pitch.png" width="2000" height="3027"/>
-        <image name="plus.png" width="40" height="40"/>
+        <image name="plusc.png" width="36" height="36"/>
         <image name="profile-blank.png" width="50" height="50"/>
         <image name="profile.jpg" width="263" height="263"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="52p-kb-KQx"/>
         <segue reference="MqV-y1-dHY"/>
+        <segue reference="52p-kb-KQx"/>
         <segue reference="zck-D5-27A"/>
+        <segue reference="cYR-Sx-gfu"/>
         <segue reference="8T0-Nd-nuB"/>
-        <segue reference="sIy-o9-3BV"/>
     </inferredMetricsTieBreakers>
 </document>
