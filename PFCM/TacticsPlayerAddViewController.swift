@@ -30,7 +30,7 @@ class TacticsPlayerAddViewController: UITableViewController {
             confirmAlertView.addButton("Yes") {
                 let viewController = "TacticCentre"
                 let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: viewController) as? TacticalCentreViewController
+                let vc = storyboard.instantiateViewController(withIdentifier: viewController) as? TacticalCreatorViewController
                 print ("Player name is: \(self.playerName!)")
                 print ("Player no is: \(self.playerNo!)")
                 print ("Player pic is: \(self.picPath!)")

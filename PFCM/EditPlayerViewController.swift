@@ -340,7 +340,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
                 let image = profilePic.image!.generateJPEGRepresentation()
                     print(profilePic.image!)
                     print (image)
-                    try! image.write(to: fileURL, options: .atomicWrite)
+                try! image.write(to: fileURL, options: .atomicWrite)
                 print("Image Added Successfully")
                 } else {
                     print("Image not added")
@@ -348,8 +348,6 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             } catch {
                 print(error)
             }
-        } else {
-            print("Image Not Added")
             
         }
         print(profilePic.image!)

@@ -35,6 +35,9 @@ class ViewPlayersController: UITableViewController {
         self.tableView.reloadData()
         }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     @IBAction func selectButton(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)

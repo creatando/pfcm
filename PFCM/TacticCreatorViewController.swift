@@ -27,7 +27,7 @@ extension UIView {
 }
 
 
-class TacticalCentreViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class TacticalCreatorViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var backPanel: UIView!
     @IBOutlet weak var pB1: UIView!

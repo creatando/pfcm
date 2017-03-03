@@ -20,9 +20,9 @@ class ParallaxTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        //clipsToBounds = true
+        clipsToBounds = true
         parallaxImageView.contentMode = .scaleAspectFill
-        //parallaxImageView.clipsToBounds = false
+        parallaxImageView.clipsToBounds = false
     }
     
     

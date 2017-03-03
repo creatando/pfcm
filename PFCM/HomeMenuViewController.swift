@@ -46,7 +46,7 @@ class HomeMenuViewController: UITableViewController {
     }
     
     // Change this value to whatever you like (it sets how "fast" the image moves when you scroll)
-    let parallaxOffsetSpeed: CGFloat = 35
+    let parallaxOffsetSpeed: CGFloat = 25
     
     // This just makes sure that whatever the design is, there's enough image to be displayed.
     var parallaxImageHeight: CGFloat {
@@ -61,9 +61,6 @@ class HomeMenuViewController: UITableViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = tableView.contentOffset.y
-        scrollView.contentInset = UIEdgeInsets.zero
-        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
-        
         for cell in tableView.visibleCells as! [ParallaxTableViewCell] {
             cell.parallaxTopConstraint.constant = parallaxOffsetFor(newOffsetY: offsetY, cell: cell)
         }
