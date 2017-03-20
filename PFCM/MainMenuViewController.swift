@@ -8,6 +8,7 @@
 
 import UIKit
 import GuillotineMenu
+import Hue
 
 var dismissButton: UIButton?
 var titleLabel: UILabel?
@@ -17,14 +18,13 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menuItems()
-
         // Do any additional setup after loading the view.
     }
     
     func menuItems() {
         dismissButton = {
             let button = UIButton(frame: .zero)
-            button.setImage(UIImage(named: "menubutton.png"), for: .normal)
+            button.setImage(UIImage(named: "closebtn"), for: .normal)
             button.addTarget(self, action: #selector(dismissButtonTapped(_:)), for: .touchUpInside)
             return button
         }()
@@ -32,7 +32,7 @@ class MainMenuViewController: UIViewController {
         titleLabel = {
             let label = UILabel()
             label.numberOfLines = 1;
-            label.text = "Home"
+            label.text = "Main Menu"
             label.font = UIFont.boldSystemFont(ofSize: 17)
             label.textColor = UIColor.white
             label.sizeToFit()
@@ -69,8 +69,29 @@ class MainMenuViewController: UIViewController {
         presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func menuButtonTapped(_ sender: UIButton) {
-        presentingViewController!.dismiss(animated: true, completion: nil)
+    @IBAction func homeTapped(_ sender: UIButton) {
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "Home")
+        
+        present(menuViewController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func playerTapped(_ sender: UIButton) {
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "PlayerCentre")
+        let navController = UINavigationController.init(rootViewController: menuViewController)
+        
+        navController.navigationBar.barTintColor = UIColor(hex: "#31A343")
+        
+        present(navController, animated: true, completion: nil)
+    }
+    
+    @IBAction func tacticTapped(_ sender: UIButton) {
+        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "TacticCentre")
+        let navController = UINavigationController.init(rootViewController: menuViewController)
+        
+        navController.navigationBar.barTintColor = UIColor(hex: "#31A343")
+        
+        present(navController, animated: true, completion: nil)
     }
     
     @IBAction func closeMenu(_ sender: UIButton) {

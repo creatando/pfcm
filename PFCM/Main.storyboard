@@ -252,7 +252,6 @@
                             <constraint firstItem="Fnw-1K-dnU" firstAttribute="top" secondItem="5Kj-ee-BoN" secondAttribute="bottom" constant="20" id="mZ2-Zy-cLM"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="emailTextField" destination="Mzg-Nq-DOO" id="j4Y-Ig-TEt"/>
                         <outlet property="passwordTextField" destination="gDl-65-jdF" id="EqT-3l-k4i"/>
@@ -629,7 +628,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJN-jt-bvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6Tp-xw-Zw6" userLabel="Player Centre Gesture">
                     <connections>
-                        <segue destination="xvn-nC-KnW" kind="presentation" id="Jl0-Kn-neQ"/>
+                        <segue destination="dAZ-BZ-7ey" kind="presentation" id="a54-FX-ITg"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="WGM-UO-KDL" userLabel="Tactical Centre Gesture">
@@ -639,6 +638,114 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1946" y="55"/>
+        </scene>
+        <!--Main Menu View Controller-->
+        <scene sceneID="yFC-s2-Dv2">
+            <objects>
+                <viewController storyboardIdentifier="MainMenuViewController" id="AQX-Qb-VYU" customClass="MainMenuViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cn9-7E-P78"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z2c-i5-NgA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2r9-bD-gxt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDw-Qz-ZYj">
+                                <rect key="frame" x="122" y="127" width="171" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="HOME">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="f2L-GW-vog"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABy-Ze-30R">
+                                <rect key="frame" x="134" y="173" width="147" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="PLAYER CENTRE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playerTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="9gJ-wD-SF3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-Fv-jpv">
+                                <rect key="frame" x="134" y="219" width="147" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="TACTICAL CENTRE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tacticTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="2qa-hK-Yan"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocR-RZ-D6k">
+                                <rect key="frame" x="134" y="265" width="147" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="SOCIAL CENTRE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="IGn-Bs-eqL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDt-tA-deh">
+                                <rect key="frame" x="122" y="311" width="171" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="FIXTURES &amp; RESULTS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="S4n-kF-E0h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdU-Yg-qnS">
+                                <rect key="frame" x="122" y="403" width="171" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="SETTINGS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="Umx-2B-nSQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goh-QN-8hy">
+                                <rect key="frame" x="114" y="357" width="187" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="MANAGEMENT CENTRE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="homeTapped:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="mOF-sB-zTo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9F-4y-bPP">
+                                <rect key="frame" x="188" y="468" width="38" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" image="closebtn.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeMenu:" destination="AQX-Qb-VYU" eventType="touchUpInside" id="6eY-9a-mdN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.19215686274509802" green="0.63921568627450975" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iR8-ti-hse" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939.1304347826087" y="767.93478260869574"/>
         </scene>
         <!--New Player View Controller-->
         <scene sceneID="oJi-xQ-AEb">
@@ -1076,12 +1183,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9g-nT-thG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7345" y="760"/>
+            <point key="canvasLocation" x="7906" y="836"/>
         </scene>
         <!--Tactic Creator View Controller-->
         <scene sceneID="JGn-Cf-cxC">
             <objects>
-                <viewController storyboardIdentifier="TacticCentre" id="Odl-uK-4EA" userLabel="Tactic Creator View Controller" customClass="TacticalCentreViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TacticCreator" id="Odl-uK-4EA" userLabel="Tactic Creator View Controller" customClass="TacticalCreatorViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sbi-kY-wEE"/>
                         <viewControllerLayoutGuide type="bottom" id="LTb-uB-w2T"/>
@@ -1465,7 +1572,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.22745098039215686" green="0.63529411764705879" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backPanel" destination="O7X-Kq-DEZ" id="f6h-Pg-nMq"/>
                         <outlet property="pB1" destination="J97-G0-8UO" id="QUn-IC-VYu"/>
@@ -1587,7 +1693,7 @@
         <!--View Players View Controller-->
         <scene sceneID="B5P-CF-0re">
             <objects>
-                <tableViewController storyboardIdentifier="popoverID" id="UZI-9R-aR8" userLabel="View Players View Controller" customClass="ViewPlayersController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UZI-9R-aR8" userLabel="View Players View Controller" customClass="ViewPlayersController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="OBL-6h-ocb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1695,43 +1801,12 @@
                         </connections>
                     </navigationItem>
                     <connections>
-                        <segue destination="Nx7-7L-Ra5" kind="show" identifier="EPS" id="8T0-Nd-nuB"/>
+                        <segue destination="Nx7-7L-Ra5" kind="show" identifier="EPS" id="gxe-Dc-vKn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctV-XK-o2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7342.0289855072469" y="54.619565217391312"/>
-        </scene>
-        <!--View Players Navigation Controller-->
-        <scene sceneID="yl4-PJ-Rap">
-            <objects>
-                <navigationController id="zaE-gg-FYm" userLabel="View Players Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="View Players" image="eye.png" selectedImage="eye.png" id="ngI-dA-j45" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outlet property="animation" destination="bso-MO-ODB" id="u4Y-7Y-p36"/>
-                        </connections>
-                    </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="hT9-4I-47p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="UZI-9R-aR8" kind="relationship" relationship="rootViewController" id="7f5-sE-Q6g"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zi8-IW-QeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="bso-MO-ODB" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController"/>
-            </objects>
-            <point key="canvasLocation" x="6405.7971014492759" y="55.434782608695656"/>
+            <point key="canvasLocation" x="9688.4057971014499" y="54.619565217391312"/>
         </scene>
         <!--New Player Navigation Controller-->
         <scene sceneID="zE8-9C-4XE">
@@ -1764,7 +1839,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hks-Ev-yyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="20v-Ut-1ep" customClass="RAMLeftRotationAnimation" customModule="RAMAnimatedTabBarController"/>
             </objects>
-            <point key="canvasLocation" x="6406" y="760"/>
+            <point key="canvasLocation" x="6967" y="836"/>
         </scene>
         <!--Tactics: Player Add View Controller-->
         <scene sceneID="UGG-cX-43w">
@@ -1784,7 +1859,7 @@
                                 <rect key="frame" x="0.0" y="72" width="414" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npQ-PY-6ok" id="8K6-tK-GOs">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="94.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3nZ-ey-tAb" userLabel="name">
@@ -1890,26 +1965,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfX-St-VEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2980" y="-2018"/>
-        </scene>
-        <!--Edit Player Navigation Controller-->
-        <scene sceneID="FXD-6N-mSX">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dWU-hf-fcc" userLabel="Edit Player Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Edit Player" id="yeX-Wr-kGr"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" backIndicatorImage="arrowLeft.png" backIndicatorTransitionMaskImage="arrowLeft.png" id="gIP-4M-Xkr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Nx7-7L-Ra5" kind="relationship" relationship="rootViewController" id="op2-RD-tqs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="and-Yw-tW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8144.9275362318849" y="54.619565217391312"/>
         </scene>
         <!--Edit Player View Controller-->
         <scene sceneID="HFj-oG-El4">
@@ -2486,7 +2541,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5l-XI-j4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8973.9130434782619" y="54.619565217391312"/>
+            <point key="canvasLocation" x="10484.057971014494" y="54.619565217391312"/>
         </scene>
         <!--Tactics: Background View Controller-->
         <scene sceneID="2f3-ha-ATh">
@@ -2519,7 +2574,7 @@
         <!--Player Centre View Controller-->
         <scene sceneID="8VU-HZ-kD9">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="UwD-8g-kTt" userLabel="Player Centre View Controller" customClass="HomeMenuViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PlayerCentre" automaticallyAdjustsScrollViewInsets="NO" id="UwD-8g-kTt" userLabel="Player Centre View Controller" customClass="PlayerCentreViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" id="UOX-97-8PS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2632,7 +2687,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menubutton.png" id="Dl9-1N-Nj8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="backNav:" destination="wDF-L4-9Or" id="RwV-3e-2Kk"/>
+                                <action selector="menuButton:" destination="UwD-8g-kTt" id="1Gc-gt-md4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2640,7 +2695,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTV-lC-MgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="DaS-17-9Dw" userLabel="View Players Gesture">
                     <connections>
-                        <segue destination="zaE-gg-FYm" kind="presentation" id="LiL-KX-Yjx"/>
+                        <segue destination="VHC-mw-N1u" kind="presentation" id="7JP-eR-Kbi"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="V59-0m-eKn" userLabel="New Player Gesture">
@@ -2649,33 +2704,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4889.8550724637689" y="54.619565217391312"/>
-        </scene>
-        <!--Player Centre Navigation Controller-->
-        <scene sceneID="YOy-9a-Q9t">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xvn-nC-KnW" userLabel="Player Centre Navigation Controller" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="1Qz-yL-f31">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UwD-8g-kTt" kind="relationship" relationship="rootViewController" id="nS5-zb-NWD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J32-5d-kfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2980" y="55"/>
+            <point key="canvasLocation" x="6704.347826086957" y="54.619565217391312"/>
         </scene>
         <!--Tactical Centre View Controller-->
         <scene sceneID="t3X-hn-n2d">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="XsK-jK-EYD" userLabel="Tactical Centre View Controller" customClass="HomeMenuViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TacticCentre" automaticallyAdjustsScrollViewInsets="NO" id="XsK-jK-EYD" userLabel="Tactical Centre View Controller" customClass="TacticsCentreViewController" customModule="PFCM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" indicatorStyle="white" dataMode="static" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" id="d6b-j0-1zI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -2786,7 +2822,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menubutton.png" id="r02-LC-0CK">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="backNav:" destination="wDF-L4-9Or" id="D6n-rt-tsY"/>
+                                <action selector="menuButton:" destination="XsK-jK-EYD" id="Ldc-ua-9LX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2820,6 +2856,44 @@
             </objects>
             <point key="canvasLocation" x="1945" y="-605"/>
         </scene>
+        <!--Player Centre Navigation Controller-->
+        <scene sceneID="LD6-jC-GNS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dAZ-BZ-7ey" userLabel="Player Centre Navigation Controller" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="b1u-Va-1Ug">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UwD-8g-kTt" kind="relationship" relationship="rootViewController" id="wdx-6c-Pzj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeK-tX-ISV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5797.1014492753629" y="54.619565217391312"/>
+        </scene>
+        <!--View Player Navigatoin Controller-->
+        <scene sceneID="i9K-66-JcC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VHC-mw-N1u" userLabel="View Player Navigatoin Controller" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Y83-4A-Zd7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.19115509089999999" green="0.63786703349999996" blue="0.26147949700000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UZI-9R-aR8" kind="relationship" relationship="rootViewController" id="5NK-Zm-Xhm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBJ-Fd-Rc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8781.1594202898559" y="54.619565217391312"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Premier-Logo-icon.png" width="91" height="106"/>
@@ -2841,10 +2915,9 @@
         <image name="profile.jpg" width="263" height="263"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="52p-kb-KQx"/>
-        <segue reference="MqV-y1-dHY"/>
         <segue reference="zck-D5-27A"/>
-        <segue reference="8T0-Nd-nuB"/>
+        <segue reference="d7R-4T-WIa"/>
+        <segue reference="V5Z-ei-lQN"/>
         <segue reference="Jx3-xk-Too"/>
     </inferredMetricsTieBreakers>
 </document>

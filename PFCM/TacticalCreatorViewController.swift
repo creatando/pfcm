@@ -58,6 +58,27 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
     }
     
     @IBAction func toolsButton (_ sender: Any) {
+        let actionSheetController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
+        
+        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            print("Draw")
+        }
+        
+        let drawActionButton = UIAlertAction(title: "Draw", style: .cancel) { action -> Void in
+            print("Draw")
+        }
+        let undoActionButton = UIAlertAction(title: "Undo", style: .default) { action -> Void in
+            print("Undo")
+        }
+        let redoActionButton = UIAlertAction(title: "Redo", style: .default) { action -> Void in
+            print("Redo")
+        }
+        
+        actionSheetController.addAction(cancelActionButton)
+        actionSheetController.addAction(drawActionButton)
+        actionSheetController.addAction(undoActionButton)
+        actionSheetController.addAction(redoActionButton)
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
     @IBAction func tacticsButton(_ sender: Any) {

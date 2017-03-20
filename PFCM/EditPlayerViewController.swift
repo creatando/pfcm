@@ -332,7 +332,6 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         print ("file url is: \(fileURL)")
         checkImageExists()
         if FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
                 print(profilePic.image as Any)
                 if profilePic.image != nil {
                 print ("first file \(fileURL)")
@@ -345,10 +344,6 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
                 } else {
                     print("Image not added")
                 }
-            } catch {
-                print(error)
-            }
-            
         }
         print(profilePic.image!)
     }
