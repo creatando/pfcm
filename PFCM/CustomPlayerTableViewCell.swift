@@ -16,6 +16,12 @@ class CustomPlayerTableViewCell: UITableViewCell {
     @IBOutlet weak var dob: UILabel!
     @IBOutlet weak var stats: UILabel!
     @IBOutlet weak var squadNumber: UILabel!
+    @IBInspectable var selectedColor: UIColor = UIColor.black {
+        didSet {
+            selectedBackgroundView = UIView()
+            selectedBackgroundView?.backgroundColor = selectedColor
+        }
+    }
     
     
     override func awakeFromNib() {

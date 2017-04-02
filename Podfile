@@ -19,7 +19,6 @@ target 'PFCM' do
 
   # Pods installed
   pod 'IQKeyboardManagerSwift'
-  pod 'CircleMenu', '~> 2.0.1'
   pod 'SCLAlertView'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
@@ -28,14 +27,9 @@ target 'PFCM' do
   pod 'TextFieldEffects'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'UIView+draggable'
-  pod 'FontAwesome.swift'
-  pod 'FaceAware'
   pod 'SwiftVideoBackground'
-  pod 'RAMAnimatedTabBarController', '~> 2.0.13'
   pod 'AZTransitions'
-  pod 'GuillotineMenu', '~> 3.0'
-  pod 'Motion', '~> 1.0'
   pod 'Hue'
-  pod 'NXDrawKit'
+  pod 'PKHUD', '~> 4.0'
   
 end

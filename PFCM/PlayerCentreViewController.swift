@@ -7,17 +7,31 @@
 //
 
 import UIKit
-import GuillotineMenu
 
 
-class PlayerCentreViewController: UITableViewController {
+class PlayerCentreViewController: UIViewController {
     
-    fileprivate lazy var presentationAnimator = GuillotineTransitionAnimation()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var menuItems = Menu.fetchPlayerCentre()
+    let cellScaling: CGFloat = 0.6
+    var currentPath: IndexPath?
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            let screenSize = UIScreen.main.bounds.size
+            let cellWidth = floor(screenSize.width * cellScaling)
+            let cellHeight = floor(screenSize.height * cellScaling)
+            
+            let insetX = (view.bounds.width - cellWidth) / 2.0
+            let insetY = (view.bounds.height - cellHeight) / 2.0
+            
+            let layout = collectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+            layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+            collectionView?.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+            
+            collectionView?.dataSource = self
+            collectionView?.delegate = self
+            self.automaticallyAdjustsScrollViewInsets = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,16 +41,11 @@ class PlayerCentreViewController: UITableViewController {
 
     @IBAction func menuButton(_ sender: UIButton) {
         print ("main menu button clicked")
-        let menuViewController = storyboard!.instantiateViewController(withIdentifier: "MainMenuViewController")
-        menuViewController.modalPresentationStyle = .custom
-        menuViewController.transitioningDelegate = self
-        
-        presentationAnimator.animationDelegate = menuViewController as? GuillotineAnimationDelegate
-        presentationAnimator.supportView = navigationController!.navigationBar
-        presentationAnimator.presentButton = sender
-        present(menuViewController, animated: true, completion: nil)
     }
     
+    @IBAction func home(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
@@ -50,15 +59,69 @@ class PlayerCentreViewController: UITableViewController {
 
 }
 
-extension PlayerCentreViewController: UIViewControllerTransitioningDelegate {
+extension PlayerCentreViewController : UICollectionViewDataSource {
     
-   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        presentationAnimator.mode = .presentation
-        return presentationAnimator
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        presentationAnimator.mode = .dismissal
-        return presentationAnimator
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return menuItems.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuViewCell
+        
+        cell.menu = menuItems[indexPath.item]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentPath = indexPath
+        let items = menuItems[currentPath!.item]
+        switch items.name {
+        case  "View Players":
+            print("view")
+            performSegue(withIdentifier: "VPSegue", sender: nil)
+        case  "Add Player":
+            print("add")
+            performSegue(withIdentifier: "APSegue", sender: nil)
+        default:
+            print("default")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    }
+    
+    
 }
+
+extension PlayerCentreViewController : UIScrollViewDelegate, UICollectionViewDelegate
+{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
+    {
+        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+        let roundedIndex = round(index)
+        
+        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
+        targetContentOffset.pointee = offset
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if currentPath != nil {
+            self.collectionView.deselectItem(at: currentPath!, animated: false)
+            // print ("Current path is: \(currentPath!)")
+            
+        }
+    }
+    
+    
+}
+

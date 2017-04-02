@@ -3,7 +3,6 @@
 </p>
 
 [![Version Status](https://img.shields.io/cocoapods/v/SwiftVideoBackground.svg)][podLink]
-[![Build Status](https://travis-ci.org/dingwilson/SwiftVideoBackground.svg?branch=master)](https://travis-ci.org/dingwilson/SwiftVideoBackground)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][mitLink]
 ![Platform](https://img.shields.io/badge/platforms-iOS%2010.0+-333333.svg)
 
@@ -16,6 +15,7 @@ SwiftVideoBackground is an easy to use Swift framework that provides the ability
 1. [Requirements](#requrements)
 2. [Integration](#integration)
     - [Cocoapods](#cocoapods)
+    - [Carthage](#carthage)
     - [Swift Package Manager](#swift-package-manager)
     - [Manually](#manually)
 3. [Usage](#usage)
@@ -41,6 +41,12 @@ target 'MyApp' do
 end
 ```
 Note: your iOS deployment target must be 10.0:
+
+####Carthage
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftVideoBackground` by adding it to your `Cartfile`:
+```
+github "dingwilson/SwiftVideoBackground"
+```
 
 ####Swift Package Manager
 You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SwiftVideoBackground` by adding the proper description to your `Package.swift` file:
@@ -89,7 +95,9 @@ Note: Make sure you have added a video file to the project, and targeted the pro
 
 ## Example
 
-To view the included example `ExampleLogin`, simply run `pod install` to get the latest version of the `SwiftVideoBackground`, and then open the `ExampleLogin.xcworkspace and run on a compatible iPhone simulator or iOS device.
+To view the included example `ExampleLogin`, simply run `pod install` to get the latest version of the `SwiftVideoBackground`, and then open the `ExampleLogin.xcworkspace` and run on a compatible iPhone simulator or iOS device.
+
+Note: If you have used SwiftVideoBackground in your own app, please feel free to submit a PR to have a link of your app added to this section!
 
 ## License
 
