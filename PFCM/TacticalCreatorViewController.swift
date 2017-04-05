@@ -8,7 +8,7 @@
 
 import UIKit
 import UIView_draggable
-import RealmSwift
+import Firebase
 import Hue
 import SCLAlertView
 
@@ -80,11 +80,108 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
     @IBOutlet weak var pB10: UIView!
     @IBOutlet weak var pB11: UIView!
     @IBOutlet weak var tacticView: UIView!
-    
- 
     @IBOutlet var pics: [UIImageView]!
+    @IBOutlet weak var tacticsBar: UIBarButtonItem!
+    @IBOutlet var names: [UILabel]!
+    @IBOutlet var numbers: [UILabel]!
+    @IBOutlet var images: [UIImageView]!
+    @IBOutlet var tool: UIImageView!
+    
+    var cage = CGRect.zero
+    var playerName: String?
+    var playerNo: String?
+    var picPath: String?
+    var selectedPosition: UIView?
+    var selectedPlayer: String?
+    var isDrawing = false
+    var lastPoint = CGPoint.zero
+    var swiped = false
+    var strokeColor = UIColor.white.cgColor
+    var isErasing = false
+    var tacticName: String?
+    var annotationURL: String?
+    let clubID = FIRAuth.auth()?.currentUser?.uid
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        enableDrag()
+        setViewsCorners()
+        setImageCircles ()
+        drawPanel.isUserInteractionEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if loadPreset == true {
+            print ("The chosen preset tactic is:  \(chosenPreset!)")
+            loadedPreset()
+        }
+        
+        if loadTactic == true {
+            print("custom tactic loading")
+            loadedTactic()
+            loadAnnotation()
+        }
+        
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        resetGlobal()
+    }
     
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print ("touch started")
+        swiped = false
+        
+        let touch = touches.first
+        if(touch?.view == drawPanel){
+            lastPoint = touch!.location(in: self.view)
+        }
+        
+        let whatView = touch?.view
+        let whatNumber = whatView?.viewWithTag(3) as? UILabel
+        if whatView != nil {
+            if whatNumber != nil{
+                print (whatNumber!.text!)
+                print ((touch?.view?.center)!)
+            }
+        }
+    }
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = true
+        let touch = touches.first
+        if(touch?.view == drawPanel) {
+            let currentPoint = touch!.location(in: self.view)
+            drawLines(fromPoint: lastPoint, toPoint: currentPoint)
+            
+            lastPoint = currentPoint
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !swiped {
+            drawLines(fromPoint: lastPoint, toPoint: lastPoint)
+        }
+        
+    }
+    
+    func resetGlobal () {
+        loadPreset = nil
+        loadTactic = nil
+        chosenPreset = nil
+        lannotationLink = nil
+    }
+
     
     @IBAction func back(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
@@ -227,27 +324,6 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
         present(activityViewController, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var tacticsBar: UIBarButtonItem!
-    @IBOutlet var names: [UILabel]!
-    @IBOutlet var numbers: [UILabel]!
-    @IBOutlet var images: [UIImageView]!
-    @IBOutlet var tool: UIImageView!
-
-    var cage = CGRect.zero
-    var playerName: String?
-    var playerNo: String?
-    var picPath: String?
-    var selectedPosition: UIView?
-    var selectedPlayer: String?
-    var isDrawing = false
-    var lastPoint = CGPoint.zero
-    var swiped = false
-    var strokeColor = UIColor.white.cgColor
-    var isErasing = false
-    var tacticName: String?
-    let tactic = Tactic()
-    
-    
  
     
     @IBAction func selectAPlayer(_ sender: UITapGestureRecognizer) {
@@ -269,107 +345,39 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
         self.selectedPosition = sender.view
         print (selectedPosition!)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        enableDrag()
-        setViewsCorners()
-        setImageCircles ()
-        drawPanel.isUserInteractionEnabled = false
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        if loadPreset == true {
-            print ("The chosen preset tactic is:  \(chosenPreset!)")
-            loadedPreset()
-        }
-
-        if loadTactic == true {
-            print("custom tactic loading")
-            loadedTactic()
-            loadAnnotation()
-        }
-        
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        loadPreset = false
-        loadTactic = false
-    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print ("touch started")
-        swiped = false
-        
-        let touch = touches.first
-        if(touch?.view == drawPanel){
-            lastPoint = touch!.location(in: self.view)
-        }
-        
-        let whatView = touch?.view
-        let whatNumber = whatView?.viewWithTag(3) as? UILabel
-        if whatView != nil {
-            if whatNumber != nil{
-        print (whatNumber!.text!)
-        print ((touch?.view?.center)!)
-            }
-        }
-    }
-    
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = true
-        let touch = touches.first
-        if(touch?.view == drawPanel) {
-            let currentPoint = touch!.location(in: self.view)
-            drawLines(fromPoint: lastPoint, toPoint: currentPoint)
-            
-            lastPoint = currentPoint
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !swiped {
-            drawLines(fromPoint: lastPoint, toPoint: lastPoint)
-        }
-        
-    }
 
     func createTactic() {
         
-        let date = NSDate()
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        let tacticID = "\(tacticName)\(NSUUID().uuidString)"
+        let picPath = "\(self.clubID)/tactics/\(tacticID).jpg"
+        self.annotationURL = picPath
+        let picRef = storageRef.child(picPath)
+        let annotations = UIImage(view: drawPanel)
+        let data = UIImageJPEGRepresentation(annotations, 0.8)! as Data
+        picRef.put(data,metadata: nil)
         
-        tactic.tid = "\(tacticName)\(NSUUID().uuidString)"
-        tactic.date = date
-        tactic.tacticName = tacticName!
+        let clubID = FIRAuth.auth()?.currentUser?.uid
         
-        tactic.gkCoord = [Double(pB1.center.x), Double(pB1.center.y)]
-        tactic.p2Coord = [Double(pB2.center.x), Double(pB2.center.y)]
-        tactic.p3Coord = [Double(pB3.center.x), Double(pB3.center.y)]
-        tactic.p4Coord = [Double(pB4.center.x), Double(pB4.center.y)]
-        tactic.p5Coord = [Double(pB5.center.x), Double(pB5.center.y)]
-        tactic.p6Coord = [Double(pB6.center.x), Double(pB6.center.y)]
-        tactic.p7Coord = [Double(pB7.center.x), Double(pB7.center.y)]
-        tactic.p8Coord = [Double(pB8.center.x), Double(pB8.center.y)]
-        tactic.p9Coord = [Double(pB9.center.x), Double(pB9.center.y)]
-        tactic.p10Coord = [Double(pB10.center.x), Double(pB10.center.y)]
-        tactic.p11Coord = [Double(pB11.center.x), Double(pB11.center.y)]
+        let tactic = Tactic(tid: tacticID, tacticName: tacticName!,
+        gkCoord_x: Double(pB1.center.x), gkCoord_y: Double(pB1.center.y),
+        p2Coord_x: Double(pB2.center.x), p2Coord_y: Double(pB2.center.y),
+        p3Coord_x: Double(pB3.center.x), p3Coord_y: Double(pB3.center.y),
+        p4Coord_x: Double(pB4.center.x), p4Coord_y: Double(pB4.center.y),
+        p5Coord_x: Double(pB5.center.x), p5Coord_y: Double(pB5.center.y),
+        p6Coord_x: Double(pB6.center.x), p6Coord_y: Double(pB6.center.y),
+        p7Coord_x: Double(pB7.center.x), p7Coord_y: Double(pB7.center.y),
+        p8Coord_x: Double(pB8.center.x), p8Coord_y: Double(pB8.center.y),
+        p9Coord_x: Double(pB9.center.x), p9Coord_y: Double(pB9.center.y),
+        p10Coord_x: Double(pB10.center.x), p10Coord_y: Double(pB10.center.y),
+        p11Coord_x: Double(pB11.center.x), p11Coord_y: Double(pB11.center.y), aURL: annotationURL!)
         
-        saveImage()
-        
-        let realm = try! Realm()
-        try! realm.write() {
-            realm.create(Tactic.self, value: tactic)
-            print("tactic saved")
-        }
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let clubRef = ref.child(clubID!)
+        let tacticsRef = clubRef.child("tactics")
+        tacticsRef.child(tacticID).setValue(tactic.toAny())
         
         let addSuccessAlertView = SCLAlertView()
         addSuccessAlertView.showSuccess("Congrats!", subTitle: "Tactic has successfully been added.")
@@ -399,43 +407,7 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
     
     func loadAnnotation() {
         if lannotationLink != nil {
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-        
-        if let dirPath          = paths.first
-        {
-            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("\(lannotationLink!)")
-            let image    = UIImage(contentsOfFile: imageURL.path)
-            drawPanel.image = image
-            }
-        }
-    }
-    
-    func saveImage () {
-        if drawPanel.image != nil {
-            let annotationImg = UIImage(view: drawPanel)
-            let puid = "\(tacticName)\(UUID().uuidString)pic.png"
-
-            let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             
-            let fileURL = documentsDirectoryURL.appendingPathComponent("\(puid)")
-            tactic.annotationLink = puid
-            
-            if !FileManager.default.fileExists(atPath: fileURL.path) {
-                do {
-                    try
-                        UIImagePNGRepresentation(annotationImg)!.write(to: fileURL)
-                        print("Image Added Successfully")
-                } catch {
-                    print(error)
-                }
-            } else {
-                print("Image Not Added")
-            }
-        } else {
-            tactic.annotationLink = ""
-            print("no annotations")
         }
     }
 

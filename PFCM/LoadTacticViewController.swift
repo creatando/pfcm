@@ -7,18 +7,21 @@
 //
 
 import UIKit
-import RealmSwift
+import Firebase
 import SCLAlertView
 import PKHUD
 
 class LoadTacticViewController: UITableViewController {
     
-    let realm = try! Realm()
-    var results = try! Realm().objects(Tactic.self).sorted(byKeyPath: "date",  ascending: false)
-    var searchResults = try! Realm().objects(Tactic.self).sorted(byKeyPath: "date",  ascending: false)
+    let club = FIRAuth.auth()?.currentUser
+    var results = [Tactic]()
+    var searchResults = [Tactic]()
     var searchController: UISearchController!
     var tacticName: String?
     var date: String?
+    let ref = FIRDatabase.database().reference()
+    let storage = FIRStorage.storage()
+    var tacticID: String?
     
     var gkCoord: [Double]?
     var p2Coord: [Double]?
@@ -37,11 +40,36 @@ class LoadTacticViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrieveTactics()
+        searchController.loadViewIfNeeded()
         setupSearch()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func retrieveTactics () {
+        let clubRef = ref.child(club!.uid)
+        let tacticsRef = clubRef.child("tactics")
+        tacticsRef.observe(.value, with: { (snapshot) in
+            
+            var tactics: [Tactic] = []
+            
+            for item in snapshot.children {
+                let tactic = Tactic(snapshot: item as! FIRDataSnapshot)
+                tactics.append(tactic)
+                print("adding tactics....")
+            }
+            
+            self.results = tactics
+            self.searchResults = tactics
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
     func setupSearch() {
@@ -66,13 +94,8 @@ class LoadTacticViewController: UITableViewController {
     }
     
     func filterResultsWithSearchString(searchString: String) {
-        let realm = try! Realm()
-        
-        let predicaten = NSPredicate(format: "tacticName contains[c] %@", searchString)
-        let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicaten])
-        print ("predicate set")
-        searchResults = realm.objects(Tactic.self).filter(predicateCompound).sorted(byKeyPath: "date", ascending: true)
     }
+    
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -124,28 +147,27 @@ class LoadTacticViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "loadTactic", for: indexPath) as! CustomTacticTableViewCell
         let object = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.item]
         cell.name.text = object.tacticName
-        cell.date.text = object.date.toString()
+        cell.date.text = object.date
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell : Tactic = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
-        gkCoord = selectedCell.gkCoord
-        print(selectedCell.gkCoord.first!)
-        print(selectedCell.gkCoord.last!)
-        p2Coord = selectedCell.p2Coord
-        p3Coord = selectedCell.p3Coord
-        p4Coord = selectedCell.p4Coord
-        p5Coord = selectedCell.p5Coord
-        p6Coord = selectedCell.p6Coord
-        p7Coord = selectedCell.p7Coord
-        p8Coord = selectedCell.p8Coord
-        p9Coord = selectedCell.p9Coord
-        p10Coord = selectedCell.p10Coord
-        p11Coord = selectedCell.p11Coord
-        annotationLink = selectedCell.annotationLink
+        gkCoord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p2Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p3Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p4Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p5Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p6Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p7Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p8Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p9Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p10Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p11Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        annotationLink = selectedCell.aURL
         tacticName = selectedCell.tacticName
+        tacticID = selectedCell.tid
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -157,12 +179,10 @@ class LoadTacticViewController: UITableViewController {
             let confirmAlertView = SCLAlertView(appearance: appearance)
             
             confirmAlertView.addButton("Yes") {
-                
-                try! self.realm.write {
-                    self.realm.delete(selectedCell)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                }
-                
+                let clubRef = self.ref.child(self.club!.uid)
+                let tacticsRef = clubRef.child("tactics")
+                let currentTactic = tacticsRef.child(selectedCell.tid)
+                currentTactic.removeValue()
             }
             confirmAlertView.addButton("No") {
             
@@ -191,13 +211,5 @@ extension LoadTacticViewController: UISearchResultsUpdating {
 extension LoadTacticViewController:  UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    }
-}
-
-extension NSDate {
-    func toString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
-        return dateFormatter.string(from: self as Date)
     }
 }

@@ -49,16 +49,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SCLAlertView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,47 +82,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>17F2CADED385C08370E8D201E000D471</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F0A8E778056C3B22FAE202E40556ED1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>402B6A0172578FBC37008CCF9A6ED7EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41111A5810089EB40ED6503673FAC95C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4DC059E04CBA98AEDDB5C34E02D551E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4FAFF935D1BCB1CF6DD5C66459CACA89</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>69BDE7DFF552F8593C0531ED69947CBA</key>
+		<key>6643159497E52C4F43B8EF5D551C2070</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>7B1B518A661461E9FBABD3100BDF1C90</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7B8AB2A88454223AB90146CECA630E37</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>809E730F8DBE7B6DB39EB7C2B91825A4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>984104A389B9A38EC60088DDAD2E3D3A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A2C93F2FC4A2AD87CBCE18E2CB86E5AF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A371E26D326A3D4BE1952212DE3390A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,12 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0EF5B68C0623323FA2D3BE2B0A9E703</key>
+		<key>D7A75F149082140741FC1E0B5B2863C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D7A75F149082140741FC1E0B5B2863C8</key>
+		<key>DEF8ACCE4D83E35AA464AC00469F48CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

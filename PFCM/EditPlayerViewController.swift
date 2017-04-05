@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+import Firebase
 import SCLAlertView
 import SwiftValidator
 
@@ -32,6 +32,42 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         @IBOutlet weak var goalsText: UITextField!
         @IBOutlet weak var assistsText: UITextField!
         @IBOutlet weak var appsText: UITextField!
+    
+        let imagePicker = UIImagePickerController()
+        var saveButtonClicked = false
+        let validator = Validator()
+        var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF" ]
+        var noData = ["","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"]
+        
+        var picker = UIPickerView()
+        var picker2 = UIPickerView()
+        var picker3 = UIPickerView()
+        var sNoPicker = UIPickerView()
+        var goalsPicker = UIPickerView()
+        var assistsPicker = UIPickerView()
+        var appsPicker = UIPickerView()
+        var selectedPlayer: String?
+        var selectedPicPath: String?
+        let ref = FIRDatabase.database().reference()
+        let storage = FIRStorage.storage()
+        let club = FIRAuth.auth()?.currentUser
+        var password: String?
+
+        
+        override func viewDidLoad() {
+            
+            super.viewDidLoad()
+            circlePicture()
+            formDelegation()
+            formValidation()
+            checkSelected ()
+            
+        }
+        
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+        }
+    
     
         @IBAction func appsPlus(_ sender: Any) {
             let result: Int = Int(appsText.text!)! + 1
@@ -82,7 +118,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             }
         }
         
-        @IBAction func addPhoto(_ sender: UIBarButtonItem) {
+    @IBAction func addPhoto(_ sender: UIBarButtonItem) {
             imagePicker.allowsEditing = false
             imagePicker.sourceType = .photoLibrary
             imagePicker.modalPresentationStyle = .popover
@@ -91,112 +127,69 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         }
         
     @IBAction func updatePlayer(_ sender: Any) {
-        validator.validate(self)
-        let  vc =  self.navigationController?.viewControllers.filter({$0 is ViewPlayersController}).first
-        _ = navigationController?.popToViewController(vc!, animated: true)
-    }
-        
-        let imagePicker = UIImagePickerController()
-        let player = Player()
-        var saveButtonClicked = false
-        let validator = Validator()
-        var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF" ]
-        var noData = ["","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"]
-        
-        var picker = UIPickerView()
-        var picker2 = UIPickerView()
-        var picker3 = UIPickerView()
-        var sNoPicker = UIPickerView()
-        var goalsPicker = UIPickerView()
-        var assistsPicker = UIPickerView()
-        var appsPicker = UIPickerView()
-        var selectedPlayer: String?
-        var selectedPicPath: String?
-    
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        circlePicture()
-        formDelegation()
-        //formValidation()
-        checkSelected ()
-        checkImageExists()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+                validator.validate(self)
+                let  vc =  self.navigationController?.viewControllers.filter({$0 is ViewPlayersController}).first
+                _ = self.navigationController?.popToViewController(vc!, animated: true)
     }
     
     func checkSelected () {
         if selectedPlayer == nil {
-            print("Right player ID is not sent! \(selectedPlayer!)")
+            print("Right player ID is not sent!")
         } else {
-            print("Retrieved")
+            print("Retrieved: \(selectedPlayer!)")
             retrievePlayer()
         }
     }
-
     
     func retrievePlayer () {
-        let singlePlayer = try! Realm().object(ofType: Player.self, forPrimaryKey: selectedPlayer)
-        print("retrieve starting")
-        firstName.text = singlePlayer?.firstName
-        lastName.text = singlePlayer?.lastName
-        dob.text = singlePlayer?.dob
-        phoneNo.text = singlePlayer?.phoneNo
-        emailAdd.text = singlePlayer?.emailAdd
-        address1.text = singlePlayer?.address1
-        address2.text = singlePlayer?.address2
-        city.text = singlePlayer?.city
-        postCode.text = singlePlayer?.postCode
-        position.text = singlePlayer?.position
-        position2.text = singlePlayer?.position2
-        position3.text = singlePlayer?.position3
-        squadNo.text = singlePlayer?.squadNo
-        goalsText.text = singlePlayer?.goals
-        assistsText.text = singlePlayer?.assists
-        appsText.text = singlePlayer?.appearances
-        selectedPicPath = singlePlayer?.picFilePath
+        let clubRef = ref.child(club!.uid)
+        let playersRef = clubRef.child("users").child("players")
+        let playerRef = playersRef.child(selectedPlayer!)
         
-        print("\(singlePlayer?.picFilePath) is SINGLEPLAYER selected pic path.")
-        print("\(selectedPicPath) is selected pic path.")
-    
-        
-        if selectedPicPath != nil {
-            print ("Player's pic path = \(selectedPicPath!)")
-             loadImageFromRealm(picName: (selectedPicPath!))
-        } else {
-           print ("Pic not loaded")
-        }
+        playerRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let singlePlayer = Player(snapshot: snapshot)
+            self.firstName.text = singlePlayer.firstName
+            self.lastName.text = singlePlayer.lastName
+            self.dob.text = singlePlayer.dob
+            self.phoneNo.text = singlePlayer.phoneNo
+            self.emailAdd.text = singlePlayer.emailAdd
+            self.address1.text = singlePlayer.address1
+            self.address2.text = singlePlayer.address2
+            self.city.text = singlePlayer.city
+            self.postCode.text = singlePlayer.postCode
+            self.position.text = singlePlayer.position
+            self.position2.text = singlePlayer.position2
+            self.position3.text = singlePlayer.position3
+            self.squadNo.text = singlePlayer.squadNo
+            self.goalsText.text = singlePlayer.goals
+            self.assistsText.text = singlePlayer.assists
+            self.appsText.text = singlePlayer.apps
+            self.selectedPicPath = singlePlayer.picURL
+            self.password = singlePlayer.password
+            
+            if self.selectedPicPath != nil {
+                print ("Player's pic path = \(self.selectedPicPath!)")
+                self.loadImage(picURL: (self.selectedPicPath!))
+            }
+        })
         
         print("retrieval finished, load data")
         self.tableView.reloadData()
     }
     
     
-    func loadImageFromRealm (picName: String) {
-        
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-        if let dirPath          = paths.first
-        {   print("directory accessed")
-            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(picName)
-            let image   = UIImage(contentsOfFile: imageURL.path)
-        
-        if image != nil
-            { profilePic.image = image
-    
-        } else {
-            profilePic.image = UIImage (named: "profile.jpg")
+    func loadImage (picURL: String) {
+        let storageRef = storage.reference(withPath: selectedPicPath!)
+        storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+        if let error = error {
+                print("error has occured: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                if image != nil
+                { self.profilePic.image = image } else
+                { self.profilePic.image = UIImage (named: "profile.jpg") }
             }
-            
-        print("Directory image: \(profilePic.image!)")
         }
-        
     }
     
     func formValidation() {
@@ -205,7 +198,6 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         validator.registerField(lastName, rules: [RequiredRule()])
         validator.registerField(dob, rules: [RequiredRule()])
         validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 11), MaxLengthRule(length: 11)])
-        validator.registerField(emailAdd, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
         validator.registerField(address1, rules: [RequiredRule()])
         validator.registerField(address2, rules: [RequiredRule()])
         validator.registerField(city, rules: [RequiredRule()])
@@ -263,33 +255,43 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
     // Validation Delegates
     
     func validationSuccessful() {
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference()
+        let picPath = selectedPicPath
+        let picRef = storageRef.child(picPath!)
+        let data = UIImageJPEGRepresentation(self.profilePic.image!, 0.7)! as Data
         
-        player.pid = selectedPlayer!
-        player.firstName = firstName.text!
-        player.lastName = lastName.text!
-        player.dob = dob.text!
-        player.phoneNo = phoneNo.text!
-        player.emailAdd = emailAdd.text!
-        player.address1 = address1.text!
-        player.address2 = address2.text!
-        player.city = city.text!
-        player.postCode =  postCode.text!
-        player.position = position.text!
-        player.position2 = position2.text!
-        player.position3 = position3.text!
-        player.squadNo = squadNo.text!
-        player.goals = goalsText.text!
-        player.assists = assistsText.text!
-        player.appearances = appsText.text!
-        updateImage()
-        player.picFilePath = selectedPicPath!
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        let clubRef = ref.child(club!.uid)
+        let playersRef = clubRef.child("users").child("players")
+        let key = playersRef.child(selectedPlayer!)
         
+        let player = Player(
+            pid: selectedPlayer!,
+            firstName: self.firstName.text!,
+            lastName: self.lastName.text!,
+            dob: self.dob.text!,
+            phoneNo: self.phoneNo.text!,
+            emailAdd: self.emailAdd.text!,
+            address1: self.address1.text!,
+            address2: self.address2.text!,
+            city: self.city.text!,
+            postCode:  self.postCode.text!,
+            position: self.position.text!,
+            position2: self.position2.text!,
+            position3: self.position3.text!,
+            squadNo: self.squadNo.text!,
+            apps: self.appsText.text!,
+            goals: self.goalsText.text!,
+            assists: self.assistsText.text!,
+            picURL: self.selectedPicPath!,
+            password: self.password!
+        )
         
-        let realm = try! Realm()
-        try! realm.write() {
-            realm.add(player, update: true)
-        }
-
+        key.updateChildValues(player.toAny() as! [AnyHashable : Any])
+        picRef.put(data,metadata: nil)
+        
         self.saveButtonClicked = true
         
         let addSuccessAlertView = SCLAlertView()
@@ -311,59 +313,6 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         }
         
     }
-    func checkImageExists () {
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let url = NSURL(fileURLWithPath: path)
-        let filePath = url.appendingPathComponent("\(selectedPicPath!)")?.path
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: filePath!) {
-            print("FILE AVAILABLE")
-        } else {
-            print("FILE NOT AVAILABLE")
-        }
-    }
-    
-    func  updateImage() {
-        
-        print("Selected image is:\(selectedPicPath!)")
-        
-        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let fileURL = documentsDirectoryURL.appendingPathComponent("\(selectedPicPath!)")
-        print ("file url is: \(fileURL)")
-        checkImageExists()
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-                print(profilePic.image as Any)
-                if profilePic.image != nil {
-                print ("first file \(fileURL)")
-                //removeImage(url: selectedPicPath!)
-                let image = profilePic.image!.generateJPEGRepresentation()
-                    print(profilePic.image!)
-                    print (image)
-                try! image.write(to: fileURL, options: .atomicWrite)
-                print("Image Added Successfully")
-                } else {
-                    print("Image not added")
-                }
-        }
-        print(profilePic.image!)
-    }
-    
-    
-    func removeImage(url:String) {
-        let fileManager = FileManager.default
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-        guard let dirPath = paths.first else {
-            return
-        }
-        let filePath = "\(dirPath)/\(url)"
-        do {
-            try fileManager.removeItem(atPath: filePath)
-        } catch let error as NSError {
-            print(error.debugDescription)
-        }
-    }
     
     func circlePicture () {
         self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2
@@ -378,13 +327,14 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             confirmAlertView.addButton("Yes") {
                 _ = self.navigationController?.popViewController(animated: true)
                 self.saveButtonClicked = false
-                
-                let singlePlayer = try! Realm().object(ofType: Player.self, forPrimaryKey: self.selectedPlayer)
-                let realm = try! Realm()
-                try! realm.write() {
-                    realm.delete(singlePlayer!)
-                }
-            }
+                var ref: FIRDatabaseReference!
+                ref = FIRDatabase.database().reference()
+                let clubRef = ref.child(self.club!.uid)
+                let playersRef = clubRef.child("users").child("players")
+                let key = playersRef.child(self.selectedPlayer!)
+                key.removeValue()
+                print("removed player")
+                 }
         
             confirmAlertView.addButton("No") {
                 self.saveButtonClicked = false
@@ -432,9 +382,9 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             phoneNo.becomeFirstResponder()
             break
         case phoneNo:
-            emailAdd.becomeFirstResponder()
+            address1.becomeFirstResponder()
             break
-        case emailAdd:
+        case address1:
             address2.becomeFirstResponder()
             break
         case address2:
@@ -560,4 +510,37 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
     
 
 }
+
+/*@IBAction func changeEmail(_ sender: Any) {
+ }
+ 
+ @IBAction func changePassword(_ sender: Any) {
+ let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+ let alert = SCLAlertView(appearance: appearance)
+ let pwd = alert.addTextField("Enter new password...")
+ let confirm = alert.addTextField("Confirm new password...")
+ _ = alert.addButton("Save") {
+ if pwd.text == confirm.text {
+ let user = FIRAuth.auth()?.currentUser
+ var credential: FIRAuthCredential
+ user?.reauthenticate(with: credential) { error in
+ if let error = error {
+ // An error happened.
+ } else {
+ self.password.text = pwd.text
+ }
+ }
+ } else {
+ let alertController = UIAlertController(title: "Error", message: "Passwords do not match.", preferredStyle: .alert)
+ let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+ alertController.addAction(defaultAction)
+ self.present(alertController, animated: true, completion: nil)
+ }
+ }
+ _ = alert.addButton("Cancel") {
+ 
+ }
+ _ = alert.showInfo("Change password", subTitle: "Change the player's password...")
+ }*/
+
 

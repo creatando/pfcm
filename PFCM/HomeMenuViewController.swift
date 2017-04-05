@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import RealmSwift
 
 class HomeMenuViewController: UIViewController {
     
@@ -17,8 +16,7 @@ class HomeMenuViewController: UIViewController {
     let cellScaling: CGFloat = 0.6
     var currentPath: IndexPath?
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var searchText: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenSize = UIScreen.main.bounds.size
@@ -54,9 +52,6 @@ class HomeMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-   
-
 }
 
 extension HomeMenuViewController : UICollectionViewDataSource {
@@ -94,7 +89,7 @@ extension HomeMenuViewController : UICollectionViewDataSource {
             print("fr")
         case  "Communications":
             print("communications")
-        case  "Settings":
+        case  "Club Settings":
             print("settings")
         default:
             print("default")

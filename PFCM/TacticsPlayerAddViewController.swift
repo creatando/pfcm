@@ -7,20 +7,22 @@
 //
 
 import UIKit
-import RealmSwift
+import Firebase
 import SCLAlertView
 
 class TacticsPlayerAddViewController: UITableViewController {
     
-    let realm = try! Realm()
-    var results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
-    var searchResults = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
+    var results: [Player] = []
+    var searchResults: [Player] = []
     var searchController: UISearchController!
     var playerID: String?
     var playerName: String?
     var playerNo: String?
     var picPath: String?
+    let ref = FIRDatabase.database().reference()
+    let storage = FIRStorage.storage()
     var selectedPosition: UIView?
+    let club = FIRAuth.auth()?.currentUser
 
     @IBAction func selectPlayer(_ sender: Any) {
         
@@ -54,13 +56,38 @@ class TacticsPlayerAddViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrievePlayers()
         setupSearch()
-        //searchController.loadViewIfNeeded()
+        searchController.loadViewIfNeeded()
         self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func retrievePlayers () {
+        let clubRef = ref.child(club!.uid)
+        let playersRef = clubRef.child("users").child("players")
+        print(playersRef)
+        playersRef.observe(.value, with: { (snapshot) in
+            
+            var players: [Player] = []
+            
+            for item in snapshot.children {
+                let player = Player(snapshot: item as! FIRDataSnapshot)
+                players.append(player)
+                print("checking....")
+            }
+            
+            self.results = players
+            self.searchResults = players
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
     func setupSearch() {
@@ -85,13 +112,6 @@ class TacticsPlayerAddViewController: UITableViewController {
     }
     
     func filterResultsWithSearchString(searchString: String) {
-        let predicateFN = NSPredicate(format: "firstName BEGINSWITH [c]%@", searchString)
-        let predicateLN = NSPredicate(format: "lastName BEGINSWITH [c]%@", searchString)
-        
-        let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicateFN, predicateLN])
-        
-        let realm = try! Realm()
-        searchResults = realm.objects(Player.self).filter(predicateCompound).sorted(byKeyPath: "lastName", ascending: true)
         
     }
     
@@ -108,29 +128,23 @@ class TacticsPlayerAddViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! CustomPlayerTableViewCell
-        let object = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.item]
+        let players : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
+        let storageRef = storage.reference(withPath: players.picURL)
         
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.orange
-        cell.selectedBackgroundView = backgroundView
-        cell.name.text = "\(object.firstName) \(object.lastName)"
-        cell.dob.text = object.dob
-        cell.stats.text = "G: \(object.goals), A: \(object.assists), Apps: \(object.appearances)"
-        cell.squadNumber.text = "#\(object.squadNo)"
-        
-        
-        if let dirPath          = paths.first
-        {
-            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("\(object.picFilePath)")
-            let image    = UIImage(contentsOfFile: imageURL.path)
-            cell.profilePic.image = image
-        }
+        cell.name.text = "\(players.firstName) \(players.lastName)"
+        cell.dob.text = players.dob
+        cell.squadNumber.text = "#\(players.squadNo)"
+        cell.stats.text = "Apps: \(players.apps), G: \(players.goals), A: \(players.assists)"
         cell.circlePicture()
-        tableView.deselectRow(at: indexPath, animated: false)
+        storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("error has occured: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                cell.profilePic.image = image
+            }
+        }
         
         return cell
     }
@@ -139,7 +153,7 @@ class TacticsPlayerAddViewController: UITableViewController {
         let selectedCell : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
         playerName = selectedCell.lastName
         playerNo = selectedCell.squadNo
-        picPath = selectedCell.picFilePath
+        picPath = selectedCell.picURL
         playerID = selectedCell.pid
     }
 

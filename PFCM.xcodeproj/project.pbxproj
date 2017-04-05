@@ -11,6 +11,7 @@
 		52C608B2D4B7ED58BFD53755 /* Pods_PFCMUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D970373BB667A47A40971963 /* Pods_PFCMUITests.framework */; };
 		931CE3E69DE77002613052E4 /* Pods_PFCMTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA465753535B51A1E49F0E24 /* Pods_PFCMTests.framework */; };
 		AA10ED621E5A5FBF00D3C8E5 /* TacticalCreatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10ED611E5A5FBF00D3C8E5 /* TacticalCreatorViewController.swift */; };
+		AA1652A01E92C398000C51EB /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA8D031E4F78CC0045A5A6 /* Player.swift */; };
 		AA1A66221E5BD59E0074547D /* PremierBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AAD6012E1E5BCA6C008F6452 /* PremierBackground.mp4 */; };
 		AA1B23661E5CFE75000528B7 /* EditPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B23651E5CFE75000528B7 /* EditPlayerViewController.swift */; };
 		AA1B23801E5D0813000528B7 /* menubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = AA1B237A1E5D0813000528B7 /* menubutton.png */; };
@@ -73,7 +74,6 @@
 		B5741B8E1E526C18001C4465 /* profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B5741B8D1E526C18001C4465 /* profile.jpg */; };
 		B59A07631E533FE300623225 /* ViewPlayersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A07621E533FE300623225 /* ViewPlayersController.swift */; };
 		B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59A364B1E47C084008C42CE /* GoogleService-Info.plist */; };
-		B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA8D031E4F78CC0045A5A6 /* Player.swift */; };
 		B5EE19871E4FF70400B94B82 /* arrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE19831E4FF70400B94B82 /* arrowLeft@2x.png */; };
 		B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE19841E4FF70400B94B82 /* arrowLeft@3x.png */; };
 		B5EE19891E4FF70400B94B82 /* arrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5EE19851E4FF70400B94B82 /* arrowRight@2x.png */; };
@@ -237,8 +237,6 @@
 		AA3698851E882C5A0042CAD5 /* tactics */ = {
 			isa = PBXGroup;
 			children = (
-				AA2E6D1E1E8744E8008DC9B6 /* CustomTacticTableViewCell.swift */,
-				AAC3E0041E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift */,
 				AA10ED611E5A5FBF00D3C8E5 /* TacticalCreatorViewController.swift */,
 				AAC3E0021E81CDBB00BCC56C /* TacticsAddViewController.swift */,
 				AA7D71F91E6347F300FEF40C /* TacticsPlayerAddViewController.swift */,
@@ -252,7 +250,6 @@
 			children = (
 				AAA4D61A1E693EB100B9725E /* HomeMenuViewController.swift */,
 				AAA4D6301E69D8CE00B9725E /* PlayerCentreViewController.swift */,
-				AA60F47C1E8810D90038DB60 /* MenuViewCell.swift */,
 			);
 			name = menus;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 		AA3698871E882C7D0042CAD5 /* players */ = {
 			isa = PBXGroup;
 			children = (
-				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
 				B521B6E01E47AD9900F5522F /* NewPlayerViewController.swift */,
 				AA1B23651E5CFE75000528B7 /* EditPlayerViewController.swift */,
 				B59A07621E533FE300623225 /* ViewPlayersController.swift */,
@@ -365,6 +361,10 @@
 			children = (
 				B521B6DF1E47AD9900F5522F /* Main.storyboard */,
 				B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */,
+				AA60F47C1E8810D90038DB60 /* MenuViewCell.swift */,
+				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
+				AA2E6D1E1E8744E8008DC9B6 /* CustomTacticTableViewCell.swift */,
+				AAC3E0041E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -752,8 +752,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1652A01E92C398000C51EB /* Player.swift in Sources */,
 				AAC3E0011E81C10100BCC56C /* Tactic.swift in Sources */,
-				B5BA8D041E4F78CC0045A5A6 /* Player.swift in Sources */,
 				B521B6E61E47AD9900F5522F /* LoginViewController.swift in Sources */,
 				B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */,
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,

@@ -7,22 +7,21 @@
 //
 
 import UIKit
-import RealmSwift
+import Firebase
 import SCLAlertView
 import Hue
 
 class ViewPlayersController: UITableViewController {
-    
-    
-    
 
     @IBAction func backNav(_ sender: Any) {
                 self.dismiss(animated: true, completion: nil)
     }
-    let realm = try! Realm()
-    var results = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
-    var searchResults = try! Realm().objects(Player.self).sorted(byKeyPath: "lastName",  ascending: true)
+    var results: [Player] = []
+    var searchResults: [Player] = []
     var searchController: UISearchController!
+    let ref = FIRDatabase.database().reference()
+    let storage = FIRStorage.storage()
+    let club = FIRAuth.auth()?.currentUser
     var playerID: String?
     var savedIndexPath: IndexPath?
     var playerName: String?
@@ -30,9 +29,9 @@ class ViewPlayersController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrievePlayers()
         setupSearch()
         searchController.loadViewIfNeeded()
-        self.tableView.reloadData()
         }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +52,30 @@ class ViewPlayersController: UITableViewController {
         if self.playerID != nil{
         alertView.showWait("View/Edit", subTitle: "Select \(playerName!)?")
         }
+    }
+    
+    func retrievePlayers () {
+        let clubRef = ref.child(club!.uid)
+        let playersRef = clubRef.child("users").child("players")
+        print(playersRef)
+        playersRef.observe(.childAdded, with: { (snapshot) in
+            
+            var players: [Player] = []
+            
+            for item in snapshot.children {
+                let player = Player(snapshot: item as! FIRDataSnapshot)
+                players.append(player)
+                print("checking....")
+            }
+            
+            self.results = players
+            self.searchResults = players
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
     func setupSearch() {
@@ -84,53 +107,37 @@ class ViewPlayersController: UITableViewController {
         let selectedCell : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
         playerID = selectedCell.pid
         playerName = "\(selectedCell.firstName) \(selectedCell.lastName)"
-        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let fileURL = documentsDirectoryURL.appendingPathComponent("\(selectedCell.picFilePath)")
-        print(fileURL)
         print("Selected person: \(selectedCell.firstName) & ID: \(playerID!)")
-        print(selectedCell.picFilePath)
     }
 
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as! CustomPlayerTableViewCell
-        let object = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.item]
+        let players : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
+        let storageRef = storage.reference(withPath: players.picURL)
         
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.orange
-        cell.selectedBackgroundView = backgroundView
-        
-        playerName = "\(object.firstName) \(object.lastName)"
-        cell.name.text = playerName
-        cell.dob.text = object.dob
-        cell.stats.text = "G: \(object.goals), A: \(object.assists), Apps: \(object.appearances)"
-        cell.squadNumber.text = "#\(object.squadNo)"
-        
-        
-        if let dirPath          = paths.first
-        {
-            let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent("\(object.picFilePath)")
-            let image    = UIImage(contentsOfFile: imageURL.path)
-            cell.profilePic.image = image
-        }
+        cell.name.text = "\(players.firstName) \(players.lastName)"
+        cell.dob.text = players.dob
+        cell.squadNumber.text = "#\(players.squadNo)"
+        cell.stats.text = "Apps: \(players.apps), G: \(players.goals), A: \(players.assists)"
         cell.circlePicture()
-        tableView.deselectRow(at: indexPath, animated: false)
+        storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("error has occured: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                cell.profilePic.image = image
+            }
+        }
         
         return cell
     }
     
     func filterResultsWithSearchString(searchString: String) {
-        let realm = try! Realm()
         let predicateFN = NSPredicate(format: "firstName BEGINSWITH [c]%@", searchString)
         let predicateLN = NSPredicate(format: "lastName BEGINSWITH [c]%@", searchString)
         let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicateFN, predicateLN])
-        searchResults = realm.objects(Player.self).filter(predicateCompound).sorted(byKeyPath: "lastName", ascending: true)
-        
+        print (predicateCompound)
     }
     
     override func tableView(_ tableView: UITableView,
@@ -143,7 +150,7 @@ class ViewPlayersController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("Prepared is called!")
             let nextScene = segue.destination as? EditPlayerViewController
-            nextScene?.selectedPlayer = playerID
+            nextScene?.selectedPlayer = playerID!
             print("Right player ID is sent! \(nextScene?.selectedPlayer!)")
     }
     

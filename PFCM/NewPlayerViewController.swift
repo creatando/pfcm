@@ -7,30 +7,21 @@
 //
 
 import UIKit
-import RealmSwift
 import SCLAlertView
 import SwiftValidator
+import Firebase
 
 extension UIImage {
     func generateJPEGRepresentation() -> Data {
-        
         let newImage = self.copyOriginalImage()
         let newData = UIImageJPEGRepresentation(newImage, 0.75)
-        
         return newData!
     }
-    
-    /**
-     Copies Original Image which fixes the crash for extracting Data from UIImage
-     @return UIImage
-     */
-    
     private func copyOriginalImage() -> UIImage {
         UIGraphicsBeginImageContext(self.size);
         self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
-        
         return newImage!
     }
 }
@@ -50,8 +41,32 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var position2: UITextField!
     @IBOutlet weak var position3: UITextField!
     @IBOutlet weak var squadNo: UITextField!
-    
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var genPassword: UITextField!
+    @IBOutlet weak var emailConfirm: UITextField!
+    
+    let imagePicker = UIImagePickerController()
+    var createButtonClicked = false
+    let validator = Validator()
+    var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF"]
+    var squadNoData = ["","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"]
+    var picker = UIPickerView()
+    var picker2 = UIPickerView()
+    var picker3 = UIPickerView()
+    var sNoPicker = UIPickerView()
+    var storedURL: String?
+    let clubID = FIRAuth.auth()?.currentUser?.uid
+    let randomPw = String.random()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        circlePicture()
+        formDelegation()
+        formValidation()
+        genPassword.text = randomPw
+        genPassword.inputView = UIView()
+        genPassword.tintColor = .clear
+    }
     
     @IBAction func dateEditField(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -93,63 +108,96 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     
     
     @IBAction func createPlayer(_ sender: Any) {
-        print (player.pid)
-        validator.validate(self)
+            validator.validate(self)
     }
     
-    let imagePicker = UIImagePickerController()
-    let player = Player()
-    var createButtonClicked = false
-    let validator = Validator()
-    var positionData = ["", "GK", "LB", "CB", "RB", "LWB", "RWB", "DM", "CM", "LM", "RM", "CAM", "LW", "RW", "CF" ]
-    var squadNoData = ["","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99"]
-    
-    var picker = UIPickerView()
-    var picker2 = UIPickerView()
-    var picker3 = UIPickerView()
-    var sNoPicker = UIPickerView()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view. 
-        
-        circlePicture()
-        
-        formDelegation()
-        formValidation()
 
-    }
-    
-    // Save Image
-    func saveImage () {
-        
-        let puid = "\(firstName.text ?? "")\(lastName.text ?? "")\(UUID().uuidString)pic.jpeg"
-        
-        let documentsDirectoryURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        // create a name for your image
-        let fileURL = documentsDirectoryURL.appendingPathComponent("\(puid)")
-        
-        print (fileURL.standardizedFileURL.path)
-        player.picFilePath = puid
-        if !FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
-                try UIImageJPEGRepresentation(profilePic.image!, 0.5)!.write(to: fileURL)
-                print("Image Added Successfully")
-            } catch {
-                print(error)
-            }
-        } else {
-            print("Image Not Added")
-        }
-            }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             profilePic.image = pickedImage
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    // Validation Delegates
+    
+    func validationSuccessful() {
+        
+        FIRAuth.auth()?.createUser(withEmail: emailAdd.text!, password: genPassword.text!) { (user, error) in
+            
+            if error == nil {
+                
+                let storage = FIRStorage.storage()
+                let storageRef = storage.reference()
+                let picPath = "\(self.clubID!)/players/\(user!.uid).jpg"
+                self.storedURL = picPath
+                let picRef = storageRef.child(picPath)
+                let data = UIImageJPEGRepresentation(self.profilePic.image!, 0.7)! as Data
+                picRef.put(data,metadata: nil)
+                
+                let player = Player(
+                    pid: user!.uid,
+                    firstName: self.firstName.text!,
+                    lastName: self.lastName.text!,
+                    dob: self.dob.text!,
+                    phoneNo: self.phoneNo.text!,
+                    emailAdd: self.emailAdd.text!,
+                    address1: self.address1.text!,
+                    address2: self.address2.text!,
+                    city: self.city.text!,
+                    postCode:  self.postCode.text!,
+                    position: self.position.text!,
+                    position2: self.position2.text!,
+                    position3: self.position3.text!,
+                    squadNo: self.squadNo.text!,
+                    apps: "0",
+                    goals: "0",
+                    assists: "0",
+                    picURL: self.storedURL!,
+                    password: self.genPassword.text!
+                )
+                
+                print("user created!")
+                var ref: FIRDatabaseReference!
+                ref = FIRDatabase.database().reference()
+                let clubRef = ref.child(self.clubID!)
+                let playersRef = clubRef.child("users").child("players")
+                playersRef.child(user!.uid).setValue(player.toAny())
+                self.resetValidation()
+                self.resetProfile()
+                
+                self.createButtonClicked = true
+                let addSuccessAlertView = SCLAlertView()
+                addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
+                self.tableView.setContentOffset(CGPoint.zero, animated: true)
+                
+                } else {
+                let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+
+    
+    func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+        
+        let errorValAlertView = SCLAlertView()
+        errorValAlertView.showWarning("Validation error", subTitle: "You have missed out/have entered some fields incorrectly.")
+        
+        // turn the fields to red
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+        }
+        
     }
     
     func formValidation() {
@@ -159,6 +207,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.registerField(dob, rules: [RequiredRule()])
         validator.registerField(phoneNo, rules: [RequiredRule(), MinLengthRule(length: 11), MaxLengthRule(length: 11)])
         validator.registerField(emailAdd, rules: [RequiredRule(), EmailRule(message: "Invalid email")])
+        validator.registerField(emailConfirm, rules: [ConfirmationRule(confirmField: emailAdd)])
         validator.registerField(address1, rules: [RequiredRule()])
         validator.registerField(address2, rules: [RequiredRule()])
         validator.registerField(city, rules: [RequiredRule()])
@@ -201,85 +250,14 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
 
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-         createButtonClicked = false
-    }
-    
-    // Validation Delegates
-    
-    func validationSuccessful() {
-        
-        player.pid = "\(firstName.text ?? "")\(lastName.text ?? "")\(NSUUID().uuidString)"
-        player.firstName = firstName.text!
-        player.lastName = lastName.text!
-        player.dob = dob.text!
-        player.phoneNo = phoneNo.text!
-        player.emailAdd = emailAdd.text!
-        player.address1 = address1.text!
-        player.address2 = address2.text!
-        player.city = city.text!
-        player.postCode =  postCode.text!
-        player.position = position.text!
-        player.position2 = position2.text!
-        player.position3 = position3.text!
-        player.squadNo = squadNo.text!
-        player.appearances = "0"
-        player.goals = "0"
-        player.assists = "0"
-        saveImage()
-        
-        let realm = try! Realm()
-        try! realm.write() {
-            realm.create(Player.self, value: player)
-        }
-            resetValidation()
-            resetProfile()
-        
-        
-        
-            self.createButtonClicked = true
-        
-            let addSuccessAlertView = SCLAlertView()
-            addSuccessAlertView.showSuccess("Congrats!", subTitle: "Player has successfully been added.")
-            tableView.setContentOffset(CGPoint.zero, animated: true)
-        
-        
-    }
-    
-    func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
-        
-         let errorValAlertView = SCLAlertView()
-         errorValAlertView.showWarning("Validation error", subTitle: "You have missed out/have entered some fields incorrectly.")
-        
-        // turn the fields to red
-        for (field, error) in errors {
-            if let field = field as? UITextField {
-                field.layer.borderColor = UIColor.red.cgColor
-                field.layer.borderWidth = 1.0
-            }
-            error.errorLabel?.text = error.errorMessage // works if you added labels
-            }
-        
-    }
-    
-    func circlePicture () {
-        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2
-        self.profilePic.layer.borderColor = UIColor.green.cgColor
-        self.profilePic.layer.borderWidth = 2
-        self.profilePic.layer.shouldRasterize = true
-    }
-    
    func resetProfile () {
-        
+        let newRandomPw = String.random()
         firstName.text = ""
         lastName.text! = ""
         dob.text! = ""
         phoneNo.text! = ""
         emailAdd.text! = ""
+        emailConfirm.text! = ""
         address1.text! = ""
         address2.text! = ""
         city.text! = ""
@@ -298,6 +276,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         self.position2.inputView = picker2
         self.position3.inputView = picker3
         self.squadNo.inputView = sNoPicker
+        genPassword.text = newRandomPw
         self.tableView.reloadData()
     }
     
@@ -320,13 +299,29 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.unregisterField(dob)
         validator.unregisterField(phoneNo)
         validator.unregisterField(emailAdd)
+        validator.unregisterField(emailConfirm)
         validator.unregisterField(address1)
         validator.unregisterField(address2)
         validator.unregisterField(city)
         validator.unregisterField(postCode)
         validator.unregisterField(position)
         validator.unregisterField(squadNo)
+        formValidation()
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        createButtonClicked = false
+    }
+    
+    func circlePicture () {
+        self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2
+        self.profilePic.layer.borderColor = UIColor.green.cgColor
+        self.profilePic.layer.borderWidth = 2
+        self.profilePic.layer.shouldRasterize = true
     }
     
     func datePickerValueChanged(sender:UIDatePicker) {
@@ -359,6 +354,12 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             emailAdd.becomeFirstResponder()
             break
         case emailAdd:
+            emailConfirm.becomeFirstResponder()
+            break
+        case emailConfirm:
+            address1.becomeFirstResponder()
+            break
+        case address1:
             address2.becomeFirstResponder()
             break
         case address2:
@@ -381,6 +382,8 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             break
         case squadNo:
             squadNo.resignFirstResponder()
+        case genPassword:
+            genPassword.resignFirstResponder()
         default:
             textField.resignFirstResponder()
         }
@@ -469,4 +472,18 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
 
 
 
+}
+
+extension String {
+    
+    static func random(length: Int = 10) -> String {
+        let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var randomString: String = ""
+        
+        for _ in 0..<length {
+            let randomValue = arc4random_uniform(UInt32(base.characters.count))
+            randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
+        }
+        return randomString
+    }
 }

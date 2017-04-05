@@ -23,7 +23,7 @@ target 'PFCM' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-  pod 'RealmSwift'
+  pod 'Firebase/Database'
   pod 'TextFieldEffects'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'UIView+draggable'
