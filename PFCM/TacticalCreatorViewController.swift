@@ -275,6 +275,7 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
                 let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
                 let confirmAlertView = SCLAlertView(appearance: appearance)
                 self.isErasing = false
+                self.tool.image = UIImage(named: "drawingbtn.png")
                 
                 confirmAlertView.addButton("Yes") {
                     self.drawPanel.image = nil
@@ -350,12 +351,12 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
         
         let storage = FIRStorage.storage()
         let storageRef = storage.reference()
-        let tacticID = "\(tacticName)\(NSUUID().uuidString)"
-        let picPath = "\(self.clubID)/tactics/\(tacticID).jpg"
-        self.annotationURL = picPath
-        let picRef = storageRef.child(picPath)
+        let tacticID = "\(tacticName!)\(NSUUID().uuidString)"
+        let aPath = "\(self.clubID!)/tactics/\(tacticID).png"
+        self.annotationURL = aPath
+        let picRef = storageRef.child(aPath)
         let annotations = UIImage(view: drawPanel)
-        let data = UIImageJPEGRepresentation(annotations, 0.8)! as Data
+        let data = UIImagePNGRepresentation(annotations)! as Data
         picRef.put(data,metadata: nil)
         
         let clubID = FIRAuth.auth()?.currentUser?.uid
@@ -372,6 +373,8 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
         p9Coord_x: Double(pB9.center.x), p9Coord_y: Double(pB9.center.y),
         p10Coord_x: Double(pB10.center.x), p10Coord_y: Double(pB10.center.y),
         p11Coord_x: Double(pB11.center.x), p11Coord_y: Double(pB11.center.y), aURL: annotationURL!)
+        
+        print (tactic)
         
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
@@ -407,7 +410,21 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
     
     func loadAnnotation() {
         if lannotationLink != nil {
-            
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference(withPath: lannotationLink!)
+        storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("error has occured: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                if image != nil
+                { self.drawPanel.image = image } else
+                { self.drawPanel.image = nil }
+            }
+        }
+
+        } else {
+            print("annotation not loaded")
         }
     }
 
@@ -673,7 +690,7 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
                 noLabel.text = playerNo
             }
             if let profileImage: UIImageView = selectedPosition?.viewWithTag(1) as? UIImageView {
-                loadImageFromRealm(picturePath: picPath!, imageView: profileImage)
+                loadImage(path: picPath!, imageView: profileImage)
             }
 
         }
@@ -692,22 +709,18 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
         imageView.layer.shouldRasterize = true
     }
     
-    func loadImageFromRealm (picturePath: String, imageView: UIImageView) {
-        
-        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let nsUserDomainMask    = FileManager.SearchPathDomainMask.userDomainMask
-        let paths               = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
-        if let dirPath          = paths.first
-        {   let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(picturePath)
-            let image   = UIImage(contentsOfFile: imageURL.path)
-            
-            if image != nil
-                { imageView.image = image
-                    
-                } else {
-                    imageView.image = UIImage (named: "profile.jpg")
-                }
-                
+    func loadImage (path: String, imageView: UIImageView) {
+        let storage = FIRStorage.storage()
+        let storageRef = storage.reference(withPath: picPath!)
+        storageRef.data(withMaxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("error has occured: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                if image != nil
+                { imageView.image = image } else
+                { imageView.image = UIImage (named: "profile.jpg") }
+            }
         }
     }
     
@@ -768,8 +781,7 @@ class TacticalCreatorViewController: UIViewController, UIPopoverPresentationCont
     
     func enableDrag() {
         cage = self.drawPanel.frame
-        
-        
+
         //pB1.enableDragging()
         pB1.cagingArea = cage
         

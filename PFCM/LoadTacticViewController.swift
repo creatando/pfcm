@@ -41,7 +41,6 @@ class LoadTacticViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         retrieveTactics()
-        searchController.loadViewIfNeeded()
         setupSearch()
     }
 
@@ -92,10 +91,7 @@ class LoadTacticViewController: UITableViewController {
         searchController.searchBar.showsCancelButton = false
         
     }
-    
-    func filterResultsWithSearchString(searchString: String) {
-    }
-    
+
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -109,6 +105,8 @@ class LoadTacticViewController: UITableViewController {
             lgkCoord = CGPoint(x: self.gkCoord!.first!, y: self.gkCoord!.last!)
             lp2Coord = CGPoint(x: self.p2Coord!.first!, y:self.p2Coord!.last!)
             lp3Coord = CGPoint(x: self.p3Coord!.first!, y: self.p3Coord!.last!)
+            print(lgkCoord ?? "")
+            print(lp2Coord ?? "")
             
             lp4Coord = CGPoint(x: self.p4Coord!.first!, y: self.p4Coord!.last!)
             lp5Coord = CGPoint(x: self.p5Coord!.first!, y: self.p5Coord!.last!)
@@ -155,16 +153,16 @@ class LoadTacticViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell : Tactic = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
         gkCoord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p2Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p3Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p4Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p5Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p6Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p7Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p8Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p9Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p10Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
-        p11Coord = [selectedCell.gkCoord_x, selectedCell.gkCoord_y]
+        p2Coord = [selectedCell.p2Coord_x, selectedCell.p2Coord_y]
+        p3Coord = [selectedCell.p3Coord_x, selectedCell.p3Coord_y]
+        p4Coord = [selectedCell.p4Coord_x, selectedCell.p4Coord_y]
+        p5Coord = [selectedCell.p5Coord_x, selectedCell.p5Coord_y]
+        p6Coord = [selectedCell.p6Coord_x, selectedCell.p6Coord_y]
+        p7Coord = [selectedCell.p7Coord_x, selectedCell.p7Coord_y]
+        p8Coord = [selectedCell.p8Coord_x, selectedCell.p8Coord_y]
+        p9Coord = [selectedCell.p9Coord_x, selectedCell.p9Coord_y]
+        p10Coord = [selectedCell.p10Coord_x, selectedCell.p10Coord_y]
+        p11Coord = [selectedCell.p11Coord_x, selectedCell.p11Coord_y]
         annotationLink = selectedCell.aURL
         tacticName = selectedCell.tacticName
         tacticID = selectedCell.tid
@@ -199,9 +197,15 @@ class LoadTacticViewController: UITableViewController {
 extension LoadTacticViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text!
-        print ("searching...")
-        filterResultsWithSearchString(searchString: searchString)
+        guard let searchText = searchController.searchBar.text else {
+            return
+        }
+        
+        print (searchText)
+        searchResults = results.filter { tactic in
+            return tactic.tacticName.lowercased().contains(searchText.lowercased()) || tactic.date.lowercased().contains(searchText.lowercased())
+        }
+
         tableView.reloadData()
     }
     

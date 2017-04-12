@@ -27,7 +27,7 @@ class Menu {
             Menu(name: "Player Centre", tacticImage: UIImage(named: "menu1.jpg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
             Menu(name: "Tactical Centre", tacticImage: UIImage(named: "menu5.jpg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
             Menu(name: "Social Centre", tacticImage: UIImage(named: "menu6.jpg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
-            Menu(name: "Fixtures & Results", tacticImage: UIImage(named: "menu2.jpeg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
+            Menu(name: "Match Centre", tacticImage: UIImage(named: "menu2.jpeg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
             Menu(name: "Communications", tacticImage: UIImage(named: "menu4.jpg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
             Menu(name: "Club Settings", tacticImage: UIImage(named: "menu3.jpeg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
         ]
@@ -46,7 +46,7 @@ class Menu {
         return [
             Menu(name: "View Profile", tacticImage: UIImage(named: "menu1.jpg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
             Menu(name: "Social Centre", tacticImage: UIImage(named: "menu6.jpg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
-            Menu(name: "Fixtures & Results", tacticImage: UIImage(named: "menu2.jpeg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
+            Menu(name: "Match Centre", tacticImage: UIImage(named: "menu2.jpeg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
             Menu(name: "User Settings", tacticImage: UIImage(named: "menu3.jpeg")!, color: UIColor(red: 63/255.0, green: 71/255.0, blue: 80/255.0, alpha: 0.8)),
         ]
     }

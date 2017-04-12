@@ -29,13 +29,17 @@ struct Player {
     let assists: String
     let picURL: String
     let password: String
+    let club: String
+    let squad: String
     
     let ref: FIRDatabaseReference?
     
     
-    init (pid: String, firstName: String, lastName: String, dob: String, phoneNo: String, emailAdd: String, address1: String, address2: String, city: String, postCode: String, position: String, position2: String, position3: String, squadNo: String, apps: String, goals: String, assists: String, picURL: String, password: String) {
+    init (pid: String, club: String, squad: String, firstName: String, lastName: String, dob: String, phoneNo: String, emailAdd: String, address1: String, address2: String, city: String, postCode: String, position: String, position2: String, position3: String, squadNo: String, apps: String, goals: String, assists: String, picURL: String, password: String) {
         
         self.pid = pid
+        self.club = club
+        self.squad = squad
         self.firstName = firstName
         self.lastName = lastName
         self.dob = dob
@@ -63,6 +67,8 @@ struct Player {
         pid = snapshot.key
         let snapshotValue = snapshot.value as! [String: Any]
         
+        club = snapshotValue["club"] as! String
+        squad = snapshotValue["squad"] as! String
         firstName = snapshotValue["firstName"] as! String
         lastName = snapshotValue["lastName"] as! String
         dob = snapshotValue["dob"] as! String
@@ -88,6 +94,8 @@ struct Player {
     
     func toAny() -> Any {
         return [
+            "club": club,
+            "squad": squad,
             "firstName": firstName,
             "lastName": lastName,
             "dob": dob,

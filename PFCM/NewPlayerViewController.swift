@@ -44,6 +44,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var genPassword: UITextField!
     @IBOutlet weak var emailConfirm: UITextField!
+    @IBOutlet weak var squad: UITextField!
     
     let imagePicker = UIImagePickerController()
     var createButtonClicked = false
@@ -106,18 +107,21 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         imagePicker.popoverPresentationController?.barButtonItem = sender
     }
     
-    
-    @IBAction func createPlayer(_ sender: Any) {
-            validator.validate(self)
-    }
-    
-
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             profilePic.image = pickedImage
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func createPlayer(_ sender: Any) {
+            validator.validate(self)
     }
     
     // Validation Delegates
@@ -138,6 +142,8 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
                 
                 let player = Player(
                     pid: user!.uid,
+                    club: self.clubID!,
+                    squad: self.squad.text!,
                     firstName: self.firstName.text!,
                     lastName: self.lastName.text!,
                     dob: self.dob.text!,
@@ -158,12 +164,17 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
                     password: self.genPassword.text!
                 )
                 
-                print("user created!")
+                
+                let fullname = "\(self.firstName.text!) \(self.lastName.text!)"
+                let newUser = User(userID: user!.uid, name: fullname, email: self.emailAdd.text!, password: self.genPassword.text!, club: self.clubID!)
                 var ref: FIRDatabaseReference!
                 ref = FIRDatabase.database().reference()
                 let clubRef = ref.child(self.clubID!)
-                let playersRef = clubRef.child("users").child("players")
+                let playersRef = clubRef.child("players")
                 playersRef.child(user!.uid).setValue(player.toAny())
+                let usersRef = ref.child("users")
+                usersRef.child(user!.uid).setValue(newUser.toAny())
+                print("user created!")
                 self.resetValidation()
                 self.resetProfile()
                 
@@ -213,6 +224,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.registerField(city, rules: [RequiredRule()])
         validator.registerField(postCode, rules: [RequiredRule()])
         validator.registerField(position, rules: [RequiredRule()])
+        validator.registerField(squad, rules: [RequiredRule()])
         validator.registerField(squadNo, rules: [RequiredRule()])
     }
     
@@ -265,6 +277,7 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         position.text! = ""
         position2.text! = ""
         position3.text! = ""
+        squad.text! = ""
         squadNo.text! = ""
         profilePic.image = UIImage(named: "profile.jpg")
         picker.reloadAllComponents()
@@ -287,11 +300,13 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         dob.layer.borderWidth = 0
         phoneNo.layer.borderWidth = 0
         emailAdd.layer.borderWidth = 0
+        emailConfirm.layer.borderWidth = 0
         address1.layer.borderWidth = 0
         address2.layer.borderWidth = 0
         city.layer.borderWidth = 0
         postCode.layer.borderWidth = 0
         position.layer.borderWidth = 0
+        squadNo.layer.borderWidth = 0
         squadNo.layer.borderWidth = 0
         
         validator.unregisterField(firstName)
@@ -305,13 +320,11 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
         validator.unregisterField(city)
         validator.unregisterField(postCode)
         validator.unregisterField(position)
+        validator.unregisterField(squad)
         validator.unregisterField(squadNo)
         formValidation()
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         createButtonClicked = false
@@ -378,6 +391,9 @@ class NewPlayerViewController: UITableViewController, UIPickerViewDataSource, UI
             position3.becomeFirstResponder()
             break
         case position3:
+            squad.becomeFirstResponder()
+            break
+        case squad:
             squadNo.becomeFirstResponder()
             break
         case squadNo:

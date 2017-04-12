@@ -85,7 +85,8 @@ extension HomeMenuViewController : UICollectionViewDataSource {
             performSegue(withIdentifier: "TacticSegue", sender: nil)
         case  "Social Centre":
             print("social")
-        case  "Fixtures & Results":
+            performSegue(withIdentifier: "SocialSegue", sender: nil)
+        case  "Match Centre":
             print("fr")
         case  "Communications":
             print("communications")

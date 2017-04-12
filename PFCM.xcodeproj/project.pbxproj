@@ -39,6 +39,9 @@
 		AA60F47F1E8811F30038DB60 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA60F47E1E8811F30038DB60 /* Menu.swift */; };
 		AA7D71F81E62684800FEF40C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7D71F71E62684800FEF40C /* plus.png */; };
 		AA7D71FA1E6347F300FEF40C /* TacticsPlayerAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D71F91E6347F300FEF40C /* TacticsPlayerAddViewController.swift */; };
+		AA9A96D71E9A7C080056D730 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA9A96D61E9A7C080056D730 /* Social.storyboard */; };
+		AA9A96D91E9B0C360056D730 /* SocialCentreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A96D81E9B0C350056D730 /* SocialCentreViewController.swift */; };
+		AA9A96DC1E9B0D040056D730 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A96DB1E9B0D040056D730 /* PostCell.swift */; };
 		AAA4D61B1E693EB100B9725E /* HomeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA4D61A1E693EB100B9725E /* HomeMenuViewController.swift */; };
 		AAA4D6281E694D3400B9725E /* menu6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6221E694D3400B9725E /* menu6.jpg */; };
 		AAA4D6291E694D3400B9725E /* menu5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAA4D6231E694D3400B9725E /* menu5.jpg */; };
@@ -59,6 +62,13 @@
 		AAC3E0051E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC3E0041E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift */; };
 		AAC888581E5AC4B5008806BC /* pitch.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC888571E5AC4B5008806BC /* pitch.png */; };
 		AAC8885A1E5AC69C008806BC /* profile-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC888591E5AC69C008806BC /* profile-blank.png */; };
+		AACC2E521E9D7051007F1F8E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC2E511E9D7051007F1F8E /* Post.swift */; };
+		AACC2E541E9DC95E007F1F8E /* AdminUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC2E531E9DC95E007F1F8E /* AdminUser.swift */; };
+		AACC2E561E9DC96A007F1F8E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC2E551E9DC96A007F1F8E /* User.swift */; };
+		AACC2E581E9DD309007F1F8E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC2E571E9DD309007F1F8E /* Club.swift */; };
+		AACC2E5A1E9DD7A0007F1F8E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACC2E591E9DD7A0007F1F8E /* Match.swift */; };
+		AACC2E601E9DE3CB007F1F8E /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACC2E5F1E9DE3CB007F1F8E /* Players.storyboard */; };
+		AACC2E621E9DE45F007F1F8E /* Tactics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AACC2E611E9DE45F007F1F8E /* Tactics.storyboard */; };
 		AAD6012A1E5BBE71008F6452 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */; };
 		AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */; };
 		B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521B6AE1E47AD7400F5522F /* AppDelegate.swift */; };
@@ -129,6 +139,9 @@
 		AA60F47E1E8811F30038DB60 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		AA7D71F71E62684800FEF40C /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		AA7D71F91E6347F300FEF40C /* TacticsPlayerAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TacticsPlayerAddViewController.swift; sourceTree = "<group>"; };
+		AA9A96D61E9A7C080056D730 /* Social.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
+		AA9A96D81E9B0C350056D730 /* SocialCentreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialCentreViewController.swift; sourceTree = "<group>"; };
+		AA9A96DB1E9B0D040056D730 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		AAA4D61A1E693EB100B9725E /* HomeMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMenuViewController.swift; sourceTree = "<group>"; };
 		AAA4D6221E694D3400B9725E /* menu6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu6.jpg; sourceTree = "<group>"; };
 		AAA4D6231E694D3400B9725E /* menu5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menu5.jpg; sourceTree = "<group>"; };
@@ -149,6 +162,13 @@
 		AAC3E0041E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTacticCollectionViewCell.swift; path = ../CustomTacticCollectionViewCell.swift; sourceTree = "<group>"; };
 		AAC888571E5AC4B5008806BC /* pitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pitch.png; sourceTree = "<group>"; };
 		AAC888591E5AC69C008806BC /* profile-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-blank.png"; sourceTree = "<group>"; };
+		AACC2E511E9D7051007F1F8E /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		AACC2E531E9DC95E007F1F8E /* AdminUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminUser.swift; sourceTree = "<group>"; };
+		AACC2E551E9DC96A007F1F8E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AACC2E571E9DD309007F1F8E /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		AACC2E591E9DD7A0007F1F8E /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		AACC2E5F1E9DE3CB007F1F8E /* Players.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Players.storyboard; sourceTree = "<group>"; };
+		AACC2E611E9DE45F007F1F8E /* Tactics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tactics.storyboard; sourceTree = "<group>"; };
 		AAD601291E5BBE71008F6452 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		AAD6012E1E5BCA6C008F6452 /* PremierBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PremierBackground.mp4; sourceTree = "<group>"; };
 		AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPlayerTableViewCell.swift; sourceTree = "<group>"; };
@@ -289,6 +309,38 @@
 			name = PresetTactics;
 			sourceTree = "<group>";
 		};
+		AA9A96DA1E9B0CD20056D730 /* social feed */ = {
+			isa = PBXGroup;
+			children = (
+				AA9A96D81E9B0C350056D730 /* SocialCentreViewController.swift */,
+			);
+			name = "social feed";
+			sourceTree = "<group>";
+		};
+		AA9A96DD1E9BBF080056D730 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				AA9A96DB1E9B0D040056D730 /* PostCell.swift */,
+				AA60F47C1E8810D90038DB60 /* MenuViewCell.swift */,
+				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
+				AA2E6D1E1E8744E8008DC9B6 /* CustomTacticTableViewCell.swift */,
+				AAC3E0041E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		AA9A96DE1E9BBF180056D730 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AA9A96D61E9A7C080056D730 /* Social.storyboard */,
+				B521B6DF1E47AD9900F5522F /* Main.storyboard */,
+				AACC2E611E9DE45F007F1F8E /* Tactics.storyboard */,
+				AACC2E5F1E9DE3CB007F1F8E /* Players.storyboard */,
+				B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */,
+			);
+			name = storyboards;
+			sourceTree = "<group>";
+		};
 		B521B6A21E47AD7400F5522F = {
 			isa = PBXGroup;
 			children = (
@@ -347,7 +399,12 @@
 		B521B6EC1E47AE7000F5522F /* models */ = {
 			isa = PBXGroup;
 			children = (
+				AACC2E571E9DD309007F1F8E /* Club.swift */,
+				AACC2E531E9DC95E007F1F8E /* AdminUser.swift */,
+				AACC2E551E9DC96A007F1F8E /* User.swift */,
+				AACC2E511E9D7051007F1F8E /* Post.swift */,
 				B5BA8D031E4F78CC0045A5A6 /* Player.swift */,
+				AACC2E591E9DD7A0007F1F8E /* Match.swift */,
 				AAC3E0001E81C10100BCC56C /* Tactic.swift */,
 				AA424A631E82FAC100634EBE /* PresetTactic.swift */,
 				AA60F47E1E8811F30038DB60 /* Menu.swift */,
@@ -359,12 +416,8 @@
 		B521B6ED1E47AE7E00F5522F /* views */ = {
 			isa = PBXGroup;
 			children = (
-				B521B6DF1E47AD9900F5522F /* Main.storyboard */,
-				B521B6B71E47AD7400F5522F /* LaunchScreen.storyboard */,
-				AA60F47C1E8810D90038DB60 /* MenuViewCell.swift */,
-				AAED179D1E594B8400C2BE95 /* CustomPlayerTableViewCell.swift */,
-				AA2E6D1E1E8744E8008DC9B6 /* CustomTacticTableViewCell.swift */,
-				AAC3E0041E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift */,
+				AA9A96DE1E9BBF180056D730 /* storyboards */,
+				AA9A96DD1E9BBF080056D730 /* cells */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -372,6 +425,7 @@
 		B521B6EE1E47AE8900F5522F /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA9A96DA1E9B0CD20056D730 /* social feed */,
 				AA3698861E882C6F0042CAD5 /* menus */,
 				AA3698851E882C5A0042CAD5 /* tactics */,
 				AA3698871E882C7D0042CAD5 /* players */,
@@ -551,6 +605,7 @@
 				AAA4D62A1E694D3400B9725E /* menu4.jpg in Resources */,
 				AA424A6D1E83274A00634EBE /* 442.JPG in Resources */,
 				AAA4D62B1E694D3400B9725E /* menu3.jpeg in Resources */,
+				AACC2E621E9DE45F007F1F8E /* Tactics.storyboard in Resources */,
 				AA424A701E83274A00634EBE /* 343.JPG in Resources */,
 				AA1B239C1E5D0D8C000528B7 /* checkmark@2x.png in Resources */,
 				AA424A711E83274A00634EBE /* 352.JPG in Resources */,
@@ -565,6 +620,7 @@
 				AAB0E6A01E612F1C0059EEAA /* eye@2x.png in Resources */,
 				B5EE19881E4FF70400B94B82 /* arrowLeft@3x.png in Resources */,
 				B5EE19891E4FF70400B94B82 /* arrowRight@2x.png in Resources */,
+				AACC2E601E9DE3CB007F1F8E /* Players.storyboard in Resources */,
 				AAA4D62C1E694D3400B9725E /* menu2.jpeg in Resources */,
 				AA1B238E1E5D08A9000528B7 /* closebtn@3x.png in Resources */,
 				AA1B9B521E66C2C4000BD783 /* plusc.png in Resources */,
@@ -584,6 +640,7 @@
 				AA1B23801E5D0813000528B7 /* menubutton.png in Resources */,
 				AA424A731E83274A00634EBE /* 361.JPG in Resources */,
 				AAB2E3A51E5C078300556489 /* Premier-Logo-icon.png in Resources */,
+				AA9A96D71E9A7C080056D730 /* Social.storyboard in Resources */,
 				AAB0E6A11E612F1D0059EEAA /* eye@3x.png in Resources */,
 				B59A364C1E47C084008C42CE /* GoogleService-Info.plist in Resources */,
 				AA1B238C1E5D08A9000528B7 /* closebtn.png in Resources */,
@@ -755,12 +812,16 @@
 				AA1652A01E92C398000C51EB /* Player.swift in Sources */,
 				AAC3E0011E81C10100BCC56C /* Tactic.swift in Sources */,
 				B521B6E61E47AD9900F5522F /* LoginViewController.swift in Sources */,
+				AACC2E581E9DD309007F1F8E /* Club.swift in Sources */,
 				B521B6EB1E47AD9900F5522F /* SignUpViewController.swift in Sources */,
 				B521B6E81E47AD9900F5522F /* NewPlayerViewController.swift in Sources */,
+				AACC2E561E9DC96A007F1F8E /* User.swift in Sources */,
 				AAA4D61B1E693EB100B9725E /* HomeMenuViewController.swift in Sources */,
 				B521B6AF1E47AD7400F5522F /* AppDelegate.swift in Sources */,
+				AACC2E5A1E9DD7A0007F1F8E /* Match.swift in Sources */,
 				B59A07631E533FE300623225 /* ViewPlayersController.swift in Sources */,
 				AA424A641E82FAC200634EBE /* PresetTactic.swift in Sources */,
+				AACC2E521E9D7051007F1F8E /* Post.swift in Sources */,
 				AA10ED621E5A5FBF00D3C8E5 /* TacticalCreatorViewController.swift in Sources */,
 				AAA4D6311E69D8CE00B9725E /* PlayerCentreViewController.swift in Sources */,
 				AAC3E0031E81CDBB00BCC56C /* TacticsAddViewController.swift in Sources */,
@@ -771,9 +832,12 @@
 				AA60F47D1E8810D90038DB60 /* MenuViewCell.swift in Sources */,
 				B521B6EA1E47AD9900F5522F /* ResetPasswordViewController.swift in Sources */,
 				AAED179E1E594B8500C2BE95 /* CustomPlayerTableViewCell.swift in Sources */,
+				AACC2E541E9DC95E007F1F8E /* AdminUser.swift in Sources */,
 				AA2E6D1D1E873DD6008DC9B6 /* LoadTacticViewController.swift in Sources */,
 				AA1B23661E5CFE75000528B7 /* EditPlayerViewController.swift in Sources */,
+				AA9A96D91E9B0C360056D730 /* SocialCentreViewController.swift in Sources */,
 				AAC3E0051E82AA3000BCC56C /* CustomTacticCollectionViewCell.swift in Sources */,
+				AA9A96DC1E9B0D040056D730 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

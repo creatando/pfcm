@@ -32,6 +32,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         @IBOutlet weak var goalsText: UITextField!
         @IBOutlet weak var assistsText: UITextField!
         @IBOutlet weak var appsText: UITextField!
+        @IBOutlet weak var squad: UITextField!
     
         let imagePicker = UIImagePickerController()
         var saveButtonClicked = false
@@ -143,7 +144,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
     
     func retrievePlayer () {
         let clubRef = ref.child(club!.uid)
-        let playersRef = clubRef.child("users").child("players")
+        let playersRef = clubRef.child("players")
         let playerRef = playersRef.child(selectedPlayer!)
         
         playerRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -160,6 +161,7 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             self.position.text = singlePlayer.position
             self.position2.text = singlePlayer.position2
             self.position3.text = singlePlayer.position3
+            self.squad.text = singlePlayer.squad
             self.squadNo.text = singlePlayer.squadNo
             self.goalsText.text = singlePlayer.goals
             self.assistsText.text = singlePlayer.assists
@@ -264,11 +266,13 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
         let clubRef = ref.child(club!.uid)
-        let playersRef = clubRef.child("users").child("players")
+        let playersRef = clubRef.child("players")
         let key = playersRef.child(selectedPlayer!)
         
         let player = Player(
             pid: selectedPlayer!,
+            club: club!.uid,
+            squad: self.squad.text!,
             firstName: self.firstName.text!,
             lastName: self.lastName.text!,
             dob: self.dob.text!,
@@ -403,6 +407,9 @@ class EditPlayerViewController: UITableViewController, UIPickerViewDataSource, U
             position3.becomeFirstResponder()
             break
         case position3:
+            squad.becomeFirstResponder()
+            break
+        case squad:
             squadNo.becomeFirstResponder()
             break
         case squadNo:

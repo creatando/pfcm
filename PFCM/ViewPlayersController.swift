@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SCLAlertView
 import Hue
+import PKHUD
 
 class ViewPlayersController: UITableViewController {
 
@@ -25,16 +26,17 @@ class ViewPlayersController: UITableViewController {
     var playerID: String?
     var savedIndexPath: IndexPath?
     var playerName: String?
+    var fullname: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        retrievePlayers()
-        setupSearch()
-        searchController.loadViewIfNeeded()
         }
     
     override func viewDidAppear(_ animated: Bool) {
+        retrievePlayers()
+        setupSearch()
+        searchController.loadViewIfNeeded()
         tableView.reloadData()
     }
     
@@ -55,27 +57,25 @@ class ViewPlayersController: UITableViewController {
     }
     
     func retrievePlayers () {
-        let clubRef = ref.child(club!.uid)
-        let playersRef = clubRef.child("users").child("players")
-        print(playersRef)
-        playersRef.observe(.childAdded, with: { (snapshot) in
+        self.results.removeAll()
+        let clubRef = self.ref.child(self.club!.uid)
+        let playersRef = clubRef.child("players").queryOrdered(byChild: "lastName")
+        
+        playersRef.observe(.value, with: { (snapshot) in
             
             var players: [Player] = []
             
             for item in snapshot.children {
                 let player = Player(snapshot: item as! FIRDataSnapshot)
                 players.append(player)
-                print("checking....")
+                print("adding playerrs....")
             }
             
             self.results = players
-            self.searchResults = players
             self.tableView.reloadData()
-            
         }) { (error) in
             print(error.localizedDescription)
         }
-        
     }
     
     func setupSearch() {
@@ -116,7 +116,8 @@ class ViewPlayersController: UITableViewController {
         let players : Player = searchController.isActive ? searchResults[indexPath.item] : results[indexPath.row]
         let storageRef = storage.reference(withPath: players.picURL)
         
-        cell.name.text = "\(players.firstName) \(players.lastName)"
+        fullname = "\(players.firstName) \(players.lastName)"
+        cell.name.text = fullname
         cell.dob.text = players.dob
         cell.squadNumber.text = "#\(players.squadNo)"
         cell.stats.text = "Apps: \(players.apps), G: \(players.goals), A: \(players.assists)"
@@ -133,13 +134,6 @@ class ViewPlayersController: UITableViewController {
         return cell
     }
     
-    func filterResultsWithSearchString(searchString: String) {
-        let predicateFN = NSPredicate(format: "firstName BEGINSWITH [c]%@", searchString)
-        let predicateLN = NSPredicate(format: "lastName BEGINSWITH [c]%@", searchString)
-        let predicateCompound = NSCompoundPredicate.init(type: .or, subpredicates: [predicateFN, predicateLN])
-        print (predicateCompound)
-    }
-    
     override func tableView(_ tableView: UITableView,
                             shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
        return false
@@ -151,7 +145,6 @@ class ViewPlayersController: UITableViewController {
         print("Prepared is called!")
             let nextScene = segue.destination as? EditPlayerViewController
             nextScene?.selectedPlayer = playerID!
-            print("Right player ID is sent! \(nextScene?.selectedPlayer!)")
     }
     
     
@@ -164,8 +157,14 @@ extension ViewPlayersController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         
-        let searchString = searchController.searchBar.text!
-        filterResultsWithSearchString(searchString: searchString)
+        guard let searchText = searchController.searchBar.text else {
+            return
+        }
+        print (searchText)
+        searchResults = results.filter { player in
+            return player.firstName.lowercased().contains(searchText.lowercased()) || player.lastName.lowercased().contains(searchText.lowercased())
+        }
+        
         tableView.reloadData()
     }
     

@@ -44,11 +44,16 @@ class SignUpViewController: UIViewController {
                     
                     if error == nil {
                         
-                        let newClub = ["clubName": self.clubnameTextField.text, "clubContact": self.contactTextField.text]
+                        let newClub = Club(clubID: user!.uid, clubName: self.clubnameTextField.text!, clubEmail: self.emailTextField.text!, clubContact: self.contactTextField.text!)
+                        
+                        let newAdmin = AdminUser(userID: user!.uid, name: self.clubnameTextField.text!, email: self.emailTextField.text!, password: self.passwordTextField.text!, club: user!.uid)
+                        
                         print("You have successfully signed up")
                         var ref: FIRDatabaseReference!
                         ref = FIRDatabase.database().reference()
-                        ref.child(user!.uid).setValue(newClub)
+                        let adminRef = ref.child("users")
+                        adminRef.child(user!.uid).setValue(newAdmin.toAny())
+                        ref.child(user!.uid).setValue(newClub.toAny())
                         print("database set")
                         
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")

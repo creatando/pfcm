@@ -99,6 +99,7 @@ struct Tactic {
         tid = snapshot.key
         
         let snapshotValue = snapshot.value as! [String: Any]
+        
         tacticName = snapshotValue["tacticName"] as! String
         date = snapshotValue["date"] as! String
         
